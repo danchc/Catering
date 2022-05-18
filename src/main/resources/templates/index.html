@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=en xmlns:th="http://www.thymeleaf.org">
+<html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="/static/style.css">
     <!-- <link th:href="@{/style.css}" rel="stylesheet"> -->
@@ -9,20 +9,21 @@
 <body>
     <header>
         <div id="nav-logo">
-            LOGO
+            <a th:href="@{/}">LOGO</a>
         </div>
         <div id="nav-bar">
             <ul>
-                <li>Home</li>
-                <li>Contatti</li>
-                <li>Servizi</li>
-                <li>Login</li>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/contacts}">Contatti</a></li>
+                <li><a th:href="@{/services}">Servizi</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/register}">Registrati</a></li>
             </ul>
         </div>
     </header>
     <div class="main-container">
         <span id="main-banner-title">VIVI UN MOMENTO SPECIALE</span>
-        <span id="main-banner-second">Cosa aspetti? E' ora di scegliere il catering!</span>
+        <span id="main-banner-second">Cosa aspetti? E' ora di scegliere il servizio adatto a te!</span>
     </div>
 </body>
 </html>

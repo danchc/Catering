@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>R3 Catering | Registrazione</title>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registrati ora!</h1>
+        <div class="form-label">
+            <span>Nome:</span>
+        </div>
+        <div class="form-input">
+            <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" th:value="${user.nome}" autofocus="autofocus">
+        </div>
+        <div class="form-label">
+            <span>Cognome:</span>
+        </div>
+        <div class="form-input">
+            <input type="text" th:field="${user.cognome}" placeholder="Inserisci il tuo cognome" th:value="${user.cognome}">
+        </div>
+        <div class="form-label">
+            <span>Indirizzo e-mail:</span>
+        </div>
+        <div class="form-input">
+            <input type="email" th:field="${user.email}" placeholder="Inserisci la tua email" th:value="${user.email}">
+        </div>
+        <div class="form-label">
+            <span>Username:</span>
+        </div>
+        <div class="form-input">
+            <input type="text" th:field="${credentials.username}" placeholder="Inserisci il tuo username">
+        </div>
+        <div class="form-label">
+            <span>Password:</span>
+        </div>
+        <div class="form-input">
+            <input type="password" th:field="${credentials.password}" placeholder="Inserisci la tua password">
+        </div>
+        <button type="submit">Conferma</button>
+        <a th:href="@{/}">Torna indietro</a>
+    </div>
+
+
+</body>
+</html>
