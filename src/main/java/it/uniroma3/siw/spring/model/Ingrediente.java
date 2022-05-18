@@ -1,10 +1,9 @@
-package it.uniroma3.siw.model;
+package it.uniroma3.siw.spring.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-public class Chef {
+public class Ingrediente {
 
     /* ----------------------------------------------------------------*/
     /* --------------------- variabili --------------------------------*/
@@ -18,18 +17,14 @@ public class Chef {
     private String nome;
 
     @Column(nullable = false)
-    private String cognome;
+    private String origine;
 
     @Column(nullable = false)
-    private String nazionalita;
-
-    @OneToMany(mappedBy = "chef")
-    private List<Buffet> buffetProposti;
+    private String descrizione;
 
     /* ----------------------------------------------------------------*/
     /* ------------ GETTERS & SETTERS ---------------------------------*/
     /* ----------------------------------------------------------------*/
-
 
     public Long getId() {
         return this.id;
@@ -43,27 +38,19 @@ public class Chef {
         this.nome = nome;
     }
 
-    public String getCognome() {
-        return this.cognome;
+    public String getOrigine() {
+        return this.origine;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setOrigine(String origine) {
+        this.origine = origine;
     }
 
-    public String getNazionalita() {
-        return this.nazionalita;
+    public String getDescrizione() {
+        return this.descrizione;
     }
 
-    public void setNazionalita(String nazionalita) {
-        this.nazionalita = nazionalita;
-    }
-
-    public List<Buffet> getBuffetProposti() {
-        return this.buffetProposti;
-    }
-
-    public void setBuffetProposti(List<Buffet> buffetProposti) {
-        this.buffetProposti = buffetProposti;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 }

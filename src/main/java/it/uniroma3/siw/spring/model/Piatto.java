@@ -1,4 +1,4 @@
-package it.uniroma3.siw.model;
+package it.uniroma3.siw.spring.model;
 
 import javax.persistence.*;
 import java.util.List;
