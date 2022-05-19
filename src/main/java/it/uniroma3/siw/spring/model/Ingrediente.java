@@ -1,8 +1,13 @@
 package it.uniroma3.siw.spring.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Ingrediente {
 
     /* ----------------------------------------------------------------*/
@@ -22,35 +27,4 @@ public class Ingrediente {
     @Column(nullable = false)
     private String descrizione;
 
-    /* ----------------------------------------------------------------*/
-    /* ------------ GETTERS & SETTERS ---------------------------------*/
-    /* ----------------------------------------------------------------*/
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getOrigine() {
-        return this.origine;
-    }
-
-    public void setOrigine(String origine) {
-        this.origine = origine;
-    }
-
-    public String getDescrizione() {
-        return this.descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
 }

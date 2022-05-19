@@ -1,11 +1,15 @@
 package it.uniroma3.siw.spring.model;
 
 import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 /* Questa classe modella le credenziali di un generico utente all'interno del sito */
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Credentials {
 
     /* ----------------------------------------------------------------*/

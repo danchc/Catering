@@ -1,9 +1,14 @@
 package it.uniroma3.siw.spring.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Buffet {
 
     /* ----------------------------------------------------------------*/
@@ -25,27 +30,4 @@ public class Buffet {
     @OneToMany
     private List<Piatto> piatti;
 
-    /* ----------------------------------------------------------------*/
-    /* ------------ GETTERS & SETTERS ---------------------------------*/
-    /* ----------------------------------------------------------------*/
-
-    public String getDescrizione() {
-        return this.descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 }

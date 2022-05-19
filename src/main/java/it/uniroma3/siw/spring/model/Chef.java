@@ -1,9 +1,14 @@
 package it.uniroma3.siw.spring.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Chef {
 
     /* ----------------------------------------------------------------*/
@@ -26,44 +31,4 @@ public class Chef {
     @OneToMany(mappedBy = "chef")
     private List<Buffet> buffetProposti;
 
-    /* ----------------------------------------------------------------*/
-    /* ------------ GETTERS & SETTERS ---------------------------------*/
-    /* ----------------------------------------------------------------*/
-
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return this.cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
-    public String getNazionalita() {
-        return this.nazionalita;
-    }
-
-    public void setNazionalita(String nazionalita) {
-        this.nazionalita = nazionalita;
-    }
-
-    public List<Buffet> getBuffetProposti() {
-        return this.buffetProposti;
-    }
-
-    public void setBuffetProposti(List<Buffet> buffetProposti) {
-        this.buffetProposti = buffetProposti;
-    }
 }
