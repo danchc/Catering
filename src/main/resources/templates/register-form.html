@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
     <meta charset="UTF-8">
     <title>R3 Catering | Registrazione</title>
 </head>
 <body>
 
-    <form method="POST" th:action="@{/register-form}" th:object="${credentials}">
-        <!-- errors -->
-        <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
-            <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+    <div class="flex-container">
+        <div class="container">
+            <form method="POST" th:action="@{/register-form}" th:object="${credentials}">
+                <!-- errors -->
+                <div class="alert-container">
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                    </div>
+                </div>
+
+                <!-- form title -->
+                <div id="form-title">
+                    Registrati ora!
+                </div>
+                <!-- ####### -->
+                <!-- start form container -->
+                <div class="form-container">
+                    <div class="form-input">
+                        <div class="form-input-label">Nome:</div>
+                        <input type="text" th:field="${credentials.user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Cognome:</div>
+                        <input type="text" th:field="${credentials.user.cognome}" placeholder="Inserisci il tuo cognome">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Indirizzo e-mail:</div>
+                        <input type="email" th:field="${credentials.user.email}" placeholder="Inserisci la tua e-mail">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Telefono:</div>
+                        <input type="tel"  placeholder="Inserisci il tuo telefono">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Indirizzo:</div>
+                        <input type="text"  placeholder="Inserisci il tuo indirizzo">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Città:</div>
+                        <input type="text"  placeholder="Inserisci la città">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Data di nascita:</div>
+                        <input type="date">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Username:</div>
+                        <input type="text" th:field="${credentials.username}" placeholder="Inserisci il tuo username">
+                    </div>
+                    <div class="form-input">
+                        <div class="form-input-label">Password:</div>
+                        <input type="password" th:field="${credentials.password}" placeholder="Inserisci la tua password">
+                    </div>
+
+                </div>
+                <!-- end form container -->
+                <div class="form-btn">
+                    <button type="submit">Conferma</button>
+                    <button type="button"><a th:href="@{/}">Back</a></button>
+                </div>
+                <div class="form-disclaimer">
+                    <span id="form-disclaimer-text">Registrandoti confermi di accettare i <a href="">termini e le condizioni</a> di R3 Catering.</span>
+                </div>
+            </form>
         </div>
-        <!-- ####### -->
-        <div class="form-container">
-            <h1>Registrati ora!</h1>
-            <div class="form-label">
-                <span>Nome:</span>
-            </div>
-            <div class="form-input">
-                <input type="text" th:field="${credentials.user.nome}" placeholder="Inserisci il tuo nome" th:value="${user.nome}" autofocus="autofocus">
-            </div>
-            <div class="form-label">
-                <span>Cognome:</span>
-            </div>
-            <div class="form-input">
-                <input type="text" th:field="${credentials.user.cognome}" placeholder="Inserisci il tuo cognome" th:value="${user.cognome}">
-            </div>
-            <div class="form-label">
-                <span>Indirizzo e-mail:</span>
-            </div>
-            <div class="form-input">
-                <input type="email" th:field="${credentials.user.email}" placeholder="Inserisci la tua email" th:value="${user.email}">
-            </div>
-            <div class="form-label">
-                <span>Username:</span>
-            </div>
-            <div class="form-input">
-                <input type="text" th:field="${credentials.username}" placeholder="Inserisci il tuo username">
-            </div>
-            <div class="form-label">
-                <span>Password:</span>
-            </div>
-            <div class="form-input">
-                <input type="password" th:field="${credentials.password}" placeholder="Inserisci la tua password">
-            </div>
-            <button type="submit">Conferma</button>
-        </div>
-    </form>
-        <a th:href="@{/}">Torna indietro</a>
     </div>
-
-
 </body>
 </html>
