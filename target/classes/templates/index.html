@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
     <!-- <link th:href="@{/style.css}" rel="stylesheet"> -->
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>R3 Catering</title>
 </head>
 <body>
-    <header>
-        <div id="nav-logo">
-            <a th:href="@{/}">LOGO</a>
-        </div>
-        <div id="nav-bar">
+<div class="header-container">
+    <div class="nav nav-bar-sx">
+        <div class="nav-links">
             <ul>
                 <li><a th:href="@{/}">Home</a></li>
                 <li><a th:href="@{/contacts}">Contatti</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="nav-logo-container">
+        <div id="nav-logo">
+            <a th:href="@{/}"><img src="/images/r3-logo-v1.png"></a>
+        </div>
+    </div>
+
+    <div class="nav nav-bar-dx">
+        <div class="nav-links">
+            <ul>
                 <li><a th:href="@{/services}">Servizi</a></li>
                 <li><a th:href="@{/login}">Login</a></li>
                 <li><a th:href="@{/register-form}">Registrati</a></li>
             </ul>
         </div>
-    </header>
-    <div class="main-container">
-        <span id="main-banner-title">VIVI UN MOMENTO SPECIALE</span>
-        <span id="main-banner-second">Cosa aspetti? E' ora di scegliere il servizio adatto a te!</span>
+
     </div>
+
+</div>
+<div class="main-container">
+    <div class="main-container-photo">
+
+    </div>
+    <div class="main-text-container">
+        <span id="main-banner-title">VIVI UN MOMENTO SPECIALE...</span>
+        <span id="main-banner-subtitle">Cosa aspetti? E' ora di scegliere il servizio adatto a te!</span>
+    </div>
+</div>
 </body>
 </html>

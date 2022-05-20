@@ -50,4 +50,9 @@ public class AuthController {
         return "register-form";
     }
 
+    @GetMapping("/login")
+    public String getLoginForm(Model model) {
+        return "login";
+    }
+
 }

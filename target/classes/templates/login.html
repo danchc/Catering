@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="style.css" th:href="@{/style.css}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>R3 Catering | Login</title>
 </head>
 <body>
 
+
+<div class="login-flex-container">
+    <div class="login-container">
+        <div class="logo-container">
+            <a th:href="@{/}"><img src="/images/r3-logo-v1.png"></a>
+        </div>
+        <div class="form-title">
+            Accedi subito!
+        </div>
+        <!-- start form container -->
+        <div class="login-form-container">
+            <div class="form-input">
+                <div class="form-input-label">E-mail:</div>
+                <input type="type" placeholder="Inserisci la tua e-mail">
+            </div>
+            <div class="form-input">
+                <div class="form-input-label">Password:</div>
+                <input type="password" placeholder="Inserisci la tua password">
+            </div>
+        </div>
+        <!-- end form container -->
+        <div class="login-form-btn">
+            <div id="access-btn">
+                <button type="submit">Accedi</button>
+            </div>
+        </div>
+        <div class="social-btn">
+            <button type="submit">Facebook</button>
+            <button type="submit">Google</button>
+            <button type="submit">Accedi</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
