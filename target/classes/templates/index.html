@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <link rel="stylesheet" href="/style.css" th:href="@{/style.css}">
     <!-- <link th:href="@{/style.css}" rel="stylesheet"> -->
     <meta charset="UTF-8">
     <title>R3 Catering</title>
 </head>
 <body>
-<div class="header-container">
-    <div class="nav nav-bar-sx">
-        <div class="nav-links">
-            <ul>
-                <li><a th:href="@{/}">Home</a></li>
-                <li><a th:href="@{/contacts}">Contatti</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="nav-logo-container">
+<!-- navbar -->
+<div class="navbar">
+    <div class="nav-container flex">
         <div id="nav-logo">
-            <a th:href="@{/}"><img src="/images/r3-logo-v1.png"></a>
+            <a href="" th:href="@{/}"><img src="/images/r3-logo-v1.png" alt="logo"></a>
         </div>
-    </div>
-
-    <div class="nav nav-bar-dx">
-        <div class="nav-links">
+        <nav class="nav-links">
             <ul>
-                <li><a th:href="@{/services}">Servizi</a></li>
-                <li><a th:href="@{/login}">Login</a></li>
-                <li><a th:href="@{/register-form}">Registrati</a></li>
+                <li><a href="" class="active" th:href="@{/}">Home</a></li>
+                <li><a href="" th:href="@{/services}">Servizi</a></li>
+                <li><a href="" th:href="@{/contacts}">Contatti</a></li>
+                <li><a href="register-form.html" th:href="@{/register-form}">Registrati</a></li>
             </ul>
-        </div>
-
+        </nav>
+        <a href="login.html" th:href="@{/login}" class="btn-login"><button>Login</button></a>
     </div>
-
 </div>
-<div class="main-container">
-    <div class="main-container-photo">
-
+<!-- -->
+<div class="banner-container">
+    <div class="banner-container-photo">
     </div>
-    <div class="main-text-container">
+    <div class="banner-text-container flex">
         <span id="main-banner-title">VIVI UN MOMENTO SPECIALE...</span>
         <span id="main-banner-subtitle">Cosa aspetti? E' ora di scegliere il servizio adatto a te!</span>
     </div>
 </div>
+
+<div class="flex-container">
+    <div class="section-container">
+        <div class="img-section">
+
+        </div>
+        <div class="text-section">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias quis culpa cumque tenetur accusamus nostrum quo perferendis unde debitis vel, officia doloribus rerum assumenda quibusdam autem impedit temporibus omnis quas.
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>

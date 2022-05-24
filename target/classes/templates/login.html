@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="style.css" th:href="@{/style.css}">
+    <link rel="stylesheet" href="/style.css" th:href="@{/style.css}">
     <meta charset="UTF-8">
     <title>R3 Catering | Login</title>
 </head>
@@ -9,10 +9,11 @@
 
 
 <div class="login-flex-container">
+    <div class="logo-container">
+        <a href="index.html" th:href="@{/}"><img src="/images/r3-logo-v1.png" alt="logo"></a>
+    </div>
     <div class="login-container">
-        <div class="logo-container">
-            <a th:href="@{/}"><img src="/images/r3-logo-v1.png"></a>
-        </div>
+
         <div class="form-title">
             Accedi subito!
         </div>
@@ -20,7 +21,7 @@
         <div class="login-form-container">
             <div class="form-input">
                 <div class="form-input-label">E-mail:</div>
-                <input type="type" placeholder="Inserisci la tua e-mail">
+                <input type="email" placeholder="Inserisci la tua e-mail">
             </div>
             <div class="form-input">
                 <div class="form-input-label">Password:</div>
@@ -28,8 +29,8 @@
             </div>
         </div>
         <!-- end form container -->
-        <div class="login-form-btn">
-            <div id="access-btn">
+        <div class="btn-container flex">
+            <div class="form-btn">
                 <button type="submit">Accedi</button>
             </div>
         </div>

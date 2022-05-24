@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="style.css" th:href="@{/style.css}">
+    <link rel="stylesheet" href="/style.css" th:href="@{/style.css}">
     <meta charset="UTF-8">
     <title>R3 Catering | Registrazione</title>
 </head>
 <body>
 
+
+
 <div class="register-flex-container">
+    <div class="logo-container">
+        <a href="index.html" th:href="@{/}"><img src="/images/r3-logo-v1.png" alt="logo"></a>
+    </div>
     <div class="container">
-        <div class="logo-container">
-            <a th:href="@{/}"><img src="/images/r3-logo-v1.png"></a>
-        </div>
+
         <form method="POST" th:action="@{/register-form}" th:object="${credentials}">
             <!-- errors -->
             <div class="alert-container">
@@ -66,10 +69,15 @@
 
             </div>
             <!-- end form container -->
-            <div class="form-btn">
-                <button type="submit">Conferma</button>
-                <button type="button"><a th:href="@{/}">Back</a></button>
+            <div class="btn-container flex">
+                <div class="form-btn">
+                    <a href=""></a><button type="submit">Conferma</button>
+                </div>
+                <div class="form-btn">
+                    <a href="index.html" th:href="@{/}"> <button type="button">Back</button></a>
+                </div>
             </div>
+
             <div class="form-disclaimer">
                 <span id="form-disclaimer-text">Registrandoti confermi di accettare i <a href="">termini e le condizioni</a> di R3 Catering.</span>
             </div>
