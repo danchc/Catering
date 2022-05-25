@@ -4,8 +4,10 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Questa entità modella le informazioni di una persona reale, quindi specifica tutte le informazioni
@@ -32,4 +34,18 @@ public class User {
 
     @NotNull
     private String email;
+
+    @NotNull
+    private String telefono;
+
+    @NotNull
+    private String indirizzo;
+
+    @NotNull
+    private String citta;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dataNascita;
+
 }

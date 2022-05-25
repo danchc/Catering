@@ -7,22 +7,13 @@
 </head>
 <body>
 
-
-
 <div class="register-flex-container">
     <div class="logo-container">
         <a href="index.html" th:href="@{/}"><img src="/images/r3-logo-v1.png" alt="logo"></a>
     </div>
     <div class="container">
 
-        <form method="POST" th:action="@{/register-form}" th:object="${credentials}">
-            <!-- errors -->
-            <div class="alert-container">
-                <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
-                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
-                </div>
-            </div>
-
+        <form method="POST" th:action="@{/register}" th:object="${cred}" >
             <!-- form title -->
             <div class="form-title">
                 Registrati ora!
@@ -30,48 +21,50 @@
             <!-- ####### -->
             <!-- start form container -->
             <div class="form-container">
+
                 <div class="form-input">
                     <div class="form-input-label">Nome:</div>
-                    <input type="text" th:field="${credentials.user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus">
+                    <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Cognome:</div>
-                    <input type="text" th:field="${credentials.user.cognome}" placeholder="Inserisci il tuo cognome">
+                    <input type="text" th:field="${user.cognome}" placeholder="Inserisci il tuo cognome">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Indirizzo e-mail:</div>
-                    <input type="email" th:field="${credentials.user.email}" placeholder="Inserisci la tua e-mail">
+                    <input type="email" th:field="${user.email}" placeholder="Inserisci la tua e-mail">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Telefono:</div>
-                    <input type="tel"  placeholder="Inserisci il tuo telefono">
+                    <input type="tel"  th:field="${user.telefono}" placeholder="Inserisci il tuo telefono">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Indirizzo:</div>
-                    <input type="text"  placeholder="Inserisci il tuo indirizzo">
+                    <input type="text" th:field="${user.indirizzo}" placeholder="Inserisci il tuo indirizzo">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Città:</div>
-                    <input type="text"  placeholder="Inserisci la città">
+                    <input type="text" th:field="${user.citta}" placeholder="Inserisci la città">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Data di nascita:</div>
-                    <input type="date">
+                    <input type="date" th:field="${user.dataNascita}">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Username:</div>
-                    <input type="text" th:field="${credentials.username}" placeholder="Inserisci il tuo username">
+                    <input type="text" th:field="${cred.username}" placeholder="Inserisci il tuo username">
+                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Password:</div>
-                    <input type="password" th:field="${credentials.password}" placeholder="Inserisci la tua password">
+                    <input type="password" th:field="${cred.password}" placeholder="Inserisci la tua password">
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                 </div>
-
             </div>
             <!-- end form container -->
             <div class="btn-container flex">
                 <div class="form-btn">
-                    <a href=""></a><button type="submit">Conferma</button>
+                    <button type="submit">Conferma</button>
                 </div>
                 <div class="form-btn">
                     <a href="index.html" th:href="@{/}"> <button type="button">Back</button></a>

@@ -30,16 +30,17 @@ public class Credentials {
     @NotNull
     private String password;
 
+    /*
     @NotNull
     @Column(name = "confirmed_password")
-    private String confermaPassword;
+    private String confermaPassword;*/
 
     @NotNull
     private String ruolo;
-
+/*
     @NotNull
     private boolean isEnabled;
-
+*/
     @OneToOne(cascade = {CascadeType.ALL})
     private User user;
 

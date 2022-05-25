@@ -24,7 +24,7 @@ public class CredentialsValidator implements Validator {
         Credentials credentials = (Credentials) target;
 
         //controllo duplicazione
-        if(this.credentialsService.alreadyExists(credentials.getUsername())){
+        if(this.credentialsService.alreadyExistsUsername(credentials.getUsername())){
             errors.reject("credentials.duplicato");
         }
 

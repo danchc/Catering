@@ -1,29 +1,42 @@
+<!--
+home admin
+-->
+
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="icon" href="r3-ico.ico" th:href="@{/images/r3-ico.ico}">
     <link rel="stylesheet" href="/style.css" th:href="@{/style.css}">
-    <link rel="icon" href="/images/r3-ico.ico" th:href="@{/images/r3-ico.ico}">
+    <script src="https://kit.fontawesome.com/3bcc05e06e.js" crossorigin="anonymous"></script>
     <!-- <link th:href="@{/style.css}" rel="stylesheet"> -->
     <meta charset="UTF-8">
-    <title>R3 Catering</title>
+    <title>R3 Catering | Home</title>
 </head>
 <body>
 <!-- navbar -->
 <div class="navbar">
     <div class="nav-container flex">
         <div id="nav-logo">
-            <a href="" th:href="@{/}"><img src="/images/r3-logo-v1.png" alt="logo"></a>
+            <a href="" th:href="@{/}"><img src="/sito/r3-logo-v1.png"></a>
         </div>
         <nav class="nav-links">
             <ul>
                 <li><a href="" class="active" th:href="@{/}">Home</a></li>
                 <li><a href="" th:href="@{/services}">Servizi</a></li>
-                <li><a href="" th:href="@{/contacts}">Contatti</a></li>
-                <li><a href="register.html" th:href="@{/register}">Registrati</a></li>
+                <li><a href="contacts.html" th:href="@{/contacts}">Contatti</a></li>
+                <li><a href="register-form.html"th:href="@{/register-form}">Registrati</a></li>
             </ul>
+
         </nav>
-        <a href="login.html" th:href="@{/login}" class="btn-login"><button>Login</button></a>
+        <div class="dropdown-personal">
+            <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:value=""></span> Nome Account</button>
+            <div class="dropdown-content">
+                <a href="#">Pannello di controllo</a>
+                <a href="" th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
     </div>
+
 </div>
 <!-- -->
 <div class="banner-container">
