@@ -19,7 +19,7 @@ home normal user
 <div class="navbar">
     <div class="nav-container flex">
         <div id="nav-logo">
-            <a href="" th:href="@{/}"><img src="/images/r3-logo-v1.png" th:href="@{/images/r3-logo-v1.png}"></a>
+            <a href="" th:href="@{/}"><img src="/images/r3-logo-dark.png" th:href="@{/images/r3-logo-dark.png}"></a>
         </div>
         <nav class="nav-links">
             <ul>
@@ -31,7 +31,7 @@ home normal user
 
         </nav>
         <div class="dropdown-personal">
-            <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${user}">nome</span></button>
+            <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${credentials.user.nome}">nome</span></button>
             <div class="dropdown-content">
                 <a href="#">Il tuo profilo</a>
                 <a href="#">I tuoi servizi</a>

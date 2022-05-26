@@ -21,10 +21,10 @@ public class CredentialsService {
     private CredentialsRepository credentialsRepo;
 
     @Transactional
-    public Credentials save(Credentials cred) {
-        cred.setRuolo(Credentials.RUOLO_DEFAULT);
-        cred.setPassword(this.passwordEncoder.encode(cred.getPassword()));
-        return this.credentialsRepo.save(cred);
+    public Credentials save(Credentials credentials) {
+        credentials.setRuolo(Credentials.RUOLO_DEFAULT);
+        credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
+        return this.credentialsRepo.save(credentials);
     }
 
     public List<Credentials> findAll() {

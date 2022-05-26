@@ -9,7 +9,8 @@
 
 :root {
     --main-color: #c29426;
-    --nav-bg-color: rgb(217, 218, 219);
+    /* --nav-bg-color: rgb(217, 218, 219);*/
+    --nav-bg-color: white;
     --main-font: 'Varela Round', sans-serif;
 }
 

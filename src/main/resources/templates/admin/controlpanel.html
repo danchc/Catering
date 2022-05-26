@@ -10,7 +10,7 @@ home admin
     <script src="https://kit.fontawesome.com/3bcc05e06e.js" crossorigin="anonymous"></script>
     <!-- <link th:href="@{/style.css}" rel="stylesheet"> -->
     <meta charset="UTF-8">
-    <title>R3 Catering | Home</title>
+    <title>R3 Catering | Pannello di controllo</title>
 </head>
 <body>
 <!-- navbar -->
@@ -31,7 +31,7 @@ home admin
         <div class="dropdown-personal">
             <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${credentials.username}"></span></button>
             <div class="dropdown-content">
-                <a href="#" th:href="@{/controlpanel}">Pannello di controllo</a>
+                <a href="#">Pannello di controllo</a>
                 <a href="" th:href="@{/logout}">Logout</a>
             </div>
         </div>
@@ -39,26 +39,11 @@ home admin
 
 </div>
 <!-- -->
-<div class="banner-container">
-    <div class="banner-container-photo">
-    </div>
-    <div class="banner-text-container flex">
-        <span id="main-banner-title">VIVI UN MOMENTO SPECIALE...</span>
-        <span id="main-banner-subtitle">Cosa aspetti? E' ora di scegliere il servizio adatto a te!</span>
-    </div>
-</div>
-
-<div class="flex-container">
-    <div class="section-container">
-        <div class="img-section">
-
-        </div>
-        <div class="text-section">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias quis culpa cumque tenetur accusamus nostrum quo perferendis unde debitis vel, officia doloribus rerum assumenda quibusdam autem impedit temporibus omnis quas.
-        </div>
-    </div>
-
-</div>
+<h1>Gestisci i servizi.</h1>
+<button>Aggiungi un nuovo servizio.</button>
+<button>Modifica un servizio.</button>
+<button>Elimina un servizio.</button>
+<button>Visualizza tutti i servizi disponibili.</button>
 
 </body>
 </html>
