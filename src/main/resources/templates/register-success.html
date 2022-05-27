@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Success')"></head>
+<head th:replace="fragments/base.html :: headerfiles(title='Registrazione effettuata!')"></head>
 <body>
-    <h1>La registrazione è avvenuta!</h1>
-    <h2><a th:href="@{/}">Torna alla home.</a> </h2>
+<div class="register-flex-container">
+    <div class="success-msg-container">
+        <h1>La registrazione è avvenuta!</h1>
+        <h2><a th:href="@{/}">Torna alla home</a> </h2>
+    </div>
+</div>
 </body>
 </html>

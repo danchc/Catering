@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="headerfiles(title)">
+<head th:fragment="headerfiles(title)"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <meta charset="UTF-8"/>
     <link rel="icon" href="/images/r3-ico.ico" th:href="@{/images/r3-ico.ico}">
     <link th:href="@{/css/style.css}" rel="stylesheet">
@@ -20,7 +21,7 @@
             <nav class="nav-links">
                 <ul>
                     <li><a href="" class="active" th:href="@{/}">Home</a></li>
-                    <li><a href="" th:href="@{/services}">Servizi</a></li>
+                    <li><a href="" th:href="@{/buffets}">Buffets</a></li>
                     <li><a href="" th:href="@{/contacts}">Contatti</a></li>
                     <li><a href="register.html" th:href="@{/register}">Registrati</a></li>
                 </ul>
@@ -30,6 +31,37 @@
     </div>
 </header>
 <!-- ################################################## -->
-
+<!-- footer -->
+<footer th:fragment="footer-base">
+    <div class="footer-container">
+        <div class="footer">
+            <div class="col-1">
+                <h3>Link utili</h3>
+                <a href="">Link</a>
+                <a href="">Link</a>
+                <a href="">Link</a>
+                <a href="">Link</a>
+                <a href="">Link</a>
+            </div>
+            <div class="col-2">
+                <h3>Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Inserisci la tua email"><br>
+                    <button type="submit">Iscriviti</button>
+                </form>
+            </div>
+            <div class="col-3">
+                <h3>Contacts</h3>
+                <a href=""><i class="fa-brands fa-facebook-f fa-xl"></i></a>
+                <a href=""><i class="fa-brands fa-instagram fa-xl"></i></a>
+                <a href=""><i class="fa-brands fa-twitter fa-xl"></i></a>
+            </div>
+        </div>
+        <div class="disclaimer">
+            Copyright © 2022 R3 Catering by Daniel Checchia. All rights reserved.
+        </div>
+    </div>
+</footer>
+<!-- ################################################# -->
 </body>
 </html>

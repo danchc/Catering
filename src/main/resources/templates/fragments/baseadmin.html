@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <!-- navbar -->
-<header th:fragments="navbar-admin">
+<header th:fragment="navbar-admin">
     <div class="navbar">
         <div class="nav-container flex">
             <div id="nav-logo">
@@ -20,8 +22,8 @@
                 </ul>
 
             </nav>
-            <div class="dropdown-personal">
-                <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${credentials.username}"></span></button>
+            <div sec:authorize="isAuthenticated()" class="dropdown-personal">
+                <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span sec:authentication="name"></span></button>
                 <div class="dropdown-content">
                     <a href="#" th:href="@{/controlpanel}">Pannello di controllo</a>
                     <a href="" th:href="@{/logout}">Logout</a>
