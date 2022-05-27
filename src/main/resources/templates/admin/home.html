@@ -4,40 +4,10 @@ home admin
 
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link rel="icon" href="r3-ico.ico" th:href="@{/images/r3-ico.ico}">
-    <link rel="stylesheet" href="/style.css" th:href="@{/style.css}">
-    <script src="https://kit.fontawesome.com/3bcc05e06e.js" crossorigin="anonymous"></script>
-    <!-- <link th:href="@{/style.css}" rel="stylesheet"> -->
-    <meta charset="UTF-8">
-    <title>R3 Catering | Home</title>
-</head>
+<head th:replace="fragments/base.html :: headerfiles(title='Admin | Home')"></head>
 <body>
 <!-- navbar -->
-<div class="navbar">
-    <div class="nav-container flex">
-        <div id="nav-logo">
-            <a href="" th:href="@{/}"><img src="/images/r3-logo-dark.png" th:src="@{/images/r3-logo-dark.png}"> </a>
-        </div>
-        <nav class="nav-links">
-            <ul>
-                <li><a href="" class="active" th:href="@{/}">Home</a></li>
-                <li><a href="" th:href="@{/services}">Servizi</a></li>
-                <li><a href="contacts.html" th:href="@{/contacts}">Contatti</a></li>
-                <li><a href="register-form.html"th:href="@{/register-form}">Registrati</a></li>
-            </ul>
-
-        </nav>
-        <div class="dropdown-personal">
-            <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${credentials.username}"></span></button>
-            <div class="dropdown-content">
-                <a href="#" th:href="@{/controlpanel}">Pannello di controllo</a>
-                <a href="" th:href="@{/logout}">Logout</a>
-            </div>
-        </div>
-    </div>
-
-</div>
+<header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
 <!-- -->
 <div class="banner-container">
     <div class="banner-container-photo">

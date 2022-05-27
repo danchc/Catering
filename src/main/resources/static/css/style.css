@@ -99,7 +99,7 @@
 .banner-container {
     width: 100%;
     height: 60vh;
-    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(/images/index-banner-1.jpg);
+    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(../images/index-banner-1.jpg);
     background-size: cover;
 }
 
@@ -126,7 +126,7 @@ span#main-banner-subtitle{
 }
 
 .register-flex-container {
-    background-image: linear-gradient(rgba(85, 84, 84, 0.5), rgba(255,255,255,.5)), url(images/rg-bg.jpg);
+    background-image: linear-gradient(rgba(85, 84, 84, 0.5), rgba(255,255,255,.5)), url(../images/rg-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -243,7 +243,7 @@ span#main-banner-subtitle{
 /* LOGIN.HTML #####################################################################*/
 
 .login-flex-container {
-    background-image: linear-gradient(rgba(85, 84, 84, 0.5), rgba(255,255,255,.5)), url(/images/bg.jpg);
+    background-image: linear-gradient(rgba(85, 84, 84, 0.5), rgba(255,255,255,.5)), url(../images/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;

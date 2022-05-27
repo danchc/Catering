@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="navbar-user">
+    <div class="navbar">
+        <div class="nav-container flex">
+            <div id="nav-logo">
+                <a href="" th:href="@{/default}"><img src="/images/r3-logo-dark.png" th:href="@{/images/r3-logo-dark.png}"></a>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="" class="active" th:href="@{/default}">Home</a></li>
+                    <li><a href="" th:href="@{/services}">Servizi</a></li>
+                    <li><a href="contacts.html" th:href="@{/contacts}">Contatti</a></li>
+                </ul>
+
+            </nav>
+            <div class="dropdown-personal">
+                <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${credentials.user.nome}">nome</span></button>
+                <div class="dropdown-content">
+                    <a href="#">Il tuo profilo</a>
+                    <a href="#">I tuoi servizi</a>
+                    <a href="" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

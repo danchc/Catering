@@ -1,30 +1,9 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link rel="stylesheet" href="/style.css" th:href="@{/style.css}">
-    <link rel="icon" href="/images/r3-ico.ico" th:href="@{/images/r3-ico.ico}">
-    <!-- <link th:href="@{/style.css}" rel="stylesheet"> -->
-    <meta charset="UTF-8">
-    <title>R3 Catering</title>
-</head>
+<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering')"></head>
 <body>
 <!-- navbar -->
-<div class="navbar">
-    <div class="nav-container flex">
-        <div id="nav-logo">
-            <a href="" th:href="@{/}"><img src="/images/r3-logo-dark.png" th:src="@{/images/r3-logo-dark.png}" alt="logo"></a>
-        </div>
-        <nav class="nav-links">
-            <ul>
-                <li><a href="" class="active" th:href="@{/}">Home</a></li>
-                <li><a href="" th:href="@{/services}">Servizi</a></li>
-                <li><a href="" th:href="@{/contacts}">Contatti</a></li>
-                <li><a href="register.html" th:href="@{/register}">Registrati</a></li>
-            </ul>
-        </nav>
-        <a href="login.html" th:href="@{/login}" class="btn-login"><button>Login</button></a>
-    </div>
-</div>
+<header th:replace="fragments/base.html :: navbar"></header>
 <!-- -->
 <div class="banner-container">
     <div class="banner-container-photo">

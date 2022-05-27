@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Success')"></head>
 <body>
     <h1>La registrazione è avvenuta!</h1>
     <h2><a th:href="@{/}">Torna alla home.</a> </h2>

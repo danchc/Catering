@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles(title)">
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="/images/r3-ico.ico" th:href="@{/images/r3-ico.ico}">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3bcc05e06e.js" crossorigin="anonymous"></script>
+    <title th:text="${title}"></title>
+</head>
+<body>
+<!-- ##################################################
+################# HEADER ##############################
+####################################################-->
+<header th:fragment="navbar">
+    <div class="navbar">
+        <div class="nav-container flex">
+            <div id="nav-logo">
+                <a href="" th:href="@{/}"><img src="/images/r3-logo-dark.png" th:src="@{/images/r3-logo-dark.png}" alt="logo"></a>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="" class="active" th:href="@{/}">Home</a></li>
+                    <li><a href="" th:href="@{/services}">Servizi</a></li>
+                    <li><a href="" th:href="@{/contacts}">Contatti</a></li>
+                    <li><a href="register.html" th:href="@{/register}">Registrati</a></li>
+                </ul>
+            </nav>
+            <a href="login.html" th:href="@{/login}" class="btn-login"><button>Login</button></a>
+        </div>
+    </div>
+</header>
+<!-- ################################################## -->
+
+</body>
+</html>
