@@ -320,7 +320,7 @@ span#main-banner-subtitle{
 
 .login-form-container .form-input input {
     outline: none;
-    width: 90%;
+    width: 100%;
     font-size: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -432,7 +432,6 @@ HOME.HTML <DEFAULT> ############################################################
 footer */
 .footer-container {
     background-color: #333;
-    margin-top: 40vh;
     width: 100%;
     padding: 2vw 15%;
     display: flex;
@@ -521,12 +520,138 @@ footer */
     margin-top: 20px;
 }
 
-/* MOBILE ###########################################################################à */
+/* BUFFETFORM.HTML #################################################################### */
+
+.buffet-flex-container {
+    background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(../images/rg-bg.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buffet-form-container textarea {
+    resize: none;
+    padding: 3px;
+    height: 10vh;
+}
+.dynamic-input input {
+    outline: none;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    height: 42px;
+    transition: all 0.3s ease;
+}
+
+/* container form */
+.buffet-form-container {
+    position: relative;
+    min-height: 380px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.form-subtitle {
+    width: 400px;
+    font-size: 20px;
+    text-align: left;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*elementi della zona input */
+.buffet-form-container .form-input {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.buffet-form-container span {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px 0 10px 0;
+}
+
+.buffet-form-container .form-input input {
+    outline: none;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    height: 42px;
+    transition: all 0.3s ease;
+}
+
+
+.buffet-form-container .form-input input:focus {
+    border-color: rgb(109, 107, 107);
+}
+
+.piatto-container {
+    height: 100px;
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dynamic-input {
+    display: flex;
+    gap: 1.5em;
+}
+
+#add {
+    text-decoration: none;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.del {
+    text-decoration: none;
+    display: inline-block;
+    background-color: red;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* MOBILE ########################################################################### */
 
 @media (max-width: 500px) {
 
     /*
-    * INDEX.HTML #####################################################################à
+    * INDEX.HTML #####################################################################
     */
     .navbar {
         height: 155px;

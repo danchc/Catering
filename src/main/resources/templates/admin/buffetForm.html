@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
+    <script type="text/javascript">
+        function addField() {
+
+        }
+    </script>
+</head>
+<body>
+    <!-- navbar -->
+    <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+    <!-- -->
+
+    <!-- form new buffet -->
+    <div class="buffet-flex-container">
+        <div class="container">
+            <form method="POST" th:action="@{/addBuffet}">
+                <div class="buffet-form-container">
+                    <div class="form-title">
+                        Aggiungi un nuovo buffet
+                    </div>
+                    <div class="form-subtitle">
+                        Aggiungi le informazioni del buffet:
+                    </div>
+                    <div class="form-input">
+                        <span>Nome:</span>
+                        <input type="text" placeholder="Inserisci il nome">
+                    </div>
+                    <div class="form-input">
+                        <span>Descrizione:</span>
+                        <textarea class="desc">Inserisci la descrizione del piatto</textarea>
+                    </div>
+                    <div class="form-subtitle">
+                        Aggiungi un piatto:
+                        <div class="add">
+                            <a onClick="addInput()" id="add">&plus;</a>
+                        </div>
+                    </div>
+                    <!-- dinamico -->
+                    <div class="piatto-container"></div>
+                    <!-- -->
+                </div>
+                <!-- end buffet form container-->
+                <div class="btn-container">
+                    <div class="form-btn">
+                        <button type="submit">Inserisci</button>
+                    </div>
+                    <div class="form-btn">
+                        <button type="reset">Cancella</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end form new buffet -->
+
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
+    <!-- -->
+</body>
+<script>
+    //prendo in considerazione il bottone add
+    const addBtn = document.querySelector("#add");
+    //il container dove sono presenti gli input per inserire nuovi piatti
+    const input = document.querySelector(".piatto-container");
+
+    function removeElement() {
+        this.parentElement.remove();
+    }
+
+    function addInput() {
+        const name = document.createElement("input");
+        name.type="text";
+        name.placeholder="Inserisci il nome del piatto";
+
+        /*
+        const labelname = document.createElement("span");
+        labelname.innerHTML = "Nome:";
+
+        const labeldesc = document.createElement("span");
+        labeldesc.innerHTML = "Descrizione:";*/
+
+        const desc = document.createElement("textarea");
+        desc.placeholder = "Inserisci la descrizione del piatto";
+        desc.className = "desc";
+
+        const btn = document.createElement("a");
+        btn.className = "del";
+        btn.innerHTML = "&times";
+
+        btn.addEventListener("click", removeElement);
+
+        const div = document.createElement("div");
+        div.className = "dynamic-input";
+
+        input.appendChild(div);
+        //div.appendChild(labelname);
+        div.appendChild(name);
+        //div.appendChild(labeldesc);
+        div.appendChild(desc);
+        div.appendChild(btn);
+
+    }
+
+    //addBtn.addEventListener("click", addInput);
+</script>
+</html>
