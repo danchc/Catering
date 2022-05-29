@@ -24,7 +24,7 @@ public class Buffet {
     @Column(nullable = false)
     private String descrizione;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Chef chef;
 
     @OneToMany

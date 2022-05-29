@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
+</head>
+<body>
+<!-- navbar -->
+<header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+<!-- -->
+
+<!-- form new buffet -->
+<div class="buffet-flex-container">
+    <div class="container">
+        <form method="POST" th:action="@{/addChef}" th:object="${chef}">
+            <div class="buffet-form-container">
+                <div class="form-title">
+                    Aggiungi un nuovo chef
+                </div>
+                <div class="form-subtitle">
+                    Aggiungi le informazioni dello chef:
+                </div>
+                <div class="form-input">
+                    <span>Nome:</span>
+                    <input type="text" placeholder="Inserisci il nome" th:field="*{nome}">
+                </div>
+                <div class="form-input">
+                    <span>Cognome:</span>
+                    <input type="text" placeholder="Inserisci il cognome" th:field="*{cognome}">
+                </div>
+                <div class="form-input">
+                    <span>Nazionalità:</span>
+                    <input type="text" placeholder="Inserisci la nazionalità" th:field="*{nazionalita}">
+                </div>
+                <select name="buffet">
+                    <option th:each="buffet : ${buffet}" th:value="${buffet}" th:text="${buffet.id + ' ' + buffet.nome}"></option>
+                </select>
+            </div>
+            <!-- end buffet form container-->
+            <div class="btn-container">
+                <div class="form-btn">
+                    <button name="create" id="create">Avanti</button>
+                </div>
+                <div class="form-btn">
+                    <button type="reset">Cancella</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- end form new buffet -->
+
+<!-- footer -->
+<footer th:replace="fragments/base.html :: footer-base"></footer>
+<!-- -->
+</body>
+<script>
+    $(document).ready(function () {
+        $('#create').click(function()
+        {
+            for(let i=0; i < $('numrows').val(); i++){
+                $('#mytbody').append( $('<tr>') );
+            }
+        });
+    });
+
+</script>
+</html>

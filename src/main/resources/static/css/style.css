@@ -531,6 +531,10 @@ footer */
     align-items: center;
 }
 
+.buffet-flex-container .container{
+    max-width: 90vw;
+}
+
 .buffet-form-container textarea {
     resize: none;
     padding: 3px;
@@ -644,6 +648,37 @@ footer */
 .btn-container {
     display: flex;
     justify-content: center;
+}
+
+/* tabella */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #5b5b5b;
+    color: white;
+}
+
+th#desc, th#nome {
+    width: 10vw;
+}
+
+table textarea {
+    width: 23vw;
+}
+
+table input {
+    height: 40px;
 }
 
 /* MOBILE ########################################################################### */

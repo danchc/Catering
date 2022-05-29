@@ -23,9 +23,6 @@ public class AdminController {
         return "admin/controlpanel";
     }
 
-    @GetMapping("/buffetForm")
-    public String getBuffetForm(Model model) {
-        return "admin/buffetForm";
-    }
+
 
 }
