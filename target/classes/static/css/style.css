@@ -681,6 +681,86 @@ table input {
     height: 40px;
 }
 
+
+/* USERPROFILE.HTML ##################################################### */
+
+/* ############## */
+.account-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(../images/account-bg.jpg);
+    background-size: cover;
+}
+
+.account-flex-container .info-container{
+    margin: 15px 0 15px 0;
+    display: flex;
+    background-color: white;
+    width: 70vw;
+    height: 80vh;
+}
+
+/* sezione foto */
+
+.info-container .photo-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(198, 192, 192);
+    height: 100%;
+    width: 30vw;
+}
+.photo-side .user-image {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photo-side .user-image img{
+    padding: 20px;
+    border-radius: 20%;
+    width: 200px;
+}
+
+.photo-side .user-image h1{
+    font-size: 1.5em;
+    font-family: var(--main-font);
+}
+
+.photo-side .user-image span{
+    color: var(--main-color);
+}
+
+/* sezione info */
+
+.info-container .info-side {
+    font-family: var(--main-font);
+    background-color: white;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.info-container .info-side .info-label {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.info-container .info-side .info-box {
+    margin: 15px;
+    font-size: 0.8em;
+    border-bottom: 1px solid var(--main-color);
+    width: 15vw;
+}
+
+
+
 /* MOBILE ########################################################################### */
 
 @media (max-width: 500px) {

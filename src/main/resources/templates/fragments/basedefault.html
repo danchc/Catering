@@ -22,7 +22,7 @@
             <div class="dropdown-personal">
                 <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${credentials.user.nome}">nome</span></button>
                 <div class="dropdown-content">
-                    <a href="#">Il tuo profilo</a>
+                    <a href="" th:href="@{/user}" >Il tuo profilo</a>
                     <a href="#">I tuoi servizi</a>
                     <a href="" th:href="@{/logout}">Logout</a>
                 </div>
