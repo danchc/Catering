@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300&display=swap'); /* control panel */
 
 * {
     margin: 0;
@@ -7,11 +8,17 @@
     scroll-behavior: smooth;
 }
 
+body,html {
+    height: 100%;
+    min-height: 100%;
+}
+
 :root {
     --main-color: #c29426;
     /* --nav-bg-color: rgb(217, 218, 219);*/
     --nav-bg-color: white;
     --main-font: 'Varela Round', sans-serif;
+    --cp-font: 'Spline Sans Mono', monospace;
 }
 
 /* index.html
@@ -431,6 +438,7 @@ HOME.HTML <DEFAULT> ############################################################
 /*
 footer */
 .footer-container {
+    margin-top: auto;
     background-color: #333;
     width: 100%;
     padding: 2vw 15%;
@@ -757,6 +765,102 @@ table input {
     font-size: 0.8em;
     border-bottom: 1px solid var(--main-color);
     width: 15vw;
+}
+
+/* CONTROLPANEL.HTML ############################################################### */
+
+/* controlpanel */
+
+.cp-flex-container{
+    min-height: 80%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(225, 224, 224);
+    width: 100%;
+}
+
+.cp-flex-container .col-btn-container {
+    flex-direction: column;
+}
+
+.col-btn-container .cp-title {
+    text-align: center;
+    font-family: var(--main-font);
+    font-size: 3em;
+    margin: 20px;
+    border-bottom: 2px solid var(--main-color);
+    height: 10vh;
+}
+
+.col-btn-container .cp-btn {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.col-btn-container .cp-btn button {
+    font-size: 0.9em;
+    font-family: var(--main-font);
+    height: 7vh;
+    width: 11vw;
+    outline: none;
+    border: none;
+    background-color: var(--main-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.col-btn-container .cp-btn button:hover {
+    background-color: #e0ab2d;
+}
+
+/* table */
+#buffet {
+    font-family: var(--main-font);
+    border-collapse: collapse;
+    width: 90vw;
+}
+
+#buffet td, #buffet th {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px;
+}
+
+#buffet tr:nth-child(even){
+    background-color: #ffffff;
+}
+
+#buffet th {
+    font-size: 1.2em;
+    padding-top: 5vh;
+    padding-bottom: 4vh;
+    text-align: left;
+    background-color: #333;
+    color: white;
+}
+
+#buffet td.del {
+    text-align: center;
+}
+
+.delete {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: var(--main-font);
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 0.8em;
+    background-color: rgb(175, 14, 14);
+    height: 5vh;
+    width: 5vw;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.del:hover {
+    background-color: red;
 }
 
 

@@ -2,7 +2,7 @@
 home admin
 -->
 <!DOCTYPE html>
-<html lang=it xmlns:th="http://www.thymeleaf.org">
+<html lang=it xmlns:th="http://thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')"></head>
 <body>
 
@@ -10,11 +10,42 @@ home admin
     <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
     <!-- -->
 
-    <h1>Gestisci i servizi.</h1>
-    <a href="buffetForm.html" th:href="@{/buffetForm}"><button>Aggiungi un nuovo buffet</button></a>
-    <button>Modifica un servizio.</button>
-    <button>Elimina un servizio.</button>
-    <button>Visualizza tutti i servizi disponibili.</button>
+    <!-- control panel section-->
+    <div class="cp-flex-container">
+        <div class="col-btn-container">
+            <div class="cp-title">
+                <i class="fa-solid fa-gears"></i>Pannello di controllo
+            </div>
+            <div class="cp-btn">
+                <a th:href="@{/buffetForm}"><button>Aggiungi nuovo buffet</button></a>
+                <button onClick="window.location.reload();">Aggiorna</button>
+            </div>
+            <table id="buffet">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Chef</th>
+                    <th>Piatti</th>
+                    <th></th>
+                </tr>
+                <tr th:each="buffet : ${listBuffet}">
+                    <td th:text="${buffet.id}">Id</td>
+                    <td th:text="${buffet.nome}">Nome</td>
+                    <td th:text="${buffet.descrizione}">Descrizione</td>
+                    <td th:text="${buffet.chef}">Chef</td>
+                    <td th:text="${buffet.piatti}">Piatti</td>
+                    <td class="del"><button class="delete">Delete</button></td>
+                </tr>
+            </table>
+            <div th:if="${listBuffet.isEmpty()}">
+                Non ci sono ancora buffet inseriti nel database.
+            </div>
+
+
+        </div>
+    </div>
+    <!-- end control panel section-->
 
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>
