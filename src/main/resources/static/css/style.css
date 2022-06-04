@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&family=Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300&display=swap'); /* control panel */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
 
 * {
     margin: 0;
@@ -26,8 +28,7 @@ body,html {
 */
 
 .navbar {
-    background-color: var(--nav-bg-color);
-    color: black;
+    color: white;
     height: 12vh;
 }
 
@@ -67,7 +68,7 @@ body,html {
     padding: 10px;
     margin: 0 5px;
     font-family: var(--main-font);
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 15px;
     text-transform: uppercase;
@@ -79,6 +80,7 @@ body,html {
 }
 
 .nav-links ul li a.active{
+    border-bottom: 2px solid var(--main-color);
     color: var(--main-color);
 }
 
@@ -101,22 +103,113 @@ body,html {
     background-color:#e4a81d
 }
 
-/* first section */
+/* MAIN SECTION */
 
 .banner-container {
     width: 100%;
-    height: 60vh;
-    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(../images/index-banner-1.jpg);
+    min-height: 90vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/index-banner-1.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.banner-text-container {
-    font-size: 30px;
+.banner-content {
+    margin-top: 15vh;
+    color: white;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
 }
 
-span#main-banner-subtitle{
-    position: relative;
-    top: 50px;
+.banner-content h1{
+    font-weight: 100;
+    font-family: 'Raleway', sans-serif;
+    margin-top: -10vh;
+    font-size: 4.5em;
+}
+
+.banner-content p{
+    font-family: 'Actor', sans-serif;
+    margin-top: 2vh;
+    font-size: 2em;
+}
+
+.banner-content button {
+    font-family: 'Actor', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10vh;
+    border: none;
+    background-color: var(--main-color);
+    height: 10vh;
+    width: 15vw;
+    font-size: 1.3em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.banner-content button:hover {
+    background-color: #e4a81d;
+}
+
+
+.main-section-container .section {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #e4a81d;
+    padding: 20px;
+}
+
+.section .text-info {
+    background-color: #ccc;
+    font-size: 1.5em;
+    height: 40vh;
+    width: 40%;
+}
+
+.section .text-info .text-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+
+}
+
+.section .img-info {
+    width: 30vw;
+}
+.main-section-container .section img {
+    width: 100%;
+}
+
+.main-section-container .second-section {
+    background-color: #e0ab2d;
+}
+
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #81807c;
+    height: 80vh;
+}
+
+.contact-section .contact-form-container {
+    background-color: aliceblue;
+    width: 40vw;
+    height: 65vh;
+}
+
+.contact-section .contact-form-container .form-input {
+    padding: 10px;
+}
+
+.contact-section .contact-form-container textarea{
+    resize: none;
+    height: 20vh;
+    width: 30vw;
 }
 
 
@@ -133,7 +226,7 @@ span#main-banner-subtitle{
 }
 
 .register-flex-container {
-    background-image: linear-gradient(rgba(85, 84, 84, 0.5), rgba(255,255,255,.5)), url(../images/rg-bg.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/rg-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -281,7 +374,7 @@ span#main-banner-subtitle{
 /* LOGIN.HTML #####################################################################*/
 
 .login-flex-container {
-    background-image: linear-gradient(rgba(85, 84, 84, 0.5), rgba(255,255,255,.5)), url(../images/bg.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -394,6 +487,7 @@ HOME.HTML <DEFAULT> ############################################################
 
 /* button */
 .dropdown-btn {
+    color:white;
     background: none;
     cursor: pointer;
     border: 2px solid var(--main-color);
@@ -411,7 +505,7 @@ HOME.HTML <DEFAULT> ############################################################
 }
 
 .dropdown-content a {
-    font-family: var(--main-font);;
+    font-family: var(--main-font);
     text-transform: uppercase;
     border-bottom: 1px solid var(--main-color);
     color: black;
@@ -771,6 +865,10 @@ table input {
 
 /* controlpanel */
 
+header#navbar-cp {
+    color: black;
+}
+
 .cp-flex-container{
     min-height: 80%;
     overflow: hidden;
@@ -887,6 +985,25 @@ table input {
 
     .navbar .btn-login {
         padding: 10px 10px 10px 0px;
+    }
+
+    .banner-container {
+        background-position: center;
+        background-size: cover;
+    }
+
+    .banner-content h1{
+        font-size: 2.4em;
+    }
+
+    .banner-content p {
+        margin-top: 20px;
+        font-size: 1.1em;
+    }
+
+    .banner-content button{
+        font-size: 1em;
+        width: 40vw;
     }
 
     /*

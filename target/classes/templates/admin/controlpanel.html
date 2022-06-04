@@ -2,12 +2,36 @@
 home admin
 -->
 <!DOCTYPE html>
-<html lang=it xmlns:th="http://thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')"></head>
 <body>
 
     <!-- navbar -->
-    <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+    <header id="navbar-cp">
+        <div class="navbar">
+            <div class="nav-container flex">
+                <div id="nav-logo">
+                    <a href="" th:href="@{/default}"><img src="/images/r3-logo-dark.png" th:src="@{/images/r3-logo-dark.png}"> </a>
+                </div>
+                <nav class="nav-links">
+                    <ul>
+                        <li><a href="" class="active" th:href="@{/default}">Home</a></li>
+                        <li><a href="" th:href="@{/buffets}">Buffets</a></li>
+                        <li><a href="contacts.html" th:href="@{/contacts}">Contatti</a></li>
+                    </ul>
+
+                </nav>
+                <div sec:authorize="isAuthenticated()" class="dropdown-personal">
+                    <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span sec:authentication="name"></span></button>
+                    <div class="dropdown-content">
+                        <a href="#" th:href="@{/controlpanel}">Pannello di controllo</a>
+                        <a href="" th:href="@{/logout}">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <!-- -->
 
     <!-- control panel section-->
