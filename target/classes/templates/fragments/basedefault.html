@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,12 +16,12 @@
                 <ul>
                     <li><a href="" class="active" th:href="@{/default}">Home</a></li>
                     <li><a href="" th:href="@{/buffets}">Buffets</a></li>
-                    <li><a href="contacts.html" th:href="@{/contacts}">Contatti</a></li>
+                    <li><a href="../contacts.html" th:href="@{/contacts}">Contatti</a></li>
                 </ul>
 
             </nav>
-            <div class="dropdown-personal">
-                <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span th:text="${credentials.user.nome}">nome</span></button>
+            <div sec:authorize="isAuthenticated()" class="dropdown-personal">
+                <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span sec:authentication="name"></span></button>
                 <div class="dropdown-content">
                     <a href="" th:href="@{/user}" >Il tuo profilo</a>
                     <a href="#">I tuoi servizi</a>

@@ -23,6 +23,26 @@ body,html {
     --cp-font: 'Spline Sans Mono', monospace;
 }
 
+/* error card */
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-danger {
+    border-radius: 30px;
+    border: 1px solid red;
+    width: 25vw;
+    text-align: center;
+    display: inline-block;
+    padding: 30px;
+    background-color: rgba(199, 68, 68, 0.4);
+}
+
+/* ############# */
+
 /* index.html
     ###################################################################################
 */

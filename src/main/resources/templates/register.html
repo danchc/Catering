@@ -9,15 +9,19 @@
     </div>
     <div class="container">
 
-        <form method="POST" th:action="@{/register}" th:object="${cred}" >
+        <form method="POST" th:action="@{/register}" th:object="${credentials}">
             <!-- form title -->
             <div class="form-title">
                 Registrati ora!
             </div>
             <!-- ####### -->
+            <div class="error-container" th:if="${#fields.hasErrors('*')}">
+                <div class="error-danger">
+                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</p>
+                </div>
+            </div>
             <!-- start form container -->
             <div class="form-container">
-
                 <div class="form-input">
                     <div class="form-input-label">Nome:</div>
                     <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus">
@@ -44,17 +48,15 @@
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Data di nascita:</div>
-                    <input type="date" th:field="${user.dataNascita}">
+                    <input type="date" th:field="${user.dataNascita}" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Username:</div>
-                    <input type="text" th:field="${cred.username}" placeholder="Inserisci il tuo username">
-                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                    <input type="text" th:field="${credentials.username}" id="username" placeholder="Inserisci il tuo username">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Password:</div>
-                    <input type="password" th:field="${cred.password}" placeholder="Inserisci la tua password">
-                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                    <input type="password" th:field="${credentials.password}" id="password" placeholder="Inserisci la tua password">
                 </div>
             </div>
             <!-- end form container -->

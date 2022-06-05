@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import it.uniroma3.siw.spring.controller.validator.CredentialsValidator;
+import it.uniroma3.siw.spring.controller.validator.UserValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.service.CredentialsService;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class AuthController {
 
@@ -22,6 +26,12 @@ public class AuthController {
     @Autowired
     protected CredentialsService credentialsService;
 
+    @Autowired
+    protected UserValidator userValidator;
+
+    @Autowired
+    protected CredentialsValidator credentialsValidator;
+
     /**
      * Il metodo gestisce il GET per andare nella pagina della registrazione.
      * @param model
@@ -30,19 +40,20 @@ public class AuthController {
     @GetMapping("/register")
     public String getRegistrationPage(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("cred", new Credentials());
+        model.addAttribute("credentials", new Credentials());
         return "register";
     }
 
     @PostMapping("/register")
     public String register(Model model,
-                           @ModelAttribute("user") User user,
+                           @Valid @ModelAttribute("user") User user,
                            BindingResult userBinding,
                            BindingResult credentialsBinding,
-                           @ModelAttribute("credentials") Credentials credentials){
-
-       // this.credentialsValidator.validate(credentials, credentialsBinding);
-        if(!credentialsBinding.hasErrors()){
+                           @Valid @ModelAttribute("credentials") Credentials credentials){
+        this.userValidator.validate(user, userBinding);
+        this.credentialsValidator.validate(credentials, credentialsBinding);
+        model.addAttribute("credentials", credentials);
+        if(!credentialsBinding.hasErrors() && !userBinding.hasErrors()){
             credentials.setUser(user);
             this.credentialsService.save(credentials);
             return "register-success";

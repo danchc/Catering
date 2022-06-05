@@ -9,52 +9,52 @@
     </div>
     <div class="container">
 
-        <form method="POST" th:action="@{/register}" th:object="${cred}" >
+        <form method="POST" th:action="@{/register}" th:object="${credentials}">
             <!-- form title -->
             <div class="form-title">
                 Registrati ora!
             </div>
             <!-- ####### -->
+
             <!-- start form container -->
             <div class="form-container">
-
                 <div class="form-input">
                     <div class="form-input-label">Nome:</div>
-                    <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus">
+                    <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Cognome:</div>
-                    <input type="text" th:field="${user.cognome}" placeholder="Inserisci il tuo cognome">
+                    <input type="text" th:field="${user.cognome}" placeholder="Inserisci il tuo cognome" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Indirizzo e-mail:</div>
-                    <input type="email" th:field="${user.email}" placeholder="Inserisci la tua e-mail">
+                    <input type="email" th:field="${user.email}" placeholder="Inserisci la tua e-mail" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Telefono:</div>
-                    <input type="tel"  th:field="${user.telefono}" placeholder="Inserisci il tuo telefono">
+                    <input type="tel"  th:field="${user.telefono}" placeholder="Inserisci il tuo telefono" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Indirizzo:</div>
-                    <input type="text" th:field="${user.indirizzo}" placeholder="Inserisci il tuo indirizzo">
+                    <input type="text" th:field="${user.indirizzo}" placeholder="Inserisci il tuo indirizzo" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Città:</div>
-                    <input type="text" th:field="${user.citta}" placeholder="Inserisci la città">
+                    <input type="text" th:field="${user.citta}" placeholder="Inserisci la città" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Data di nascita:</div>
-                    <input type="date" th:field="${user.dataNascita}">
+                    <input type="date" th:field="${user.dataNascita}" required>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Username:</div>
-                    <input type="text" th:field="${cred.username}" placeholder="Inserisci il tuo username">
-                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                    <input type="text" th:field="*{username}" id="username" placeholder="Inserisci il tuo username" required>
+                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Errore</p>
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Password:</div>
-                    <input type="password" th:field="${cred.password}" placeholder="Inserisci la tua password">
-                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                    <input type="password" th:field="*{password}" id="password" placeholder="Inserisci la tua password" required>
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                 </div>
             </div>
             <!-- end form container -->

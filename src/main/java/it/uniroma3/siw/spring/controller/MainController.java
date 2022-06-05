@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import it.uniroma3.siw.spring.controller.validator.ChefValidator;
+import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,12 @@ public class MainController {
     @GetMapping("/buffets")
     public String getBuffets(Model model) {
         return "buffets";
+    }
+
+    @GetMapping("/contacts")
+    public String getContacts(Model model) {
+        model.addAttribute("chef", new Chef());
+        return "contacts";
     }
 
     @GetMapping("/user")

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Contatti')"></head>
+<body>
+    <div class="banner-container">
+        <!-- navbar -->
+        <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+        <!-- -->
+        <div class="banner-content">
+            <h1 id="main-banner-title">Vivi un momento speciale</h1>
+            <p>Cosa aspetti? E' ora di scegliere il servizio più adatto a te!</p>
+            <button>Scopri di più</button>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <div class="contact-form-container">
+            <form>
+                <span>Contattaci subito!</span>
+                <div class="form-input">
+                    <span>Nome:</span>
+                    <input type="text" placeholder="Inserisci il nome">
+                </div>
+                <div class="form-input">
+                    <span>Cognome:</span>
+                    <input type="text" placeholder="Inserisci il cognome">
+                </div>
+                <div class="form-input">
+                    <span>E-mail:</span>
+                    <input type="email" placeholder="Inserisci l'e-mail">
+                </div>
+                <div class="form-input">
+                    <span>Messaggio:</span>
+                    <textarea placeholder="Scrivi qui il messaggio. Ti contatteremo presto!"></textarea>
+                </div>
+                <div class="form-input">
+                    <button>Invia</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <form method="POST" th:action="@{/new}" th:object="${chef}">
+
+        <div class="error-container" th:if="${#fields.hasErrors('*')}">
+            <div class="error-danger">
+                <p th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</p>
+            </div>
+        </div>
+        <input type="text" th:field="*{nome}" id="nome">
+        <input type="text" th:field="*{cognome}" id="cognome">
+        <input type="text" th:field="*{nazionalita}" id="nazionalita">
+        <button type="submit">Submit</button>
+    </form>
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
+    <!-- -->
+</body>
+</html>
