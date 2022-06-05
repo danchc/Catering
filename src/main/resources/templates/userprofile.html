@@ -2,49 +2,50 @@
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Il tuo profilo')"></head>
 <body>
-    <!-- navbar -->
-    <header th:replace="fragments/basedefault.html :: navbar-user"></header>
-    <!-- -->
+    <div class="user-profile-container">
+        <!-- navbar -->
+        <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+        <!-- -->
 
-    <!-- container account info -->
-    <div class="account-flex-container flex">
-        <div class="info-container">
-            <div class="photo-side">
-                <div class="user-image">
-                    <img src="/images/blank-user.png" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
-                    <h1>Ciao <span th:text="${credentials.user.nome}"></span> !</h1>
+        <!-- container account info -->
+        <div class="account-flex-container flex">
+            <div class="info-container">
+                <div class="photo-side">
+                    <div class="user-image">
+                        <img src="/images/blank-user.png" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
+                        <h1>Ciao <span th:text="${credentials.user.nome}"></span> !</h1>
+                    </div>
                 </div>
-            </div>
-            <div class="info-side">
-                <div class="info-field">
-                    <span class="info-label">Nome:</span>
-                    <div class="info-box"><p th:text="${credentials.user.nome}"></div>
-                </div>
-                <div class="info-field">
-                    <span class="info-label">Cognome:</span>
-                    <div class="info-box"><p th:text="${credentials.user.cognome}"></div>
-                </div>
-                <div class="info-field">
-                    <span class="info-label">E-mail:</span>
-                    <div class="info-box"><p th:text="${credentials.user.email}"></div>
-                </div>
-                <div class="info-field">
-                    <span class="info-label">Telefono:</span>
-                    <div class="info-box"><p th:text="${credentials.user.telefono}"></div>
-                </div>
-                <div class="info-field">
-                    <span class="info-label">Indirizzo:</span>
-                    <div class="info-box"><p th:text="${credentials.user.indirizzo}"></div>
-                </div>
-                <div class="info-field">
-                    <span class="info-label">Città:</span>
-                    <div class="info-box"><p th:text="${credentials.user.citta}"></div>
+                <div class="info-side">
+                    <div class="info-field">
+                        <span class="info-label">Nome:</span>
+                        <div class="info-box"><p th:text="${credentials.user.nome}"></div>
+                    </div>
+                    <div class="info-field">
+                        <span class="info-label">Cognome:</span>
+                        <div class="info-box"><p th:text="${credentials.user.cognome}"></div>
+                    </div>
+                    <div class="info-field">
+                        <span class="info-label">E-mail:</span>
+                        <div class="info-box"><p th:text="${credentials.user.email}"></div>
+                    </div>
+                    <div class="info-field">
+                        <span class="info-label">Telefono:</span>
+                        <div class="info-box"><p th:text="${credentials.user.telefono}"></div>
+                    </div>
+                    <div class="info-field">
+                        <span class="info-label">Indirizzo:</span>
+                        <div class="info-box"><p th:text="${credentials.user.indirizzo}"></div>
+                    </div>
+                    <div class="info-field">
+                        <span class="info-label">Città:</span>
+                        <div class="info-box"><p th:text="${credentials.user.citta}"></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- -->
     </div>
-    <!-- -->
-
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>
     <!-- -->

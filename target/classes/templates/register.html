@@ -15,32 +15,36 @@
                 Registrati ora!
             </div>
             <!-- ####### -->
-
+            <div class="error-container" th:if="${#fields.hasErrors('*')}">
+                <div class="error-danger">
+                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</p>
+                </div>
+            </div>
             <!-- start form container -->
             <div class="form-container">
                 <div class="form-input">
                     <div class="form-input-label">Nome:</div>
-                    <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus" required>
+                    <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Cognome:</div>
-                    <input type="text" th:field="${user.cognome}" placeholder="Inserisci il tuo cognome" required>
+                    <input type="text" th:field="${user.cognome}" placeholder="Inserisci il tuo cognome">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Indirizzo e-mail:</div>
-                    <input type="email" th:field="${user.email}" placeholder="Inserisci la tua e-mail" required>
+                    <input type="email" th:field="${user.email}" placeholder="Inserisci la tua e-mail">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Telefono:</div>
-                    <input type="tel"  th:field="${user.telefono}" placeholder="Inserisci il tuo telefono" required>
+                    <input type="tel"  th:field="${user.telefono}" placeholder="Inserisci il tuo telefono">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Indirizzo:</div>
-                    <input type="text" th:field="${user.indirizzo}" placeholder="Inserisci il tuo indirizzo" required>
+                    <input type="text" th:field="${user.indirizzo}" placeholder="Inserisci il tuo indirizzo">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Città:</div>
-                    <input type="text" th:field="${user.citta}" placeholder="Inserisci la città" required>
+                    <input type="text" th:field="${user.citta}" placeholder="Inserisci la città">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Data di nascita:</div>
@@ -48,13 +52,11 @@
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Username:</div>
-                    <input type="text" th:field="*{username}" id="username" placeholder="Inserisci il tuo username" required>
-                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Errore</p>
+                    <input type="text" th:field="${credentials.username}" id="username" placeholder="Inserisci il tuo username">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Password:</div>
-                    <input type="password" th:field="*{password}" id="password" placeholder="Inserisci la tua password" required>
-                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                    <input type="password" th:field="${credentials.password}" id="password" placeholder="Inserisci la tua password">
                 </div>
             </div>
             <!-- end form container -->

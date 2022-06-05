@@ -2,35 +2,44 @@
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Contatti')"></head>
 <body>
-    <div class="banner-container">
+    <div class="header-contacts-container">
         <!-- navbar -->
         <header th:replace="fragments/basedefault.html :: navbar-user"></header>
         <!-- -->
-        <div class="banner-content">
-            <h1 id="main-banner-title">Vivi un momento speciale</h1>
-            <p>Cosa aspetti? E' ora di scegliere il servizio più adatto a te!</p>
-            <button>Scopri di più</button>
+        <div class="contact-banner-content">
+            <h1 id="contact-banner-title">Contatti</h1>
         </div>
     </div>
 
+    <!-- contact section -->
     <div class="contact-section">
         <div class="contact-form-container">
             <form>
-                <span>Contattaci subito!</span>
+                <div class="form-title">
+                    <span>Contattaci subito!</span>
+                </div>
                 <div class="form-input">
-                    <span>Nome:</span>
+                    <div class="form-input-label">
+                        <span>Nome:</span>
+                    </div>
                     <input type="text" placeholder="Inserisci il nome">
                 </div>
                 <div class="form-input">
-                    <span>Cognome:</span>
+                    <div class="form-input-label">
+                        <span>Cognome:</span>
+                    </div>
                     <input type="text" placeholder="Inserisci il cognome">
                 </div>
                 <div class="form-input">
-                    <span>E-mail:</span>
+                    <div class="form-input-label">
+                        <span>E-mail:</span>
+                    </div>
                     <input type="email" placeholder="Inserisci l'e-mail">
                 </div>
                 <div class="form-input">
-                    <span>Messaggio:</span>
+                    <div class="form-input-label">
+                        <span>Messaggio:</span>
+                    </div>
                     <textarea placeholder="Scrivi qui il messaggio. Ti contatteremo presto!"></textarea>
                 </div>
                 <div class="form-input">
@@ -38,20 +47,28 @@
                 </div>
             </form>
         </div>
-    </div>
-
-    <form method="POST" th:action="@{/new}" th:object="${chef}">
-
-        <div class="error-container" th:if="${#fields.hasErrors('*')}">
-            <div class="error-danger">
-                <p th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</p>
-            </div>
+        <div class="contact-map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2971.7011373209953!2d12.466707115107246!3d41.85625917476034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13258a91678ebcb9%3A0x766783b79f6c889b!2sVia%20della%20Vasca%20Navale%2C%2000146%20Roma%20RM!5e0!3m2!1sit!2sit!4v1654456697745!5m2!1sit!2sit" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <input type="text" th:field="*{nome}" id="nome">
-        <input type="text" th:field="*{cognome}" id="cognome">
-        <input type="text" th:field="*{nazionalita}" id="nazionalita">
-        <button type="submit">Submit</button>
-    </form>
+    </div>
+    <!-- end contact section -->
+
+    <!-- other social section -->
+    <div class="other-contacts-title">
+        <span class="line">
+            <h1><span>Oppure</span></h1>
+        </span>
+    </div>
+    <div class="other-contact-section">
+        <div class="whatsapp-section">
+            <i class="fa-brands fa-whatsapp fa-2xl"></i> <span>+390000000000</span>
+        </div>
+        <div class="email-section">
+            <i class="fa-solid fa-at fa-2xl"></i> <span>r3.cate@gmail.com</span>
+        </div>
+    </div>
+    <!-- end other social section -->
+
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>
     <!-- -->
