@@ -18,79 +18,56 @@ home admin
         </div>
     </div>
 
-    <!-- main container -->
-    <div class="main-section-container">
-        <div class="section">
-            <div class="img-info">
-                <img src="/images/tradizione-img.jpg" th:src="@{/images/tradizione-img.jpg}">
+    <!-- start main-section-container -->
+    <div class="images-container-flex wrap">
+        <div class="info-container col">
+            <div class="img-container">
+                <img src="/images/tradizione-img.jpg">
             </div>
-            <div class="text-info">
-                <div class="text-title">
-                    Tradizione
-                </div>
-                Crediamo nel valore del Made in Italy, nell'importanza ...
+            <div class="text-container">
+                <h1 class="text-title">Tradizione</h1>
+                <p class="text-subtitle">Crediamo nel valore del Made in Italy, nell'importanza ...</p>
             </div>
         </div>
-        <div class="section">
-            <div class="text-info">
-                <div class="text-title">
-                    Passione
-                </div>
-                Ci impegniamo ogni giorno a garantire uno <br>
-                standard elevato dei nostri servizi, con l'obiettivo di regalare <br>
-                ad ogni nostro cliente un momento speciale ed irrepitibile.
+        <div class="info-container col">
+            <div class="img-container">
+                <img src="/images/qualita-img.jpg">
             </div>
-            <div class="img-info">
-                <img src="/images/img-placeholder.png" th:src="@{/images/img-placeholder.png}">
+            <div class="text-container center">
+                <h1 class="text-title">Passione</h1>
+                <p class="text-subtitle">Ci impegniamo ogni giorno a garantire uno <br>
+                    standard elevato dei nostri servizi, con l'obiettivo di regalare <br>
+                    ad ogni nostro cliente un momento speciale ed irrepitibile.</p>
             </div>
         </div>
-        <div class="section">
-            <div class="img-info">
-                <img src="/images/qualita-img.jpg" th:src="@{/images/qualita-img.jpg}">
+        <div class="info-container col">
+            <div class="img-container">
+                <img src="/images/passione-img.jpg">
             </div>
-            <div class="text-info">
-                <div class="text-title">
-                    Qualità
-                </div>
-                Ci impegniamo per offrire ai nostri clienti prodotti sempre <br>
-                freschi appena raccolti dalle nostre coltivazioni biologiche.
+            <div class="text-container">
+                <h1 class="text-title">Qualità</h1>
+                <p class="text-subtitle">Ci impegniamo per offrire ai nostri clienti prodotti sempre <br>
+                    freschi appena raccolti dalle nostre coltivazioni biologiche.</p>
             </div>
         </div>
     </div>
-    <!-- end main container -->
+    <!-- end main-section -->
 
-    <div class="contact-section">
-        <div class="contact-form-container">
-            <form>
-                <span>Contattaci subito!</span>
-                <div class="form-input">
-                    <span>Nome:</span>
-                    <input type="text" placeholder="Inserisci il nome">
-                </div>
-                <div class="form-input">
-                    <span>Cognome:</span>
-                    <input type="text" placeholder="Inserisci il cognome">
-                </div>
-                <div class="form-input">
-                    <span>E-mail:</span>
-                    <input type="email" placeholder="Inserisci l'e-mail">
-                </div>
-                <div class="form-input">
-                    <span>Messaggio:</span>
-                    <textarea placeholder="Scrivi qui il messaggio. Ti contatteremo presto!"></textarea>
-                </div>
-                <div class="form-input">
-                    <button>Invia</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    <!-- reviews section -->
     <div class="review-section">
         <div class="review-main-title">
             Dicono di noi
         </div>
+        <div class="review-slideshow-container">
+            <div class="reviews fade">
+                <img src="/images/img-placeholder.png" th:src="@{/images/img-placeholder.png}" style="width:100%">
+            </div>
+            <div class="reviews fade">
+                <img src="/images/img-placeholder.png" th:src="@{/images/img-placeholder.png}" style="width:100%">
+            </div>
+        </div>
     </div>
+    <!-- end reviews section -->
 
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>

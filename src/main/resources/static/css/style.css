@@ -177,45 +177,87 @@ body,html {
     background-color: #e4a81d;
 }
 
+/* info */
 
-.main-section-container .section {
-    margin-top: 50px;
+.images-container-flex {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
 }
 
-.section .text-info {
-    font-size: 1.5em;
-    height: 40vh;
-    width: 40%;
+.wrap {
+    flex-wrap: wrap;
 }
 
-.section .text-info .text-title {
+.info-container {
+    display: flex;
+    justify-content: center;
+    width: 512px;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.center {
+    border-right: 2px solid var(--main-color);
+    border-left: 2px solid var(--main-color);
+}
+
+.info-container .img-container {
+    width: 512px;
+    height: 512px;
+}
+
+.info-container .img-container img {
+    width: 100%;
+}
+
+.info-container .text-container {
+    margin: 10px 0 10px 0;
+    padding: 15px;
+}
+
+.text-container .text-title {
+    font-size: 2.7em;
+    display: inline-block;
+    border-bottom: 2px solid var(--main-color);
     font-family: var(--main-title-font);
-    font-size: 2em;
-    margin-bottom: 20px;
-
 }
 
-.section .img-info {
-    width: 30vw;
-    height: 30vw;
-    background-size: contain;
+.text-container .text-subtitle {
+    font-size: 1.3em;
+    margin-top: 3vh;
+    font-family: var(--content-font);
 }
 
-/* immagini */
+/* reviews */
 
-.section .first {
-    background-image: url(../images/tradizione-img.jpg);
+.review-section {
+    height: 80vh;
+    background-color: rgb(214, 214, 214);
 }
 
-.section .second {
-    background-image: url(../images/passione-img.jpg);
+.review-slideshow-container {
+    background-size: cover;
+    background-color: #e4a81d;
+    height: 70vh;
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
 }
 
-.section .third {
-    background-image: url(../images/qualita-img.jpg);
+.review-slideshow-container .reviews img{
+    height: 70vh;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
 }
 
 /*
