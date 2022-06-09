@@ -7,38 +7,21 @@ home admin
 <head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')"></head>
 <body>
 
+<div class="cp-banner-container">
     <!-- navbar -->
-    <header id="navbar-cp">
-        <div class="navbar">
-            <div class="nav-container flex">
-                <div id="nav-logo">
-                    <a href="" th:href="@{/default}"><img src="/images/r3-logo-dark.png" th:src="@{/images/r3-logo-dark.png}"> </a>
-                </div>
-                <nav class="nav-links">
-                    <ul>
-                        <li><a href="" class="active" th:href="@{/default}">Home</a></li>
-                        <li><a href="" th:href="@{/buffets}">Buffets</a></li>
-                        <li><a href="contacts.html" th:href="@{/contacts}">Contatti</a></li>
-                    </ul>
-
-                </nav>
-                <div sec:authorize="isAuthenticated()" class="dropdown-personal">
-                    <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span sec:authentication="name"></span></button>
-                    <div class="dropdown-content">
-                        <a href="#" th:href="@{/controlpanel}">Pannello di controllo</a>
-                        <a href="" th:href="@{/logout}">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
     <!-- -->
+
+    <div class="cp-banner-content">
+        <h1 id="cp-banner-title">Pannello di controllo</h1>
+    </div>
+</div>
 
     <!-- control panel section-->
     <div class="cp-flex-container">
         <div class="col-btn-container">
             <div class="cp-title">
-                <i class="fa-solid fa-gears"></i>Pannello di controllo
+                <i class="fa-solid fa-gears"></i>Gestisci i servizi
             </div>
             <div class="cp-btn">
                 <a th:href="@{/buffetForm}"><button>Aggiungi nuovo buffet</button></a>

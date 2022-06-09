@@ -6,7 +6,7 @@
 
 <div class="login-flex-container">
     <div class="logo-container">
-        <a href="index.html" th:href="@{/}"><img src="/images/r3-logo-v1.png" th:src="@{/images/r3-logo-v1.png}" alt="logo"></a>
+        <a href="index.html" th:href="@{/}"><img th:src="@{/images/r3-logo-v1.png}" alt="logo"></a>
     </div>
     <div class="login-container">
 
@@ -17,12 +17,12 @@
         <form method="POST" th:action="@{/login}">
             <div class="login-form-container">
                 <div class="form-input">
-                    <div class="form-input-label">Username</div>
+                    <div class="form-input-label">Username:</div>
                     <input type="text" name="username" placeholder="Inserisci il tuo username">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Password:</div>
-                    <input type="password" name="password" placeholder="Inserisci la tua password">
+                    <input type="password" name="password" id="password" placeholder="Inserisci la tua password"> <i class="fa-solid fa-eye" onClick="show(this)"></i>
                 </div>
             </div>
             <div class="btn-container flex">
@@ -40,4 +40,23 @@
     </div>
 </div>
 </body>
+<script>
+    let passwordInput = document.getElementById('password');
+
+    let show = function (icon) {
+        // se non è visibile
+        if(passwordInput.type === "password"){
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+            passwordInput.type = "text";
+        }
+        //altrimenti se è visibile
+        else if (passwordInput.type === "text"){
+            //cambio icona e copro la password
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+            passwordInput.type = "password";
+        }
+    }
+</script>
 </html>
