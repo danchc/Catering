@@ -217,36 +217,52 @@ body,html {
 }
 
 .text-container .text-title {
-    font-size: 2.7em;
+    font-size: 2.2em;
     display: inline-block;
     border-bottom: 2px solid var(--main-color);
     font-family: var(--main-title-font);
 }
 
 .text-container .text-subtitle {
-    font-size: 1.3em;
+    font-size: 1em;
     margin-top: 3vh;
     font-family: var(--content-font);
 }
 
 /* reviews */
 
-.review-section {
-    height: 80vh;
-    background-color: rgb(214, 214, 214);
+.review-main-title {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 30vw;
+    height: 12vh;
 }
 
+.review-main-title img {
+    width: 22vw;
+}
+
+.review-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+    background-color: rgb(214, 214, 214);
+    margin-top: 20px;
+}
+
+/* 750w 220h */
 .review-slideshow-container {
-    background-size: cover;
-    background-color: #e4a81d;
-    height: 70vh;
+    background-size: contain;
+    height: 320px;
     max-width: 1000px;
     position: relative;
-    margin: auto;
 }
 
 .review-slideshow-container .reviews img{
-    height: 70vh;
+    height: 320px;
 }
 
 /* Fading animation */
@@ -582,7 +598,7 @@ footer */
     margin-top: auto;
     background-color: #333;
     width: 100%;
-    padding: 2vw 15%;
+    padding: 3vw 10vw;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -593,7 +609,6 @@ footer */
 .footer {
     display: flex;
 }
-
 
 .footer div{
     text-align: center;
@@ -630,7 +645,7 @@ footer */
 }
 
 .col-2 form input{
-    width: 20vw;
+    width: 22vw;
     height: 7vh;
     font-size: 15px;
     border-radius: 5px;
@@ -665,8 +680,9 @@ footer */
 }
 
 .footer-container .disclaimer{
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 20px;
+    margin-right: 20px;
 }
 
 /* BUFFETFORM.HTML #################################################################### */
