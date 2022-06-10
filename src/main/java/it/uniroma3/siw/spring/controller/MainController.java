@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class MainController {
 
@@ -22,22 +24,19 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/buffets")
-    public String getBuffets(Model model) {
-        return "buffets";
-    }
 
     @GetMapping("/contacts")
-    public String getContacts(Model model) {
-        model.addAttribute("chef", new Chef());
+    public String getContacts(HttpSession session) {
+        session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
         return "contacts";
     }
 
     @GetMapping("/user")
     public String getUserProfile(Model model){
+        /*
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-        model.addAttribute(credentials);
+        Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());*/
+        model.addAttribute(this.credentialsService.getCredentialsAuthenticated());
         return "userprofile";
     }
 }

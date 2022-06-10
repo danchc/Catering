@@ -30,6 +30,7 @@ public class Credentials {
     @NotNull
     private String password;
 
+    private String photo;
     /*
     @NotNull
     @Column(name = "confirmed_password")

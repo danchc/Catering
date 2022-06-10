@@ -10,7 +10,7 @@
     <!-- form new buffet -->
     <div class="buffet-flex-container">
         <div class="container">
-            <form method="POST" th:action="@{/addBuffet}" th:object="${buffet}">
+            <form method="POST" th:action="@{/addBuffet}" th:object="${buffet}" enctype="multipart/form-data">
                 <div class="buffet-form-container">
                     <div class="form-title">
                         Aggiungi un nuovo buffet
@@ -26,26 +26,15 @@
                         <span>Descrizione:</span>
                         <textarea class="desc" placeholder="Inserisci una descrizione" th:field="${buffet.descrizione}"></textarea>
                     </div>
-                    <div class="form-subtitle">
-                        Aggiungi le informazioni dello chef del buffet:
-                    </div>
                     <div class="form-input">
-                        <span>Nome:</span>
-                        <input type="text" placeholder="Inserisci il nome" th:field="${chef.nome}">
-                    </div>
-                    <div class="form-input">
-                        <span>Cognome:</span>
-                        <input type="text" placeholder="Inserisci il cognome" th:field="${chef.cognome}">
-                    </div>
-                    <div class="form-input">
-                        <span>Nazionalità:</span>
-                        <input type="text" placeholder="Inserisci la nazionalità" th:field="${chef.nazionalita}">
+                        <span>Foto:</span>
+                        <input type="file" th:name="image" name="image" accept="image/png, image/jpeg, image/jpg" />
                     </div>
                 </div>
                 <!-- end buffet form container-->
                 <div class="btn-container">
                     <div class="form-btn">
-                        <button name="create" id="create">Avanti</button>
+                        <button name="create" id="create">Conferma</button>
                     </div>
                     <div class="form-btn">
                         <button type="reset">Cancella</button>
@@ -60,15 +49,4 @@
     <footer th:replace="fragments/base.html :: footer-base"></footer>
     <!-- -->
 </body>
-<script>
-    $(document).ready(function () {
-        $('#create').click(function()
-        {
-            for(let i=0; i < $('numrows').val(); i++){
-                $('#mytbody').append( $('<tr>') );
-            }
-        });
-    });
-
-</script>
 </html>

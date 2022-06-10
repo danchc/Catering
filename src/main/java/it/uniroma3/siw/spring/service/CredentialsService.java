@@ -3,6 +3,8 @@ package it.uniroma3.siw.spring.service;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.repository.CredentialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -43,4 +45,9 @@ public class CredentialsService {
         return credentialsRepo.existsByUsername(username);
     }
 
+    public Credentials getCredentialsAuthenticated(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Credentials credentials = this.getCredentials(userDetails.getUsername());
+        return credentials;
+    }
 }

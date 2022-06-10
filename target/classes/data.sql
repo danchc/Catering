@@ -7,7 +7,7 @@ VALUES
 INSERT INTO
     credentials
 VALUES
-    (99999, '$2a$12$u05KxnLT1TDgBP.8xZMzDOY7e86e/FwKEYEI9ChcikhgoSMD7Fd0q', 'ADMIN', 'admin', 99999);
+    (99999, '$2a$12$u05KxnLT1TDgBP.8xZMzDOY7e86e/FwKEYEI9ChcikhgoSMD7Fd0q', null, 'ADMIN', 'admin', 99999);
 
 INSERT INTO
     utente
@@ -17,4 +17,4 @@ VALUES
 INSERT INTO
     credentials
 VALUES
-    (999991, '$2a$12$g1zyFaYti3uNtoW2NAJE4O6QJbHFOS2J0CbRnb6d/4toWCV9ww0tO', 'DEFAULT', 'user', 999991);
+    (999991, '$2a$12$g1zyFaYti3uNtoW2NAJE4O6QJbHFOS2J0CbRnb6d/4toWCV9ww0tO', null, 'DEFAULT', 'user', 999991);

@@ -4,7 +4,12 @@
 <body>
     <div class="header-contacts-container">
         <!-- navbar -->
-        <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+        <div th:if="${session.role == 'ADMIN'}">
+            <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+        </div>
+        <div th:if="${session.role == 'DEFAULT'}">
+            <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+        </div>
         <!-- -->
         <div class="contact-banner-content">
             <h1 id="contact-banner-title">Contatti</h1>

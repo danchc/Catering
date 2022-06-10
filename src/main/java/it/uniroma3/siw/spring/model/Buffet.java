@@ -24,10 +24,22 @@ public class Buffet {
     @Column(nullable = false)
     private String descrizione;
 
+    //foto del buffet
+    @Column(nullable = true, length = 64)
+    private String photo;
+
     @ManyToOne(cascade = {CascadeType.ALL})
     private Chef chef;
 
     @OneToMany
     private List<Piatto> piatti;
+
+    @Transient
+    public String getImagePath(){
+        if(this.getPhoto() == null || this.getId() == null){
+            return null;
+        }
+        return "/"+"buffet-photo"+"/"+this.id+"/"+this.photo;
+    }
 
 }

@@ -24,12 +24,16 @@ home admin
                 <i class="fa-solid fa-gears"></i>Gestisci i servizi
             </div>
             <div class="cp-btn">
-                <a th:href="@{/buffetForm}"><button>Aggiungi nuovo buffet</button></a>
+                <a th:href="@{/buffetForm}"><button>Aggiungi un nuovo buffet</button></a>
+                <a th:href="@{/buffetForm}"><button>Aggiungi un nuovo chef</button></a>
+                <a th:href="@{/buffetForm}"><button>Aggiungi un nuovo piatto</button></a>
+                <a th:href="@{/buffetForm}"><button>Aggiungi un nuovo ingrediente</button></a>
                 <button onClick="window.location.reload();">Aggiorna</button>
             </div>
             <table id="buffet">
                 <tr>
                     <th>ID</th>
+                    <th>Foto</th>
                     <th>Nome</th>
                     <th>Descrizione</th>
                     <th>Chef</th>
@@ -38,14 +42,15 @@ home admin
                 </tr>
                 <tr th:each="buffet : ${listBuffet}">
                     <td th:text="${buffet.id}">Id</td>
+                    <td><a th:href="@{${buffet.getImagePath}}">Foto</a></td>
                     <td th:text="${buffet.nome}">Nome</td>
                     <td th:text="${buffet.descrizione}">Descrizione</td>
                     <td th:text="${buffet.chef}">Chef</td>
                     <td th:text="${buffet.piatti}">Piatti</td>
-                    <td class="del"><button class="delete">Delete</button></td>
+                    <td class="del"><button class="delete">&times;</button></td>
                 </tr>
             </table>
-            <div th:if="${listBuffet.isEmpty()}">
+            <div th:if="${listBuffet?.isEmpty()}">
                 Non ci sono ancora buffet inseriti nel database.
             </div>
 

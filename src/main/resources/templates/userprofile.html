@@ -12,7 +12,8 @@
             <div class="info-container">
                 <div class="photo-side">
                     <div class="user-image">
-                        <img src="/images/blank-user.png" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
+                        <img th:if="${credentials?.photo == null}" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
+                        <input type = "file">
                         <h1>Ciao <span th:text="${credentials.user.nome}"></span> !</h1>
                     </div>
                 </div>
