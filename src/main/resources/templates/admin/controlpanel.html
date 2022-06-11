@@ -42,7 +42,7 @@ home admin
                 </tr>
                 <tr th:each="buffet : ${listBuffet}">
                     <td th:text="${buffet.id}">Id</td>
-                    <td><a th:href="@{${buffet.getImagePath}}">Foto</a></td>
+                    <td><a th:href="@{${buffet.getImagePath}}" th:text="${buffet.photo}"></a></td>
                     <td th:text="${buffet.nome}">Nome</td>
                     <td th:text="${buffet.descrizione}">Descrizione</td>
                     <td th:text="${buffet.chef}">Chef</td>

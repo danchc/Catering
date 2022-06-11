@@ -17,6 +17,7 @@ body,html {
 
 :root {
     --main-color: #c29426;
+    --hover-color: #e4a81d;
     /* --nav-bg-color: rgb(217, 218, 219);*/
     --nav-bg-color: white;
     --content-font: 'Actor', sans-serif;
@@ -117,7 +118,7 @@ body,html {
 }
 
 .nav-container a.btn-login button:hover{
-    background-color:#e4a81d;
+    background-color: var(--hover-color);
 }
 
 /* MAIN SECTION */
@@ -169,7 +170,7 @@ body,html {
 }
 
 .banner-content button:hover {
-    background-color: #e4a81d;
+    background-color: var(--hover-color);
 }
 
 /* info */
@@ -322,8 +323,8 @@ body,html {
     font-size: 40px;
     text-align: center;
     font-weight: bold;
-    margin: 10px 0 5px 0;
-    border-bottom: 1px solid;
+    margin: 10px 0 30px 0;
+    border-bottom: 2px solid var(--main-color);
 }
 
 /*elementi della zona input */
@@ -383,7 +384,7 @@ body,html {
 }
 
 .btn-container .form-btn button:hover {
-    background-color: #fadc18;
+    background-color: var(--hover-color);
     transition: all 0.5s ease;
 }
 
@@ -447,6 +448,7 @@ body,html {
     position: relative;
     background-color: white;
     max-width: 500px;
+    height: 80vh;
     width: 100%;
     margin: 0 15px;
     border-radius: 6px;
@@ -518,14 +520,27 @@ body,html {
 }
 
 .login-container button:hover {
-
     transition: 0.5s ease;
 }
 
+.login-container .other-contacts-title {
+    margin-top: 50px;
+}
+
 .social-btn {
-    margin-top: 20px;
+    margin-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.social-btn a{
+    color:#333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-btn a:hover {
+    color:var(--main-color);
 }
 
 /*
@@ -679,9 +694,12 @@ footer */
 
 /* BUFFETFORM.HTML #################################################################### */
 
-.buffet-flex-container {
-    background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(../images/rg-bg.jpg);
+.buffet-form-bg-container {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../images/rg-bg.jpg);
     background-size: cover;
+}
+
+.buffet-flex-container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -689,13 +707,15 @@ footer */
 }
 
 .buffet-flex-container .container{
-    max-width: 90vw;
+    max-width: 70vw;
 }
 
 .buffet-form-container textarea {
     resize: none;
-    padding: 3px;
-    height: 10vh;
+    height: 12vh;
+    font-family: var(--main-font);
+    font-size: 0.9em;
+    padding: 12px;
 }
 
 /* container form */
@@ -730,7 +750,7 @@ footer */
     font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 10px 0 10px 0;
+    margin: 30px 0 10px 0;
 }
 
 .buffet-form-container .form-input input {
@@ -748,20 +768,10 @@ footer */
     border-color: rgb(109, 107, 107);
 }
 
-.del {
-    text-decoration: none;
-    display: inline-block;
-    background-color: red;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    width: 30px;
-    height: 30px;
-    margin-left: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.buffet-form-container .form-input input[type=file]{
+    width: 100%;
+    border: none;
+    font-size: 1em;
 }
 
 .btn-container {
@@ -769,37 +779,17 @@ footer */
     justify-content: center;
 }
 
-/* tabella */
-
-table {
-    border-collapse: collapse;
-    width: 100%;
+.buffet-flex-container .container .btn-container .form-btn button {
+    border: none;
+    background-color: var(--main-color);
+    width: 15vw;
+    height: 5vh;
+    margin: 6vh;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
 }
-
-tr:nth-child(even){background-color: #f2f2f2}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #5b5b5b;
-    color: white;
-}
-
-th#desc, th#nome {
-    width: 10vw;
-}
-
-table textarea {
-    width: 23vw;
-}
-
-table input {
-    height: 40px;
-}
-
 
 /* USERPROFILE.HTML ##################################################### */
 
@@ -950,7 +940,7 @@ header#navbar-cp {
 }
 
 .col-btn-container .cp-btn button:hover {
-    background-color: #e0ab2d;
+    background-color: var(--hover-color);
 }
 
 /* table */
@@ -1088,7 +1078,7 @@ header#navbar-cp {
 }
 
 .contact-section button:hover {
-    background-color: #fadc18;
+    background-color: var(--hover-color);
     transition: all 0.5s ease;
 }
 
@@ -1235,7 +1225,7 @@ header#navbar-cp {
 }
 
 .buffet-info-content .btn-container button:hover {
-    background-color: #e4a81d;
+    background-color: var(--hover-color);
 }
 
 

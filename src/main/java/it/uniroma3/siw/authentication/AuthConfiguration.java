@@ -1,5 +1,8 @@
 package it.uniroma3.siw.authentication;
 
+import it.uniroma3.siw.spring.model.CustomOAuth2User;
+import it.uniroma3.siw.spring.service.CredentialsService;
+import it.uniroma3.siw.spring.service.CustomOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,13 +11,20 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 /* VARIABILE ADMIN */
+
+import java.io.IOException;
+
 import static it.uniroma3.siw.spring.model.Credentials.RUOLO_ADMIN;
 import static it.uniroma3.siw.spring.model.Credentials.RUOLO_DEFAULT;
 
@@ -23,12 +33,16 @@ import static it.uniroma3.siw.spring.model.Credentials.RUOLO_DEFAULT;
 @EnableWebSecurity
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    protected CredentialsService credentialsService;
     /**
      * La variabile dataSource serve per accedere direttamente ai dati all'interno del DB.
      */
     @Autowired
     DataSource dataSource;
 
+    @Autowired
+    private CustomOAuth2UserService oauthUserService;
     /**
      * Il metodo gestisce le varie autorizzazioni che possono riguardare un utente normale (con ruolo DEFAULT)
      * e un super utente (con ruolo ADMIN). Gestisce inoltre il logout.
@@ -38,7 +52,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
         http// authorization paragraph: qui definiamo chi può accedere a cosa
                 .authorizeRequests()
                 // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**" ,"/images/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**" ,"/images/**", "/oauth/**").permitAll()
                 // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register
                 .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                 // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
@@ -47,10 +61,27 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/buffets").hasAnyAuthority(RUOLO_DEFAULT, RUOLO_ADMIN)
                 // tutti gli utenti autenticati possono accere alle pagine rimanenti
                 .anyRequest().authenticated()
+                .and().oauth2Login().loginPage("/login")
+                .userInfoEndpoint()
+                .userService(oauthUserService)
+                .and()
+                .successHandler(new AuthenticationSuccessHandler() {
 
+                    @Override
+                    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+                                                        Authentication authentication) throws IOException, ServletException {
+
+                        CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
+
+                        credentialsService.processOAuthPostLogin(oauthUser.getName());
+
+                        response.sendRedirect("/default");
+                    }
+                })
                 // login paragraph: qui definiamo come è gestita l'autenticazione
                 // usiamo il protocollo formlogin
-                .and().formLogin()
+                .and()
+                .formLogin()
                 // la pagina di login si trova a /login
                 // NOTA: Spring gestisce il post di login automaticamente
                 .loginPage("/login")
@@ -74,8 +105,6 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-
         auth.jdbcAuthentication()
                 .dataSource(this.dataSource)
                 //use the autowired datasource to access the saved credentials

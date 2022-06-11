@@ -31,6 +31,9 @@ public class Credentials {
     private String password;
 
     private String photo;
+
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
     /*
     @NotNull
     @Column(name = "confirmed_password")

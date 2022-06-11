@@ -3,47 +3,52 @@
 <head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
 </head>
 <body>
-    <!-- navbar -->
-    <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
-    <!-- -->
+    <div class="buffet-form-bg-container">
+        <!-- navbar -->
+        <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+        <!-- -->
 
-    <!-- form new buffet -->
-    <div class="buffet-flex-container">
-        <div class="container">
-            <form method="POST" th:action="@{/addBuffet}" th:object="${buffet}" enctype="multipart/form-data">
-                <div class="buffet-form-container">
-                    <div class="form-title">
-                        Aggiungi un nuovo buffet
+        <!-- form new buffet -->
+        <div class="buffet-flex-container">
+            <div class="container">
+                <form method="POST" th:action="@{/addBuffet}" th:object="${buffet}" enctype="multipart/form-data">
+                    <div class="buffet-form-container">
+                        <div class="form-title">
+                            Aggiungi un nuovo buffet
+                        </div>
+                        <div class="form-input">
+                            <span>Nome:</span>
+                            <input type="text" placeholder="Inserisci il nome" th:field="${buffet.nome}">
+                        </div>
+                        <div class="form-input">
+                            <span>Descrizione:</span>
+                            <textarea class="desc" placeholder="Inserisci una descrizione" th:field="${buffet.descrizione}"></textarea>
+                        </div>
+                        <div class="form-input">
+                            <span>Foto:</span>
+                            <input type="file" th:name="image" name="image" accept="image/png, image/jpeg, image/jpg" />
+                        </div>
                     </div>
-                    <div class="form-subtitle">
-                        Aggiungi le informazioni del buffet:
+                    <!-- end buffet form container-->
+
+                    <div class="btn-container">
+                        <div class="form-btn">
+                            <button name="create" id="create">Conferma</button>
+                        </div>
+                        <div class="form-btn">
+                            <button type="reset">Cancella</button>
+                        </div>
+                        <div class="form-btn">
+                            <a th:href="@{/}"> <button type="button">Torna indietro</button></a>
+                        </div>
                     </div>
-                    <div class="form-input">
-                        <span>Nome:</span>
-                        <input type="text" placeholder="Inserisci il nome" th:field="${buffet.nome}">
-                    </div>
-                    <div class="form-input">
-                        <span>Descrizione:</span>
-                        <textarea class="desc" placeholder="Inserisci una descrizione" th:field="${buffet.descrizione}"></textarea>
-                    </div>
-                    <div class="form-input">
-                        <span>Foto:</span>
-                        <input type="file" th:name="image" name="image" accept="image/png, image/jpeg, image/jpg" />
-                    </div>
-                </div>
-                <!-- end buffet form container-->
-                <div class="btn-container">
-                    <div class="form-btn">
-                        <button name="create" id="create">Conferma</button>
-                    </div>
-                    <div class="form-btn">
-                        <button type="reset">Cancella</button>
-                    </div>
-                </div>
-            </form>
+
+                </form>
+            </div>
         </div>
+        <!-- end form new buffet -->
     </div>
-    <!-- end form new buffet -->
+    <!-- end bg container -->
 
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>

@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.service;
 
 import it.uniroma3.siw.spring.model.Credentials;
+import it.uniroma3.siw.spring.model.Provider;
 import it.uniroma3.siw.spring.repository.CredentialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,5 +50,18 @@ public class CredentialsService {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Credentials credentials = this.getCredentials(userDetails.getUsername());
         return credentials;
+    }
+
+    public void processOAuthPostLogin(String username) {
+
+        if (!this.credentialsRepo.existsByUsername(username)) {
+            Credentials newUser = new Credentials();
+            newUser.setUsername(username);
+            newUser.setProvider(Provider.GOOGLE);
+            newUser.setRuolo(Credentials.RUOLO_DEFAULT);
+
+            credentialsRepo.save(newUser);
+        }
+
     }
 }

@@ -32,10 +32,14 @@
             </div>
         </form>
         <!-- end form container -->
+        <div class="other-contacts-title">
+        <span class="line">
+            <h1><span>Oppure</span></h1>
+        </span>
+        </div>
         <div class="social-btn">
-            <button type="submit">Facebook</button>
-            <button type="submit">Google</button>
-            <button type="submit">Accedi</button>
+            <a th:href="@{/oauth2/authorization/google}"><i class="fa-brands fa-google fa-xl"></i></a>
+            <a href=""><i class="fa-brands fa-facebook-f fa-xl"></i></a>
         </div>
     </div>
 </div>

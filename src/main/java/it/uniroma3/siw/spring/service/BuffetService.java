@@ -21,7 +21,7 @@ public class BuffetService {
     }
 
     @Transactional
-    public List<Buffet> getAll() {
+    public List<Buffet> getAllBuffet() {
         return (List<Buffet>) this.buffetRepository.findAll();
     }
 }
