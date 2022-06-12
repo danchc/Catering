@@ -7,7 +7,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.util.Collection;
 import java.util.Map;
 
-public class CustomOAuth2User implements OAuth2User, UserDetails {
+public class CustomOAuth2User extends Credentials implements OAuth2User, UserDetails {
 
     private OAuth2User oauth2User;
 
@@ -32,27 +32,27 @@ public class CustomOAuth2User implements OAuth2User, UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return oauth2User.getName();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     //per ottenere lo username

@@ -25,7 +25,7 @@
             <div sec:authorize="isAuthenticated()" class="dropdown-personal">
                 <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span sec:authentication="name"></span></button>
                 <div class="dropdown-content">
-                    <a href="#" th:href="@{/controlpanel}">Pannello di controllo</a>
+                    <a href="#" th:href="@{/admin/controlpanel}">Pannello di controllo</a>
                     <a href="" th:href="@{/logout}">Logout</a>
                 </div>
             </div>

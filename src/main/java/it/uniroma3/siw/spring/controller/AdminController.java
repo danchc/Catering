@@ -14,7 +14,7 @@ public class AdminController {
     @Autowired
     private BuffetService buffetService;
 
-    @GetMapping("/controlpanel")
+    @GetMapping("/admin/controlpanel")
     public String getControlPanel(Model model) {
         model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
         return "admin/controlpanel";

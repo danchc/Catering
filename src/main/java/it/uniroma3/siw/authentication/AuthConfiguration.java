@@ -4,6 +4,7 @@ import it.uniroma3.siw.spring.model.CustomOAuth2User;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.CustomOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,7 +15,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.ui.Model;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +33,8 @@ import static it.uniroma3.siw.spring.model.Credentials.RUOLO_DEFAULT;
 
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
+@EnableOAuth2Client
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -58,7 +62,6 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
                 .antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(RUOLO_ADMIN)
                 .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(RUOLO_ADMIN)
-                .antMatchers(HttpMethod.GET, "/buffets").hasAnyAuthority(RUOLO_DEFAULT, RUOLO_ADMIN)
                 // tutti gli utenti autenticati possono accere alle pagine rimanenti
                 .anyRequest().authenticated()
                 .and().oauth2Login().loginPage("/login")
@@ -66,15 +69,12 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .userService(oauthUserService)
                 .and()
                 .successHandler(new AuthenticationSuccessHandler() {
-
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                                         Authentication authentication) throws IOException, ServletException {
 
                         CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
-
-                        credentialsService.processOAuthPostLogin(oauthUser.getName());
-
+                        credentialsService.processOAuthPostLogin(oauthUser.getAttribute("name"), oauthUser);
                         response.sendRedirect("/default");
                     }
                 })
@@ -112,13 +112,6 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("SELECT username, ruolo FROM credentials WHERE username=?")
                 //retrieve username, password and a boolean flag specifying whether the user is enabled or not (always enabled in our case)
                 .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM credentials WHERE username=?");
-/*
-        auth
-                .inMemoryAuthentication()
-                .withUser("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles(RUOLO_ADMIN);*/
-
     }
 
     /**

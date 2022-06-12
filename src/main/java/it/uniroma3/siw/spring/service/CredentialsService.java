@@ -1,18 +1,23 @@
 package it.uniroma3.siw.spring.service;
 
 import it.uniroma3.siw.spring.model.Credentials;
+import it.uniroma3.siw.spring.model.CustomOAuth2User;
 import it.uniroma3.siw.spring.model.Provider;
+import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.repository.CredentialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CredentialsService {
@@ -52,15 +57,20 @@ public class CredentialsService {
         return credentials;
     }
 
-    public void processOAuthPostLogin(String username) {
+    public void processOAuthPostLogin(String username, CustomOAuth2User oAuth2User) {
 
         if (!this.credentialsRepo.existsByUsername(username)) {
-            Credentials newUser = new Credentials();
-            newUser.setUsername(username);
-            newUser.setProvider(Provider.GOOGLE);
-            newUser.setRuolo(Credentials.RUOLO_DEFAULT);
+            Credentials newCredentials = new Credentials();
+            User newUser = new User();
+            newUser.setNome(oAuth2User.getAttribute("given_name"));
+            newUser.setCognome(oAuth2User.getAttribute("family_name"));
+            newUser.setEmail(oAuth2User.getAttribute("email"));
+            newCredentials.setUser(newUser);
+            newCredentials.setUsername(username);
+            newCredentials.setProvider(Provider.GOOGLE);
+            newCredentials.setRuolo(Credentials.RUOLO_DEFAULT);
 
-            credentialsRepo.save(newUser);
+            credentialsRepo.save(newCredentials);
         }
 
     }

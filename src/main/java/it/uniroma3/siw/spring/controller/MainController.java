@@ -3,6 +3,7 @@ package it.uniroma3.siw.spring.controller;
 import it.uniroma3.siw.spring.controller.validator.ChefValidator;
 import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.model.Credentials;
+import it.uniroma3.siw.spring.model.CustomOAuth2User;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -32,11 +35,15 @@ public class MainController {
     }
 
     @GetMapping("/user")
-    public String getUserProfile(Model model){
+    public String getUserProfile(Model model, Principal principal){
+        principal.getName();
+        List<Credentials> list = this.credentialsService.findAll();
         /*
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());*/
-        model.addAttribute(this.credentialsService.getCredentialsAuthenticated());
+        model.addAttribute("credentials", this.credentialsService.getCredentials(principal.getName()));
+        Credentials oauth = this.credentialsService.getCredentials(principal.getName());
         return "userprofile";
     }
+
 }

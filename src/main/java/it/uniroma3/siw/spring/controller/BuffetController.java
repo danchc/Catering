@@ -28,12 +28,12 @@ public class BuffetController {
     private BuffetService buffetService;
 
     @GetMapping("/buffets")
-    public String getBuffets(HttpSession session) {
+    public String getBuffets(HttpSession session, Model model) {
         session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
         return "buffets";
     }
 
-    @GetMapping("/buffetForm")
+    @GetMapping("/admin/buffetForm")
     public String getBuffetForm(Model model) {
         model.addAttribute("buffet", new Buffet());
         return "admin/buffetForm";
@@ -55,7 +55,7 @@ public class BuffetController {
 
             FileUploadUtil.saveFile(uploadDir, nomeFile, multipartFile);
             model.addAttribute("buffet", buffet);
-            return "redirect:/controlpanel";
+            return "redirect:/admin/controlpanel";
         }
            return "admin/buffetForm";
     }

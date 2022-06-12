@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
+<head th:replace="fragments/base.html :: headerfiles(title='Aggiungi un buffet')">
 </head>
 <body>
-    <div class="buffet-form-bg-container">
+    <div class="add-form-bg-container">
         <!-- navbar -->
         <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
         <!-- -->
 
         <!-- form new buffet -->
-        <div class="buffet-flex-container">
+        <div class="add-flex-container">
             <div class="container">
                 <form method="POST" th:action="@{/addBuffet}" th:object="${buffet}" enctype="multipart/form-data">
                     <div class="buffet-form-container">

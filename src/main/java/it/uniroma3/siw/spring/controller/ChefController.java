@@ -21,8 +21,9 @@ public class ChefController {
     @Autowired
     private BuffetService buffetService;
 
-    @GetMapping("/addChef")
+    @GetMapping("/admin/chefForm")
     public String getChefForm(Model model){
+        model.addAttribute("chef", new Chef());
         model.addAttribute("buffet", this.buffetService.getAllBuffet());
         return "admin/chefForm";
     }
@@ -34,7 +35,7 @@ public class ChefController {
         //se tutto va bene puoi aggiungere i piatti
         if(!bindingResultChef.hasErrors()){
             this.chefService.save(chef);
-            return "redirect:/controlpanel";
+            return "redirect:/admin/controlpanel";
         }
         return "admin/chefForm";
     }
