@@ -948,7 +948,7 @@ header#navbar-cp {
     justify-content: space-around;
 }
 
-.col-btn-container .cp-btn button {
+.col-btn-container .cp-btn button.active {
     font-size: 0.9em;
     font-family: var(--main-font);
     height: 7vh;
@@ -960,7 +960,18 @@ header#navbar-cp {
     cursor: pointer;
 }
 
-.col-btn-container .cp-btn button:hover {
+.cp-btn button.disabled{
+    background-color: #888888;
+    color: white;
+    font-size: 0.9em;
+    font-family: var(--main-font);
+    height: 7vh;
+    width: 11vw;
+    outline: none;
+    border: none;
+}
+
+.col-btn-container .cp-btn button.active:hover {
     background-color: var(--hover-color);
 }
 
@@ -1006,10 +1017,20 @@ header#navbar-cp {
     width: 2vw;
     transition: all 0.3s ease;
     cursor: pointer;
+    display: block;
+    margin: auto;
 }
 
-.del:hover {
+.delete:hover {
     background-color: red;
+}
+
+.empty {
+    font-family: var(--main-font);
+    background-color: white;
+    height: 100px;
+    text-align: center;
+    font-size: 2em;
 }
 
 /* contacts.html */
@@ -1174,11 +1195,10 @@ header#navbar-cp {
 .buffet-collection-container .buffet-info-container {
     box-shadow: 5px 10px 18px #888888;
     border-radius: 10%;
-    margin: 130px;
+    margin: 130px 100px 100px 100px;
     height: 68vh;
     width: 70vh;
     background-color: #c29426;
-
 }
 
 .buffet-info-container .circle-img-container {

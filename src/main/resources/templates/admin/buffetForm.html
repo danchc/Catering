@@ -18,11 +18,11 @@
                         </div>
                         <div class="form-input">
                             <span>Nome:</span>
-                            <input type="text" placeholder="Inserisci il nome" th:field="${buffet.nome}">
+                            <input type="text" placeholder="Inserisci il nome" th:field="*{nome}">
                         </div>
                         <div class="form-input">
                             <span>Descrizione:</span>
-                            <textarea class="desc" placeholder="Inserisci una descrizione" th:field="${buffet.descrizione}"></textarea>
+                            <textarea class="desc" placeholder="Inserisci una descrizione" th:field="*{descrizione}"></textarea>
                         </div>
                         <div class="form-input">
                             <span>Foto:</span>

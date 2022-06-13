@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
+import it.uniroma3.siw.spring.model.Buffet;
 import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.service.BuffetService;
 import it.uniroma3.siw.spring.service.ChefService;
@@ -24,17 +25,19 @@ public class ChefController {
     @GetMapping("/admin/chefForm")
     public String getChefForm(Model model){
         model.addAttribute("chef", new Chef());
-        model.addAttribute("buffet", this.buffetService.getAllBuffet());
+        model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
         return "admin/chefForm";
     }
 
     @PostMapping("/addChef")
     public String addNewChef(Model model,
                              @ModelAttribute("chef")Chef chef,
+                             @RequestParam("buffet") Buffet buffet,
                              BindingResult bindingResultChef){
         //se tutto va bene puoi aggiungere i piatti
         if(!bindingResultChef.hasErrors()){
             this.chefService.save(chef);
+            buffet.setChef(chef);
             return "redirect:/admin/controlpanel";
         }
         return "admin/chefForm";

@@ -3,63 +3,50 @@
 <head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
 </head>
 <body>
-<!-- navbar -->
-<header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
-<!-- -->
+<div class="add-form-bg-container">
+    <!-- navbar -->
+    <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+    <!-- -->
 
-<!-- form new buffet -->
-<div class="buffet-flex-container">
-    <div class="container">
-        <form method="POST" th:action="@{/addPiatto}" th:object="${piatto}">
-            <div class="buffet-form-container">
-                <div class="form-title">
-                    Aggiungi un nuovo piatto
+    <!-- form new buffet -->
+    <div class="add-flex-container">
+        <div class="container">
+            <form method="POST" th:action="@{/addPiatto}" th:object="${piatto}">
+                <div class="add-form-container">
+                    <div class="form-title">
+                        Aggiungi un nuovo piatto
+                    </div>
+                    <div class="form-input">
+                        <span>Nome:</span>
+                        <input type="text" placeholder="Inserisci il nome">
+                    </div>
+                    <div class="form-input">
+                        <span>Descrizione:</span>
+                        <textarea class="desc" placeholder="Inserisci una descrizione"></textarea>
+                    </div>
+                    <div class="form-subtitle">
+                        In quale buffet è presente?
+                    </div>
+                    <select name="buffet">
+                        <option th:each="buffet : ${buffet}" th:value="${buffet}" th:text="${buffet.id + ' ' + buffet.nome}"></option>
+                    </select>
                 </div>
-                <div class="form-subtitle">
-                    Aggiungi le informazioni del piatto:
+                <!-- end buffet form container-->
+                <div class="btn-container">
+                    <div class="form-btn">
+                        <button name="create" id="create">Avanti</button>
+                    </div>
+                    <div class="form-btn">
+                        <button type="reset">Cancella</button>
+                    </div>
                 </div>
-                <div class="form-input">
-                    <span>Nome:</span>
-                    <input type="text" placeholder="Inserisci il nome">
-                </div>
-                <div class="form-input">
-                    <span>Descrizione:</span>
-                    <textarea class="desc" placeholder="Inserisci una descrizione"></textarea>
-                </div>
-                <div class="form-subtitle">
-                    In quale buffet è presente?
-                </div>
-                <select name="buffet">
-                    <option th:each="buffet : ${buffet}" th:value="${buffet}" th:text="${buffet.id + ' ' + buffet.nome}"></option>
-                </select>
-            </div>
-            <!-- end buffet form container-->
-            <div class="btn-container">
-                <div class="form-btn">
-                    <button name="create" id="create">Avanti</button>
-                </div>
-                <div class="form-btn">
-                    <button type="reset">Cancella</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<!-- end form new buffet -->
+    <!-- end form new buffet -->
 
-<!-- footer -->
-<footer th:replace="fragments/base.html :: footer-base"></footer>
-<!-- -->
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
+    <!-- -->
 </body>
-<script>
-    $(document).ready(function () {
-        $('#create').click(function()
-        {
-            for(let i=0; i < $('numrows').val(); i++){
-                $('#mytbody').append( $('<tr>') );
-            }
-        });
-    });
-
-</script>
 </html>

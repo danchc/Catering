@@ -24,11 +24,17 @@ home admin
                 <i class="fa-solid fa-gears"></i>Gestisci i servizi
             </div>
             <div class="cp-btn">
-                <a th:href="@{/admin/buffetForm}"><button>Aggiungi un nuovo buffet</button></a>
-                <a th:href="@{/admin/chefForm}"><button>Aggiungi un nuovo chef</button></a>
-                <a th:href="@{/buffetForm}"><button>Aggiungi un nuovo piatto</button></a>
-                <a th:href="@{/buffetForm}"><button>Aggiungi un nuovo ingrediente</button></a>
-                <button onClick="window.location.reload();">Aggiorna</button>
+                <a th:href="@{/admin/buffetForm}"><button class="active">Aggiungi un nuovo buffet</button></a>
+                <a th:href="@{/admin/chefForm}"><button class="active">Aggiungi un nuovo chef</button></a>
+                <button th:if="${listBuffet?.isEmpty()}" class="disabled">Aggiungi un nuovo piatto</button>
+                <a th:href="@{/admin/piattoForm}">
+                    <button th:unless="${listBuffet?.isEmpty()}" class="active">Aggiungi un nuovo piatto</button>
+                </a>
+                <button th:if="${listPiatti?.isEmpty()}" class="disabled">Aggiungi un nuovo ingrediente</button>
+                <a th:href="@{/buffetForm}">
+                    <button th:unless="${listPiatti?.isEmpty()}" class="active">Aggiungi un nuovo ingrediente</button>
+                </a>
+                <button class="active" onClick="window.location.reload();">Aggiorna</button>
             </div>
             <table id="buffet">
                 <tr>
@@ -50,7 +56,7 @@ home admin
                     <td class="del"><button class="delete">&times;</button></td>
                 </tr>
             </table>
-            <div th:if="${listBuffet?.isEmpty()}">
+            <div class="empty" th:if="${listBuffet?.isEmpty()}">
                 Non ci sono ancora buffet inseriti nel database.
             </div>
 
