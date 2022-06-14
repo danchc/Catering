@@ -11,7 +11,7 @@
         <!-- form new chef -->
         <div class="add-flex-container">
             <div class="container">
-                <form method="POST" th:action="@{/addChef}" th:object="${chef}" enctype="multipart/form-data">
+                <form method="POST" th:action="@{/new/chef}" th:object="${chef}" enctype="multipart/form-data">
                     <div class="add-form-container">
                         <div class="form-title">
                             Aggiungi un nuovo buffet
@@ -25,16 +25,13 @@
                             <input type="text" placeholder="Inserisci il cognome" th:field="${chef.cognome}">
                         </div>
                         <div class="form-input">
-                            <span>Nazionalità:</span>
-                            <input type="text" placeholder="Inserisci la nazionalità" th:field="${chef.nazionalita}">
-                        </div>
-                        <div class="form-input">
-                            <span>A quale catering partecipa?</span>
-                            <div class="select-input">
-                                <select name="buffet">
-                                    <option th:each="buffet : ${listBuffet}" th:value="${buffet}" th:text="${buffet.id + ' || ' + buffet.nome}"></option>
-                                </select>
-                            </div>
+                            <span>Nazione:</span>
+                            <select th:field="${chef.nazione}" style="height: 5vh; width: 100%">
+                                <option th:each="nazione : ${nazioni}"
+                                        th:value="${nazione.id}"
+                                        th:text="${nazione.nome}">
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <!-- end chef form container-->

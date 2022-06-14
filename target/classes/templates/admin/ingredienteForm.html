@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Aggiungi uno chef')">
+<head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
 </head>
 <body>
     <div class="add-form-bg-container">
@@ -8,34 +8,42 @@
         <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
         <!-- -->
 
-        <!-- form new chef -->
+        <!-- form new ingrediente -->
         <div class="add-flex-container">
             <div class="container">
-                <form method="POST" th:action="@{/new/chef}" th:object="${chef}" enctype="multipart/form-data">
+                <form method="POST" th:action="@{/new/ingrediente}" th:object="${ingrediente}">
                     <div class="add-form-container">
                         <div class="form-title">
-                            Aggiungi un nuovo buffet
+                            Aggiungi un nuovo ingrediente
                         </div>
                         <div class="form-input">
                             <span>Nome:</span>
-                            <input type="text" placeholder="Inserisci il nome" th:field="${chef.nome}">
+                            <input type="text" th:field="*{nome}" placeholder="Inserisci il nome">
                         </div>
                         <div class="form-input">
-                            <span>Cognome:</span>
-                            <input type="text" placeholder="Inserisci il cognome" th:field="${chef.cognome}">
-                        </div>
-                        <div class="form-input">
-                            <span>Nazione:</span>
-                            <select th:field="${chef.nazione}" style="height: 5vh; width: 100%">
+                            <span>Origine:</span>
+                            <select th:field="${ingrediente.origine}" style="height: 5vh; width: 100%">
                                 <option th:each="nazione : ${nazioni}"
                                         th:value="${nazione.id}"
                                         th:text="${nazione.nome}">
                                 </option>
                             </select>
                         </div>
+                        <div class="form-input">
+                            <span>Descrizione:</span>
+                            <textarea class="desc" th:field="*{descrizione}" placeholder="Inserisci una descrizione"></textarea>
+                        </div>
+                        <div class="form-input">
+                            <span>Piatto:</span>
+                            <select th:field="${ingrediente.piatti}" style="height: 5vh; width: 100%">
+                                <option th:each="piatto : ${piatti}"
+                                        th:value="${piatto}"
+                                        th:text="${piatto.nome}">
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                    <!-- end chef form container-->
-
+                    <!-- end buffet form container-->
                     <div class="btn-container">
                         <div class="form-btn">
                             <button name="create" id="create">Conferma</button>
@@ -44,14 +52,13 @@
                             <button type="reset">Cancella</button>
                         </div>
                         <div class="form-btn">
-                            <a th:href="@{/admin/controlpanel}"><button>Torna indietro</button></a>
+                            <a th:href="@{/admin/controlpanel}"> <button type="button">Torna indietro</button></a>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
-        <!-- end form new chef -->
+        <!-- end form new buffet -->
     </div>
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>

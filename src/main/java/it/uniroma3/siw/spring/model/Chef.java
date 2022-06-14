@@ -25,8 +25,8 @@ public class Chef {
     @Column(nullable = false)
     private String cognome;
 
-    @Column(nullable = false)
-    private String nazionalita;
+    @ManyToOne
+    private Nazione nazione;
 
     @OneToMany(mappedBy = "chef")
     private List<Buffet> buffetProposti;

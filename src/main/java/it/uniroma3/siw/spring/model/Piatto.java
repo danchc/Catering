@@ -25,7 +25,10 @@ public class Piatto {
 
     private String descrizione;
 
-    @OneToMany
-    private List<Ingrediente> listaIngredienti;
+    @ManyToOne
+    private Buffet buffet;
+
+    @ManyToMany(mappedBy = "piatti")
+    private List<Ingrediente> ingredienti;
 
 }

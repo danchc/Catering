@@ -21,14 +21,14 @@ public class PiattoController {
     @Autowired
     protected PiattoService piattoService;
 
-    @GetMapping("/admin/piattoForm")
+    @GetMapping("/admin/new/piatto")
     public String getPiattoForm(Model model) {
         model.addAttribute("piatto", new Piatto());
-        model.addAttribute("buffet", this.buffetService.getAllBuffet());
+        model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
         return "admin/piattoForm";
     }
 
-    @PostMapping("/addPiatto")
+    @PostMapping("/new/piatto")
     public String addNewPiatto(Model model,
                              @ModelAttribute("piatto") Piatto piatto,
                              BindingResult bindingResultPiatto){

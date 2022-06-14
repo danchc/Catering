@@ -24,19 +24,28 @@ home admin
                 <i class="fa-solid fa-gears"></i>Gestisci i servizi
             </div>
             <div class="cp-btn">
-                <a th:href="@{/admin/buffetForm}"><button class="active">Aggiungi un nuovo buffet</button></a>
-                <a th:href="@{/admin/chefForm}"><button class="active">Aggiungi un nuovo chef</button></a>
+                <a th:href="@{/admin/new/chef}"><button class="active">Aggiungi un nuovo chef</button></a>
+                <!-- buffet button -->
+                <button th:if="${listChef?.isEmpty()}" class="disabled">Aggiungi un nuovo buffet</button>
+                <a th:href="@{/admin/new/buffet}">
+                    <button th:unless="${listChef?.isEmpty()}" class="active">Aggiungi un nuovo buffet</button>
+                </a>
+                <!-- piatto button -->
                 <button th:if="${listBuffet?.isEmpty()}" class="disabled">Aggiungi un nuovo piatto</button>
-                <a th:href="@{/admin/piattoForm}">
+                <a th:href="@{/admin/new/piatto}">
                     <button th:unless="${listBuffet?.isEmpty()}" class="active">Aggiungi un nuovo piatto</button>
                 </a>
+                <!-- ingredients button -->
                 <button th:if="${listPiatti?.isEmpty()}" class="disabled">Aggiungi un nuovo ingrediente</button>
-                <a th:href="@{/buffetForm}">
+                <a th:href="@{/admin/new/ingrediente}">
                     <button th:unless="${listPiatti?.isEmpty()}" class="active">Aggiungi un nuovo ingrediente</button>
                 </a>
+                <!-- reload btn -->
                 <button class="active" onClick="window.location.reload();">Aggiorna</button>
             </div>
-            <table id="buffet">
+
+            <!-- buffet inseriti -->
+            <table class="table-objects">
                 <tr>
                     <th>ID</th>
                     <th>Foto</th>
@@ -51,8 +60,11 @@ home admin
                     <td><a th:href="@{${buffet.getImagePath}}" th:text="${buffet.photo}"></a></td>
                     <td th:text="${buffet.nome}">Nome</td>
                     <td th:text="${buffet.descrizione}">Descrizione</td>
-                    <td th:text="${buffet.chef}">Chef</td>
-                    <td th:text="${buffet.piatti}">Piatti</td>
+                    <td th:text="|${buffet.chef.nome} ${buffet.chef.cognome}|">Chef</td>
+                    <td>
+                        <ul th:each="piatto : ${buffet.piatti}">
+                        <li th:text="${piatto.nome}"></li>
+                    </ul></td>
                     <td class="del"><button class="delete">&times;</button></td>
                 </tr>
             </table>
@@ -60,10 +72,56 @@ home admin
                 Non ci sono ancora buffet inseriti nel database.
             </div>
 
+            <!-- buffet inseriti -->
+            <table class="table-objects">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Nazione</th>
+                    <th></th>
+                </tr>
+                <tr th:each="chef : ${listChef}">
+                    <td th:text="${chef.id}">Id</td>
+                    <td th:text="${chef.nome}">Nome</td>
+                    <td th:text="${chef.cognome}">Cognome</td>
+                    <td th:text="${chef.nazione.nome}">nazionalita</td>
+                    <td class="del"><button class="delete">&times;</button></td>
+                </tr>
+            </table>
+            <div class="empty" th:if="${listChef?.isEmpty()}">
+                Non ci sono ancora chef inseriti nel database.
+            </div>
 
+            <!-- tabella piatti -->
+            <table class="table-objects">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Buffet</th>
+                    <th>Ingredienti</th>
+                    <th></th>
+                </tr>
+                <tr th:each="piatto : ${listPiatti}">
+                    <td th:text="${piatto.id}">Id</td>
+                    <td th:text="${piatto.nome}">Nome</td>
+                    <td th:text="${piatto.descrizione}">Descrizione</td>
+                    <td th:text="${piatto.buffet.nome}">Buffet</td>
+                    <td><ul th:each="ingrediente : ${piatto.ingredienti}">
+                        <li th:text="${ingrediente.nome}"></li>
+                    </ul></td>
+                    <td class="del"><button class="delete">&times;</button></td>
+                </tr>
+            </table>
+            <div class="empty" th:if="${listBuffet?.isEmpty()}">
+                Non ci sono ancora piatti inseriti nel database.
+            </div>
         </div>
     </div>
     <!-- end control panel section-->
+
+
 
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>

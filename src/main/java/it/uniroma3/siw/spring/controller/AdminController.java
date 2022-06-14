@@ -2,6 +2,7 @@ package it.uniroma3.siw.spring.controller;
 
 import it.uniroma3.siw.spring.model.Buffet;
 import it.uniroma3.siw.spring.service.BuffetService;
+import it.uniroma3.siw.spring.service.ChefService;
 import it.uniroma3.siw.spring.service.PiattoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,12 @@ public class AdminController {
     @Autowired
     private PiattoService piattoService;
 
+    @Autowired
+    private ChefService chefService;
+
     @GetMapping("/admin/controlpanel")
     public String getControlPanel(Model model) {
+        model.addAttribute("listChef", this.chefService.getAllChef());
         model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
         model.addAttribute("listPiatti", this.piattoService.getAllPiatti());
         return "admin/controlpanel";

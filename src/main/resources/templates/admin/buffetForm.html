@@ -11,22 +11,31 @@
         <!-- form new buffet -->
         <div class="add-flex-container">
             <div class="container">
-                <form method="POST" th:action="@{/addBuffet}" th:object="${buffet}" enctype="multipart/form-data">
+                <form method="POST" th:action="@{/new/buffet}" th:object="${buffet}" enctype="multipart/form-data">
                     <div class="add-form-container">
                         <div class="form-title">
                             Aggiungi un nuovo buffet
                         </div>
                         <div class="form-input">
                             <span>Nome:</span>
-                            <input type="text" placeholder="Inserisci il nome" th:field="*{nome}">
+                            <input type="text" placeholder="Inserisci il nome" th:field="${buffet.nome}">
                         </div>
                         <div class="form-input">
                             <span>Descrizione:</span>
-                            <textarea class="desc" placeholder="Inserisci una descrizione" th:field="*{descrizione}"></textarea>
+                            <textarea class="desc" placeholder="Inserisci una descrizione" th:field="${buffet.descrizione}"></textarea>
                         </div>
                         <div class="form-input">
                             <span>Foto:</span>
                             <input type="file" th:name="image" name="image" accept="image/png, image/jpeg, image/jpg" />
+                        </div>
+                        <div class="form-input">
+                            <span>Chef:</span>
+                            <select th:field="${buffet.chef}" style="height: 5vh; width: 100%">
+                                <option th:each="chef : ${listChef}"
+                                        th:value="${chef.id}"
+                                        th:text="${chef.id + ' || ' + chef.nome + ' ' + chef.cognome}">
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <!-- end buffet form container-->

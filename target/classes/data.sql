@@ -18,3 +18,29 @@ INSERT INTO
     credentials
 VALUES
     (999991, '$2a$12$g1zyFaYti3uNtoW2NAJE4O6QJbHFOS2J0CbRnb6d/4toWCV9ww0tO', null, null, 'DEFAULT', 'user', 999991);
+
+/* nazioni */
+INSERT INTO nazione (id, iso, nome, numcode, phonecode)
+    VALUES
+        (1, 'AF', 'AFGHANISTAN', 4, 93),
+        (2, 'AL', 'ALBANIA', 8, 355),
+        (3, 'DZ', 'ALGERIA', 12, 213),
+        (4, 'AR', 'ARGENTINA', 32, 54),
+        (5, 'AM', 'ARMENIA', 51, 374),
+        (6, 'AU', 'AUSTRALIA', 36, 61),
+        (7, 'AT', 'AUSTRIA', 40, 43),
+        (8, 'BE', 'BELGIUM', 56, 32),
+        (9, 'BR', 'BRAZIL', 76, 55),
+        (10, 'FR', 'FRANCE', 250, 33),
+        (80, 'DE', 'GERMANY', 276, 49),
+        (83, 'GR', 'GREECE', 300, 30),
+        (103, 'IE', 'IRELAND', 372, 353),
+        (104, 'IL', 'ISRAEL', 376, 972),
+        (105, 'IT', 'ITALY', 380, 39),
+        (150, 'NL', 'NETHERLANDS', 528, 31),
+        (160, 'NO', 'NORWAY', 578, 47),
+        (172, 'PT', 'PORTUGAL', 620, 351),
+        (205, 'SE', 'SWEDEN', 752, 46),
+        (206, 'CH', 'SWITZERLAND', 756, 41),
+        (225, 'GB', 'UNITED KINGDOM', 826, 44),
+        (226, 'US', 'UNITED STATES', 840, 1);

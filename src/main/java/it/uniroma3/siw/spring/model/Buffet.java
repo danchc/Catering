@@ -31,7 +31,7 @@ public class Buffet {
     @ManyToOne(cascade = {CascadeType.ALL})
     private Chef chef;
 
-    @OneToMany
+    @OneToMany(mappedBy = "buffet")
     private List<Piatto> piatti;
 
     @Transient

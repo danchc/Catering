@@ -4,6 +4,7 @@ import it.uniroma3.siw.spring.model.Buffet;
 import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.service.BuffetService;
 import it.uniroma3.siw.spring.service.ChefService;
+import it.uniroma3.siw.spring.service.NazioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,24 +21,24 @@ public class ChefController {
     private ChefService chefService;
 
     @Autowired
-    private BuffetService buffetService;
+    private NazioneService nazioneService;
 
-    @GetMapping("/admin/chefForm")
+
+    @GetMapping("/admin/new/chef")
     public String getChefForm(Model model){
         model.addAttribute("chef", new Chef());
-        model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
+        model.addAttribute("nazioni", this.nazioneService.getAllNations());
         return "admin/chefForm";
     }
 
-    @PostMapping("/addChef")
+    @PostMapping("/new/chef")
     public String addNewChef(Model model,
                              @ModelAttribute("chef")Chef chef,
-                             @RequestParam("buffet") Buffet buffet,
                              BindingResult bindingResultChef){
         //se tutto va bene puoi aggiungere i piatti
         if(!bindingResultChef.hasErrors()){
             this.chefService.save(chef);
-            buffet.setChef(chef);
+
             return "redirect:/admin/controlpanel";
         }
         return "admin/chefForm";

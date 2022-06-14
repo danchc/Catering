@@ -11,25 +11,28 @@
     <!-- form new buffet -->
     <div class="add-flex-container">
         <div class="container">
-            <form method="POST" th:action="@{/addPiatto}" th:object="${piatto}">
+            <form method="POST" th:action="@{/new/piatto}" th:object="${piatto}">
                 <div class="add-form-container">
                     <div class="form-title">
                         Aggiungi un nuovo piatto
                     </div>
                     <div class="form-input">
                         <span>Nome:</span>
-                        <input type="text" placeholder="Inserisci il nome">
+                        <input type="text" th:field="*{nome}" placeholder="Inserisci il nome">
                     </div>
                     <div class="form-input">
                         <span>Descrizione:</span>
-                        <textarea class="desc" placeholder="Inserisci una descrizione"></textarea>
+                        <textarea class="desc" th:field="*{descrizione}" placeholder="Inserisci una descrizione"></textarea>
                     </div>
-                    <div class="form-subtitle">
-                        In quale buffet è presente?
+                    <div class="form-input">
+                        <span>Buffet:</span>
+                        <select th:field="${piatto.buffet}" style="height: 5vh; width: 100%">
+                            <option th:each="buffet : ${listBuffet}"
+                                    th:value="${buffet.id}"
+                                    th:text="${buffet.id + ' || ' + buffet.nome + ' || ' + buffet.chef.nome + ' ' + buffet.chef.cognome}">
+                            </option>
+                        </select>
                     </div>
-                    <select name="buffet">
-                        <option th:each="buffet : ${buffet}" th:value="${buffet}" th:text="${buffet.id + ' ' + buffet.nome}"></option>
-                    </select>
                 </div>
                 <!-- end buffet form container-->
                 <div class="btn-container">

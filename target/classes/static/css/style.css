@@ -342,6 +342,7 @@ body,html {
 
 .form-container .form-input input {
     outline: none;
+    width: 90%;
     font-size: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -361,10 +362,6 @@ body,html {
 
 .form-input input[type="date"]:valid {
     color: black;
-}
-
-.form-input input[type="password"]{
-    width: 70%;
 }
 
 /*bottoni*/
@@ -796,22 +793,6 @@ footer */
  */
 
 
-select {
-    width: 15vw;
-    border: none;
-    height: 4vh;
-}
-
-.select-input {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 10px;
-    width: 100%;
-    height: 7vh;
-}
-
-
 /* USERPROFILE.HTML ##################################################### */
 
 /* ############## */
@@ -975,23 +956,27 @@ header#navbar-cp {
     background-color: var(--hover-color);
 }
 
+table {
+    margin-top: 20px;
+}
+
 /* table */
-#buffet {
+.table-objects {
     font-family: var(--main-font);
     border-collapse: collapse;
     width: 90vw;
 }
 
-#buffet td, #buffet th {
+.table-objects td, .table-objects th {
     border: 1px solid rgb(0, 0, 0);
     padding: 8px;
 }
 
-#buffet tr:nth-child(even){
+.table-objects tr:nth-child(even){
     background-color: #ffffff;
 }
 
-#buffet th {
+.table-objects th {
     font-size: 1.2em;
     padding-top: 5vh;
     padding-bottom: 4vh;
@@ -1000,8 +985,13 @@ header#navbar-cp {
     color: white;
 }
 
-#buffet td.del {
+.table-objects td.del {
     text-align: center;
+}
+
+.table-objects ul {
+    text-decoration: none;
+    list-style: none;
 }
 
 .delete {
@@ -1013,7 +1003,7 @@ header#navbar-cp {
     color: white;
     font-size: 0.8em;
     background-color: rgb(175, 14, 14);
-    height: 2vh;
+    height: 4vh;
     width: 2vw;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -1031,6 +1021,7 @@ header#navbar-cp {
     height: 100px;
     text-align: center;
     font-size: 2em;
+    margin-bottom: 20px;
 }
 
 /* contacts.html */
