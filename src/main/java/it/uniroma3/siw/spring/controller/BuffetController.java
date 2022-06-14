@@ -34,6 +34,7 @@ public class BuffetController {
     @GetMapping("/buffets")
     public String getBuffets(HttpSession session, Model model) {
         session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
+        model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
         return "buffets";
     }
 
@@ -64,5 +65,11 @@ public class BuffetController {
            return "admin/buffetForm";
     }
 
-
+    @GetMapping("/buffet/{id}")
+    public String getBuffet(Model model,
+                            @PathVariable("id") Long id){
+        Buffet buffet = this.buffetService.getBuffetById(id).get();
+        model.addAttribute("buffet", buffet);
+        return "buffet";
+    }
 }

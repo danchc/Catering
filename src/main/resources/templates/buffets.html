@@ -41,15 +41,25 @@
             </div>
         </div>
         <!-- end test container -->
-        <div class="buffet-info-container">
+        <div th:each="buffet : ${listBuffet}" class="buffet-info-container">
             <div class="circle-img-container">
 
             </div>
             <div class="buffet-main-title">
-                $Titolo
+                <span th:text="${buffet.nome}">$Titolo</span></a>
             </div>
             <div class="buffet-info-content">
-
+                <div class="buffet-chef-container">
+                    <span class="label">Chef:</span>
+                    <span class="chef-name" th:text="${buffet.chef.nome}">Ciro Esposito</span>
+                </div>
+                <div class="buffet-type-container">
+                    <span class="label">Tipologia:</span>
+                    <span class="type-name">Camorra</span>
+                </div>
+                <div class="btn-container">
+                    <a th:href="@{'/buffet' + '/' + ${buffet.id}}"><button type="button">Scopri di più</button></a>
+                </div>
             </div>
         </div>
         <div class="buffet-info-container">

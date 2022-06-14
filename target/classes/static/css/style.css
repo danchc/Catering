@@ -1261,6 +1261,99 @@ table {
 }
 
 
+/*
+ BUFFET.HTML (in base all'id)
+ */
+
+.bf-container-flex {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bf-container-flex .bf-img-container {
+    height: 90vh;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bf-img-container .bf-img {
+    background-color: white;
+    width: 30vw;
+    height: 450px;
+    border: 3px solid var(--main-color);
+}
+
+.bf-container-flex .bf-info {
+    width: 50vw;
+    height: 100vh;
+}
+
+.bf-info .bf-info-title {
+    font-family: var(--main-title-font);
+    font-size: 2em;
+    text-align: left;
+    margin: 80px 20px 0px 50px;
+    border-bottom: 2px solid var(--main-color);
+}
+
+.bf-info .bf-info-description {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    margin: 20px 0 0 50px
+}
+
+.bf-info .btn-container button{
+    width: 90%;
+    height: 6vh;
+    margin: 40px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    background-color: var(--main-color);
+    font-family: var(--main-font);
+    transition: all 0.3s ease;
+}
+
+.bf-info .btn-container button:hover {
+    background-color: var(--hover-color);
+}
+
+.bf-other-info .bf-chef, .bf-piatti {
+    margin: 50px;
+}
+
+.bf-other-info .other-info {
+    display: inline;
+    font-family: var(--main-title-font);
+}
+
+.bf-other-info .other-info .title {
+    font-weight: bold;
+    font-size: 1.7em;
+    border-bottom: 2px solid var(--main-color);
+}
+
+.bf-other-info .other-info .desc {
+    font-size: 1.3em;
+}
+
+.bf-other-info .piatti-list {
+    margin: 10px 0px 0px 10px;
+}
+
+.other-info a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.other-info a:hover {
+    color: var(--main-color);
+}
 
 /* MOBILE ########################################################################### */
 

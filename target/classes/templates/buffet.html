@@ -2,87 +2,64 @@
 <html lang="en">
 <head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Buffets')"></head>
 <body>
-<div class="header-buffets-container">
-    <!-- navbar -->
-    <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+    <div class="header-buffets-container">
+        <!-- navbar -->
+        <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+        <!-- -->
+        <div class="buffets-banner-content">
+            <h1 th:text="${buffet.nome}"id="buffets-banner-title"></h1>
+        </div>
+    </div>
+
+    <!-- buffet container -->
+    <div class="bf-container-flex">
+        <!-- img container-->
+        <div class="bf-img-container">
+            <div class="bf-img">
+                <img th:src="@{${buffet.getImagePath()}}" width="100%" height="100%">
+            </div>
+        </div>
+        <!-- end img container-->
+
+        <!-- info container -->
+        <div class="bf-info">
+            <div class="bf-info-title">
+                <span th:text="${buffet.nome}">Nome buffet</span>
+            </div>
+            <div class="bf-info-description">
+                <span th:text="${buffet.descrizione}">
+                Questa è una descrizione. Questa è una descrizione. Questa è una descrizione. Questa è una descrizione.
+                Questa è una descrizione. Questa è una descrizione. Questa è una descrizione. Questa è una descrizione.
+                Questa è una descrizione. Questa è una descrizione. Questa è una descrizione. Questa è una descrizione.
+                Questa è una descrizione. Questa è una descrizione. Questa è una descrizione. Questa è una descrizione.</span>
+            </div>
+            <div class="bf-other-info">
+                <div class="bf-chef">
+                    <div class="other-info chef">
+                        <span class="title">Chef: </span><span class="desc" th:text="${buffet.chef.nome}"> <a href="">Ciro Esposito</a></span>
+                    </div>
+                </div>
+                <div class="bf-piatti">
+                    <div class="other-info title">
+                        <span class="title">Piatti compresi: </span>
+                        <div class="piatti-list" th:each="piatto : ${buffet.piatti}">
+                            <span class="desc" th:text="${piatto.nome}">Piatto 1, Piatto 2, Piatto 3, Piatto 4, Piatto 5</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href=""><button type="button">Metti nei preferiti</button></a>
+                <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
+            </div>
+        </div>
+        <!-- end info container-->
+    </div>
+    <!-- end buffet container-->
+
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
     <!-- -->
-    <div class="buffets-banner-content">
-        <h1 id="buffets-banner-title">Buffets</h1>
-    </div>
-</div>
-
-<div class="buffet-collection-container">
-    <div class="buffet-info-container">
-        <div class="circle-img-container">
-            <img th:src="@{/images/buffet/0/buffet-id0.jpg}">
-        </div>
-        <div class="buffet-main-title">
-            Buffet0
-        </div>
-        <div class="buffet-info-content">
-            Chef: <span>Chef0</span>
-            <button>Metti nei preferiti</button>
-        </div>
-    </div>
-    <div class="buffet-info-container">
-        <div class="circle-img-container">
-
-        </div>
-        <div class="buffet-main-title">
-            $Titolo
-        </div>
-        <div class="buffet-info-content">
-
-        </div>
-    </div>
-    <div class="buffet-info-container">
-        <div class="circle-img-container">
-
-        </div>
-        <div class="buffet-main-title">
-            $Titolo
-        </div>
-        <div class="buffet-info-content">
-
-        </div>
-    </div>
-    <div class="buffet-info-container">
-        <div class="circle-img-container">
-
-        </div>
-        <div class="buffet-main-title">
-            $Titolo
-        </div>
-        <div class="buffet-info-content">
-
-        </div>
-    </div>
-    <div class="buffet-info-container">
-        <div class="circle-img-container">
-
-        </div>
-        <div class="buffet-main-title">
-            $Titolo
-        </div>
-        <div class="buffet-info-content">
-
-        </div>
-    </div>
-    <div class="buffet-info-container">
-        <div class="circle-img-container">
-
-        </div>
-        <div class="buffet-main-title">
-            $Titolo
-        </div>
-        <div class="buffet-info-content">
-
-        </div>
-    </div>
-</div>
-
-<!-- footer -->
-<footer th:replace="fragments/base.html :: footer-base"></footer>
-<!-- -->
 </body>
 </html>
