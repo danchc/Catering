@@ -72,4 +72,15 @@ public class BuffetController {
         model.addAttribute("buffet", buffet);
         return "buffet";
     }
+
+    @GetMapping("/admin/delete/buffet/{id}")
+    public String deleteBuffet(Model model,
+                               @PathVariable("id")Long id){
+        Buffet buffet = this.buffetService.getBuffetById(id).get();
+
+        if(this.buffetService.eliminaBuffetPerId(buffet)){
+            return "redirect:/admin/controlpanel";
+        }
+        return "error";
+    }
 }

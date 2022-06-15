@@ -28,7 +28,7 @@ public class Chef {
     @ManyToOne
     private Nazione nazione;
 
-    @OneToMany(mappedBy = "chef")
+    @OneToMany(mappedBy = "chef", cascade = {CascadeType.ALL})
     private List<Buffet> buffetProposti;
 
 }

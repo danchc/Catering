@@ -28,4 +28,15 @@ public class BuffetService {
     public Optional<Buffet> getBuffetById(Long id) {
         return this.buffetRepository.findById(id);
     }
+
+    @Transactional
+    public boolean eliminaBuffetPerId(Buffet buffet) {
+        try{
+            this.buffetRepository.delete(buffet);
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
+
+    }
 }

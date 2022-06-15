@@ -34,7 +34,11 @@
                     <span class="label">Tipologia:</span>
                     <span class="type-name">Camorra</span>
                 </div>
-                <div class="btn-container">
+                <div th:if="${session.role == 'ADMIN'}" class="btn-container disabled">
+                    <button>Dettagli</button>
+                    <button>Metti nei preferiti</button>
+                </div>
+                <div th:unless="${session.role == 'ADMIN'}" class="btn-container">
                     <button>Dettagli</button>
                     <button>Metti nei preferiti</button>
                 </div>

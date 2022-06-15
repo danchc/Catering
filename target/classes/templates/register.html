@@ -56,8 +56,10 @@
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Password:</div>
-                    <input type="password" th:field="${credentials.password}" id="password" placeholder="Inserisci la tua password">
-                    <i class="fa-solid fa-eye" onClick="show(this)"></i>
+                    <div class="input-container">
+                        <input type="password" th:field="${credentials.password}" placeholder="Inserisci la tua password">
+                        <i class="fa-solid fa-eye" onClick="show(this)"></i>
+                    </div>
                 </div>
             </div>
             <!-- end form container -->

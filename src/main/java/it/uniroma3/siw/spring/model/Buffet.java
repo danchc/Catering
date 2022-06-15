@@ -28,10 +28,10 @@ public class Buffet {
     @Column(nullable = true, length = 64)
     private String photo;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Chef chef;
 
-    @OneToMany(mappedBy = "buffet")
+    @OneToMany(mappedBy = "buffet", cascade = {CascadeType.ALL})
     private List<Piatto> piatti;
 
     @Transient

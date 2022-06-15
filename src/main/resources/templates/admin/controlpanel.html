@@ -17,6 +17,23 @@ home admin
     </div>
 </div>
 
+    <!-- delete modal -->
+    <div id="del-modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="error-container">
+                <div class="error-danger">
+                    ATTENZIONE!
+                </div>
+            </div>
+            <p>Sei sicuro di voler continuare?</p>
+            <div class="btn-container">
+                <a th:href="@{/admin/delete/buffet/{id}(id='_id_')}"><button>Conferma</button></a>
+                <button class="close">Cancella</button>
+            </div>
+        </div>
+    </div>
+
     <!-- control panel section-->
     <div class="cp-flex-container">
         <div class="col-btn-container">
@@ -65,14 +82,18 @@ home admin
                         <ul th:each="piatto : ${buffet.piatti}">
                         <li th:text="${piatto.nome}"></li>
                     </ul></td>
-                    <td class="del"><button class="delete">&times;</button></td>
+                    <td class="del">
+                        <a th:href="@{'/admin/delete/buffet'+'/'+${buffet.id}}">
+                            <button class="delete">&times;</button>
+                        </a>
+                    </td>
                 </tr>
             </table>
             <div class="empty" th:if="${listBuffet?.isEmpty()}">
                 Non ci sono ancora buffet inseriti nel database.
             </div>
 
-            <!-- buffet inseriti -->
+            <!-- chef inseriti -->
             <table class="table-objects">
                 <tr>
                     <th>ID</th>
@@ -86,7 +107,11 @@ home admin
                     <td th:text="${chef.nome}">Nome</td>
                     <td th:text="${chef.cognome}">Cognome</td>
                     <td th:text="${chef.nazione.nome}">nazionalita</td>
-                    <td class="del"><button class="delete">&times;</button></td>
+                    <td class="del">
+                        <a>
+                            <button class="delete">&times;</button>
+                        </a>
+                    </td>
                 </tr>
             </table>
             <div class="empty" th:if="${listChef?.isEmpty()}">
@@ -127,4 +152,32 @@ home admin
     <footer th:replace="fragments/base.html :: footer-base"></footer>
     <!-- -->
 </body>
+<script>
+
+    // Get the modal
+    var modal = document.getElementById("del-modal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementsByClassName("dele")[0];
+
+    // Get the <span> element that closes the modal
+    var closeBtn = document.querySelector(".close");
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
 </html>

@@ -28,7 +28,7 @@ public class Ingrediente {
     @Column(nullable = false)
     private String descrizione;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Piatto> piatti;
 
 

@@ -28,7 +28,7 @@ public class Piatto {
     @ManyToOne
     private Buffet buffet;
 
-    @ManyToMany(mappedBy = "piatti")
+    @ManyToMany(mappedBy = "piatti", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Ingrediente> ingredienti;
 
 }
