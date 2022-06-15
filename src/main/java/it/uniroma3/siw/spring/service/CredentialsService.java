@@ -67,7 +67,7 @@ public class CredentialsService {
             newUser.setEmail(oAuth2User.getAttribute("email"));
             newCredentials.setUser(newUser);
             newCredentials.setUsername(username);
-            newCredentials.setProvider(Provider.GOOGLE);
+            //newCredentials.setProvider(Provider.GOOGLE);
             newCredentials.setRuolo(Credentials.RUOLO_DEFAULT);
 
             credentialsRepo.save(newCredentials);

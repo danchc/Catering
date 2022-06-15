@@ -12,7 +12,7 @@
         </div>
         <!-- -->
         <div class="buffets-banner-content">
-            <h1 id="buffets-banner-title">Buffets</h1>
+            <h1 id="buffets-banner-title">Buffet</h1>
         </div>
     </div>
 
@@ -34,20 +34,15 @@
                     <span class="label">Tipologia:</span>
                     <span class="type-name">Camorra</span>
                 </div>
-                <div th:if="${session.role == 'ADMIN'}" class="btn-container">
-                    <button class="disabled">Dettagli</button>
-                    <button class="disabled">Metti nei preferiti</button>
-                </div>
-                <div th:unless="${session.role == 'ADMIN'}" class="btn-container">
-                    <button>Dettagli</button>
-                    <button>Metti nei preferiti</button>
+                    <div class="btn-container">
+                        <a th:href="@{'/buffet' + '/' + ${buffet?.id}}"><button type="button">Scopri di più</button></a>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- end test container -->
         <div th:each="buffet : ${listBuffet}" class="buffet-info-container">
             <div class="circle-img-container">
-
             </div>
             <div class="buffet-main-title">
                 <span th:text="${buffet.nome}">$Titolo</span></a>
@@ -66,50 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="buffet-info-container">
-            <div class="circle-img-container">
 
-            </div>
-            <div class="buffet-main-title">
-                $Titolo
-            </div>
-            <div class="buffet-info-content">
-
-            </div>
-        </div>
-        <div class="buffet-info-container">
-            <div class="circle-img-container">
-
-            </div>
-            <div class="buffet-main-title">
-                $Titolo
-            </div>
-            <div class="buffet-info-content">
-
-            </div>
-        </div>
-        <div class="buffet-info-container">
-            <div class="circle-img-container">
-
-            </div>
-            <div class="buffet-main-title">
-                $Titolo
-            </div>
-            <div class="buffet-info-content">
-
-            </div>
-        </div>
-        <div class="buffet-info-container">
-            <div class="circle-img-container">
-
-            </div>
-            <div class="buffet-main-title">
-                $Titolo
-            </div>
-            <div class="buffet-info-content">
-
-            </div>
-        </div>
     </div>
 
     <!-- footer -->

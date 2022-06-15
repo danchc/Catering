@@ -1016,6 +1016,14 @@ header#navbar-cp {
     background-color: var(--hover-color);
 }
 
+.table-title {
+    margin-top: 10px;
+    font-size: 2em;
+    display: inline;
+    font-family: var(--main-font);
+    border-bottom: 2px solid var(--main-color);
+}
+
 table {
     margin-top: 20px;
 }
@@ -1082,6 +1090,7 @@ table {
     text-align: center;
     font-size: 2em;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 /* contacts.html */

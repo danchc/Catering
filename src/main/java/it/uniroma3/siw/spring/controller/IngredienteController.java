@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
+import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.model.Ingrediente;
 import it.uniroma3.siw.spring.model.Piatto;
 import it.uniroma3.siw.spring.service.IngredienteService;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -43,7 +45,18 @@ public class IngredienteController {
             this.ingredienteService.save(ingrediente);
             return "redirect:/admin/controlpanel";
         }
-        return "admin/ingredienteForm";
+        return "admin/piattoForm";
+    }
+
+    @GetMapping("/admin/delete/ingrediente/{id}")
+    public String deleteBuffet(Model model,
+                               @PathVariable("id")Long id){
+        Ingrediente ingrediente = this.ingredienteService.getIngredientePerId(id).get();
+
+        if(this.ingredienteService.eliminaIngredientePerId(ingrediente)){
+            return "redirect:/admin/controlpanel";
+        }
+        return "error";
     }
 
 }

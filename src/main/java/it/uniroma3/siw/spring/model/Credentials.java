@@ -21,7 +21,7 @@ public class Credentials {
     public final static String RUOLO_DEFAULT= "DEFAULT";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull

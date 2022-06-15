@@ -67,8 +67,11 @@ public class BuffetController {
 
     @GetMapping("/buffet/{id}")
     public String getBuffet(Model model,
-                            @PathVariable("id") Long id){
+                            @PathVariable("id") Long id, HttpSession session){
         Buffet buffet = this.buffetService.getBuffetById(id).get();
+
+        session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
+
         model.addAttribute("buffet", buffet);
         return "buffet";
     }

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -38,5 +39,16 @@ public class PiattoController {
             return "redirect:/admin/controlpanel";
         }
         return "admin/chefForm";
+    }
+
+    @GetMapping("/admin/delete/piatto/{id}")
+    public String deletePiatto(Model model,
+                               @PathVariable("id")Long id){
+        Piatto piatto = this.piattoService.getPiattoById(id).get();
+
+        if(this.piattoService.eliminaPiattoPerId(piatto)){
+            return "redirect:/admin/controlpanel";
+        }
+        return "error";
     }
 }

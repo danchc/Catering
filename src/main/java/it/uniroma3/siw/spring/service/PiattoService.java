@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PiattoService {
@@ -24,5 +25,18 @@ public class PiattoService {
     @Transactional
     public List<Piatto> getAllPiatti() {
         return (List<Piatto>) this.piattoRepository.findAll();
+    }
+
+    public Optional<Piatto> getPiattoById(Long id){
+        return this.piattoRepository.findById(id);
+    }
+
+    public boolean eliminaPiattoPerId(Piatto piatto) {
+        try {
+            this.piattoRepository.delete(piatto);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }

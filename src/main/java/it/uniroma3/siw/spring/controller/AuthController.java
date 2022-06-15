@@ -4,6 +4,7 @@ import it.uniroma3.siw.spring.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.spring.controller.validator.UserValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.CustomOAuth2User;
+import it.uniroma3.siw.spring.model.Provider;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +63,10 @@ public class AuthController {
                            @Valid @ModelAttribute("credentials") Credentials credentials){
         this.userValidator.validate(user, userBinding);
         this.credentialsValidator.validate(credentials, credentialsBinding);
-        model.addAttribute("credentials", credentials);
         if(!credentialsBinding.hasErrors() && !userBinding.hasErrors()){
             credentials.setUser(user);
+            credentials.setProvider(Provider.LOCAL);
+            credentials.setPhoto(null);
             this.credentialsService.save(credentials);
             return "register-success";
         }

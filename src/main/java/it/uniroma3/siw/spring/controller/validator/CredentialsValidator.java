@@ -34,7 +34,7 @@ public class CredentialsValidator implements Validator {
             errors.reject("required.credentials.username");
         } else if(username.length() < MIN_USERNAME_LENGTH || username.length() > MAX_USERNAME_LENGTH){
             errors.reject("size.credentials.username");
-        } else if(this.credentialsService.getCredentials(username) != null){
+        } else if(this.credentialsService.alreadyExistsUsername(username)){
             errors.reject("duplicato.credentials.username");
         }
 

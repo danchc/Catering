@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChefService {
@@ -21,5 +22,19 @@ public class ChefService {
 
     public List<Chef> getAllChef(){
         return (List<Chef>) this.chefRepository.findAll();
+    }
+
+    public Optional<Chef> getChefById(Long id) {
+        return this.chefRepository.findById(id);
+    }
+
+    @Transactional
+    public boolean eliminaChefPerId(Chef chef) {
+        try{
+            this.chefRepository.delete(chef);
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
     }
 }

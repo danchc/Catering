@@ -37,6 +37,5 @@ public class BuffetService {
         }catch (Exception e) {
             return false;
         }
-
     }
 }

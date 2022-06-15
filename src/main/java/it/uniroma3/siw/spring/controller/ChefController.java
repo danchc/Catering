@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ChefController {
@@ -42,5 +39,16 @@ public class ChefController {
             return "redirect:/admin/controlpanel";
         }
         return "admin/chefForm";
+    }
+
+    @GetMapping("/admin/delete/chef/{id}")
+    public String deleteChef(Model model,
+                               @PathVariable("id")Long id){
+        Chef chef = this.chefService.getChefById(id).get();
+
+        if(this.chefService.eliminaChefPerId(chef)){
+            return "redirect:/admin/controlpanel";
+        }
+        return "error";
     }
 }
