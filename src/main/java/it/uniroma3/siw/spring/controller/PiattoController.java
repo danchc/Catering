@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
+import it.uniroma3.siw.spring.controller.validator.PiattoValidator;
 import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.model.Piatto;
 import it.uniroma3.siw.spring.service.BuffetService;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class PiattoController {
 
@@ -21,6 +24,9 @@ public class PiattoController {
 
     @Autowired
     protected PiattoService piattoService;
+
+    @Autowired
+    protected PiattoValidator piattoValidator;
 
     @GetMapping("/admin/new/piatto")
     public String getPiattoForm(Model model) {
@@ -31,8 +37,9 @@ public class PiattoController {
 
     @PostMapping("/new/piatto")
     public String addNewPiatto(Model model,
-                             @ModelAttribute("piatto") Piatto piatto,
+                             @Valid @ModelAttribute("piatto") Piatto piatto,
                              BindingResult bindingResultPiatto){
+        this.piattoValidator.validate(piatto, bindingResultPiatto);
         //se tutto va bene puoi aggiungere i piatti
         if(!bindingResultPiatto.hasErrors()){
             this.piattoService.save(piatto);

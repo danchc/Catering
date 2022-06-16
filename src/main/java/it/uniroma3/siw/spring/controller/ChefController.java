@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
+import it.uniroma3.siw.spring.controller.validator.ChefValidator;
 import it.uniroma3.siw.spring.model.Buffet;
 import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.service.BuffetService;
@@ -11,14 +12,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 public class ChefController {
 
     @Autowired
-    private ChefService chefService;
+    protected ChefService chefService;
 
     @Autowired
-    private NazioneService nazioneService;
+    protected NazioneService nazioneService;
+
+    @Autowired
+    protected ChefValidator chefValidator;
 
 
     @GetMapping("/admin/new/chef")
@@ -30,14 +36,16 @@ public class ChefController {
 
     @PostMapping("/new/chef")
     public String addNewChef(Model model,
-                             @ModelAttribute("chef")Chef chef,
+                             @Valid @ModelAttribute("chef")Chef chef,
                              BindingResult bindingResultChef){
+        this.chefValidator.validate(chef, bindingResultChef);
         //se tutto va bene puoi aggiungere i piatti
         if(!bindingResultChef.hasErrors()){
             this.chefService.save(chef);
 
             return "redirect:/admin/controlpanel";
         }
+        model.addAttribute("nazioni", this.nazioneService.getAllNations());
         return "admin/chefForm";
     }
 

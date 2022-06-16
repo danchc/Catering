@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
 
+import it.uniroma3.siw.spring.controller.validator.BuffetValidator;
 import it.uniroma3.siw.spring.model.Buffet;
 import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.service.BuffetService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.io.IOException;
 
 
@@ -26,10 +28,13 @@ public class BuffetController {
     protected CredentialsService credentialsService;
 
     @Autowired
-    private BuffetService buffetService;
+    protected BuffetService buffetService;
 
     @Autowired
-    private ChefService chefService;
+    protected ChefService chefService;
+
+    @Autowired
+    protected BuffetValidator buffetValidator;
 
     @GetMapping("/buffets")
     public String getBuffets(HttpSession session, Model model) {
@@ -47,9 +52,11 @@ public class BuffetController {
 
     @PostMapping("/new/buffet")
     private String addNewBuffet(Model model,
-                                @ModelAttribute("buffet") Buffet buffet,
+                                @Valid @ModelAttribute("buffet") Buffet buffet,
                                 BindingResult bindingResultBuffet,
                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
+
+        this.buffetValidator.validate(buffet, bindingResultBuffet);
         if(!bindingResultBuffet.hasErrors()){
             String nomeFile = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
@@ -62,7 +69,8 @@ public class BuffetController {
             FileUploadUtil.saveFile(uploadDir, nomeFile, multipartFile);
             return "redirect:/admin/controlpanel";
         }
-           return "admin/buffetForm";
+        model.addAttribute("listChef", this.chefService.getAllChef());
+        return "admin/buffetForm";
     }
 
     @GetMapping("/buffet/{id}")

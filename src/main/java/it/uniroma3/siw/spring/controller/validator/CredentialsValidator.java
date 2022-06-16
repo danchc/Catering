@@ -1,48 +1,61 @@
 package it.uniroma3.siw.spring.controller.validator;
 
 import it.uniroma3.siw.spring.model.Credentials;
-import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+
+/*
+    Validatore per la classe Credentials.
+    @see Credentials
+ */
 @Component
 public class CredentialsValidator implements Validator {
 
-    public final static Integer MIN_USERNAME_LENGTH = 5;
-    public final static Integer MAX_USERNAME_LENGTH = 15;
-    public final static Integer MIN_PASSWORD_LENGTH = 8;
-
     @Autowired
-    private CredentialsService credentialsService;
+    protected CredentialsService credentialsService;
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return User.class.equals(clazz);
-    }
+    /* regole per lunghezza min/max */
+    final Integer MAX_USERNAME_LENGTH = 15;
+    final Integer MIN_USERNAME_LENGTH = 3;
+    final Integer MIN_PSW_LENGTH = 8;
 
     @Override
     public void validate(Object target, Errors errors) {
+
         Credentials credentials = (Credentials) target;
+        /* variabili immesse dall'utente senza spazi bianchi */
         String username = credentials.getUsername().trim();
         String password = credentials.getPassword().trim();
 
-        /* controllo username */
-        if(username.isEmpty()){
-            errors.reject("required.credentials.username");
-        } else if(username.length() < MIN_USERNAME_LENGTH || username.length() > MAX_USERNAME_LENGTH){
-            errors.reject("size.credentials.username");
-        } else if(this.credentialsService.alreadyExistsUsername(username)){
-            errors.reject("duplicato.credentials.username");
+        /* inizio a verificare la correttezza dei dati */
+
+        /* controlliamo se è duplicato */
+        if(credentialsService.alreadyExistsUsername(username)){
+            errors.reject("credentials.username.duplicato");
         }
 
-        /* controllo password */
-        if(password.isEmpty()){
-            errors.reject("required.credentials.password");
-        } else if(password.length() < MIN_PASSWORD_LENGTH){
-            errors.reject("size.credentials.password");
+        /* se non è duplicato allora controllo lo username se ha qualche errore */
+        if(username.isEmpty()){
+            errors.reject("credentials.username.required");
+        } else if(username.length() > MAX_USERNAME_LENGTH || username.length() < MIN_USERNAME_LENGTH){
+            errors.reject("credentials.username.size");
         }
+
+        /* e infine la password */
+        if(password.isEmpty()){
+            errors.reject("credentials.psw.required");
+        } else if(password.length() < MIN_PSW_LENGTH){
+            errors.reject("credentials.psw.size");
+        }
+
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return Credentials.class.equals(clazz);
     }
 }

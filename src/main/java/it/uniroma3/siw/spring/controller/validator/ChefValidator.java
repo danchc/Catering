@@ -1,7 +1,6 @@
 package it.uniroma3.siw.spring.controller.validator;
 
 import it.uniroma3.siw.spring.model.Chef;
-import it.uniroma3.siw.spring.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -20,11 +19,11 @@ public class ChefValidator implements Validator {
         String cognome = chef.getCognome().trim();
 
         if(nome.isEmpty()) {
-            errors.reject("required.credentials.username");
+            errors.reject("chef.nome.required");
         }
 
         if(cognome.isEmpty()) {
-            errors.reject("required.credentials.username");
+            errors.reject("chef.cognome.required");
         }
     }
 }

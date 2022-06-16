@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
+import it.uniroma3.siw.spring.controller.validator.IngredienteValidator;
 import it.uniroma3.siw.spring.model.Chef;
 import it.uniroma3.siw.spring.model.Ingrediente;
 import it.uniroma3.siw.spring.model.Piatto;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class IngredienteController {
 
@@ -27,6 +30,9 @@ public class IngredienteController {
     @Autowired
     protected NazioneService nazioneService;
 
+    @Autowired
+    protected IngredienteValidator ingredienteValidator;
+
     @GetMapping("/admin/new/ingrediente")
     public String getIngredienteForm(Model model){
         model.addAttribute("ingrediente", new Ingrediente());
@@ -37,19 +43,22 @@ public class IngredienteController {
 
 
     @PostMapping("/new/ingrediente")
-    public String addNewPiatto(Model model,
-                               @ModelAttribute("ingrediente") Ingrediente ingrediente,
+    public String addNewIngrediente(Model model,
+                               @Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,
                                BindingResult bindingResultIngrediente){
+        this.ingredienteValidator.validate(ingrediente, bindingResultIngrediente);
         //se tutto va bene puoi aggiungere gli ingredienti
         if(!bindingResultIngrediente.hasErrors()){
             this.ingredienteService.save(ingrediente);
             return "redirect:/admin/controlpanel";
         }
+        model.addAttribute("piatti", this.piattoService.getAllPiatti());
+        model.addAttribute("nazioni", this.nazioneService.getAllNations());
         return "admin/piattoForm";
     }
 
     @GetMapping("/admin/delete/ingrediente/{id}")
-    public String deleteBuffet(Model model,
+    public String deleteIngrediente(Model model,
                                @PathVariable("id")Long id){
         Ingrediente ingrediente = this.ingredienteService.getIngredientePerId(id).get();
 

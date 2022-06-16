@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller.validator;
 
+import it.uniroma3.siw.spring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -12,24 +14,38 @@ import it.uniroma3.siw.spring.model.User;
 @Component
 public class UserValidator implements Validator {
 
-    final Integer MAX_NAME_LENGTH = 100;
-    final Integer MIN_NAME_LENGTH = 2;
+    @Autowired
+    protected UserService userService;
 
     @Override
     public void validate(Object o, Errors errors) {
+
         User user = (User) o;
         String nome = user.getNome().trim();
         String cognome = user.getCognome().trim();
+        String email = user.getEmail().trim();
+        String telefono = user.getTelefono().trim();
 
-        if (nome.isEmpty())
-            errors.rejectValue("nome", "required");
-        else if (nome.length() < MIN_NAME_LENGTH || nome.length() > MAX_NAME_LENGTH)
-            errors.rejectValue("nome", "size");
 
-        if (cognome.isEmpty())
-            errors.rejectValue("cognome", "required");
-        else if (cognome.length() < MIN_NAME_LENGTH || cognome.length() > MAX_NAME_LENGTH)
-            errors.rejectValue("cognome", "size");
+        //se non inserisco il nome
+        if (nome.isEmpty()) {
+            errors.reject("user.nome.required");
+        }
+
+        //se non inserisco il cognome
+        if (cognome.isEmpty()) {
+            errors.reject("user.cognome.required");
+        }
+
+        //se non inserisco l'email
+        if (email.isEmpty()) {
+            errors.reject("user.email.required");
+
+        }
+        //se la inserisco controllo se è già presente nel sistema
+        else if (this.userService.existsUserByEmail(email)){
+            errors.reject("user.email.duplicato");
+        }
     }
 
     @Override

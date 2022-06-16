@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Date;
 
 /**
@@ -33,6 +34,7 @@ public class User {
     private String cognome;
 
     @NotNull
+    @Email
     private String email;
 
     @NotNull

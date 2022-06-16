@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class AdminController {
 
     @Autowired
-    private BuffetService buffetService;
+    protected BuffetService buffetService;
 
     @Autowired
-    private PiattoService piattoService;
+    protected PiattoService piattoService;
 
     @Autowired
-    private ChefService chefService;
+    protected ChefService chefService;
 
     @Autowired
-    private IngredienteService ingredienteService;
+    protected IngredienteService ingredienteService;
 
     @GetMapping("/admin/controlpanel")
     public String getControlPanel(Model model) {

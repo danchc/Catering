@@ -4,38 +4,48 @@
 <body>
 
 <div class="register-flex-container">
+    <!-- logo -->
     <div class="logo-container">
         <a href="index.html" th:href="@{/}"><img src="/images/r3-logo-v1.png" th:src="@{/images/r3-logo-v1.png}" alt="logo"></a>
-    </div>
-    <div class="container">
+        <!-- <div class="error-container" th:if="${#fields.hasGlobalErrors()}">-->
 
+
+    </div>
+    <!-- form container -->
+    <div class="container">
         <form method="POST" th:action="@{/register}" th:object="${credentials}">
+
+            <!-- riquadro errori -->
+            <div class="error-container" th:if="${#fields.hasAnyErrors()}">
+                <div class="error-danger">
+                    <ul>
+                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                    </ul>
+                </div>
+            </div>
+            <!-- -->
+
             <!-- form title -->
             <div class="form-title">
                 Registrati ora!
             </div>
-            <!-- ####### -->
-            <div class="error-container" th:if="${#fields.hasErrors('*')}">
-                <div class="error-danger">
-                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</p>
-                </div>
-            </div>
+
             <!-- start form container -->
             <div class="form-container">
                 <div class="form-input">
-                    <div class="form-input-label">Nome:</div>
+                    <div class="form-input-label">Nome*:</div>
                     <input type="text" th:field="${user.nome}" placeholder="Inserisci il tuo nome" autofocus="autofocus">
                 </div>
                 <div class="form-input">
-                    <div class="form-input-label">Cognome:</div>
+                    <div class="form-input-label">Cognome*:</div>
                     <input type="text" th:field="${user.cognome}" placeholder="Inserisci il tuo cognome">
                 </div>
                 <div class="form-input">
-                    <div class="form-input-label">Indirizzo e-mail:</div>
+                    <div class="form-input-label">Indirizzo e-mail*:</div>
                     <input type="email" th:field="${user.email}" placeholder="Inserisci la tua e-mail">
                 </div>
                 <div class="form-input">
-                    <div class="form-input-label">Telefono:</div>
+                    <div class="form-input-label">Telefono*:</div>
                     <input type="tel"  th:field="${user.telefono}" placeholder="Inserisci il tuo telefono">
                 </div>
                 <div class="form-input">
@@ -48,16 +58,16 @@
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Data di nascita:</div>
-                    <input type="date" th:field="${user.dataNascita}" required>
+                    <input type="date" th:field="${user.dataNascita}" min="1900-01-01" max="2022-07-14" required style="font-family: Helvetica">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Username:</div>
-                    <input type="text" th:field="${credentials.username}" id="username" placeholder="Inserisci il tuo username">
+                    <input type="text" th:field="*{username}" name="username" id="username" placeholder="Inserisci il tuo username">
                 </div>
                 <div class="form-input">
                     <div class="form-input-label">Password:</div>
                     <div class="input-container">
-                        <input type="password" th:field="${credentials.password}" placeholder="Inserisci la tua password">
+                        <input type="password" th:field="*{password}" name="password" id="password"placeholder="Inserisci la tua password">
                         <i class="fa-solid fa-eye" onClick="show(this)"></i>
                     </div>
                 </div>

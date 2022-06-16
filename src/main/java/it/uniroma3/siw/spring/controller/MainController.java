@@ -20,7 +20,7 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private CredentialsService credentialsService;
+    protected CredentialsService credentialsService;
 
     @GetMapping("/")
     public String index(Model model) {

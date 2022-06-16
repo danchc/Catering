@@ -12,6 +12,15 @@
         <div class="add-flex-container">
             <div class="container">
                 <form method="POST" th:action="@{/new/ingrediente}" th:object="${ingrediente}">
+                    <!-- riquadro errori -->
+                    <div class="error-container" th:if="${#fields.hasAnyErrors()}">
+                        <div class="error-danger">
+                            <ul>
+                                <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- -->
                     <div class="add-form-container">
                         <div class="form-title">
                             Aggiungi un nuovo ingrediente
