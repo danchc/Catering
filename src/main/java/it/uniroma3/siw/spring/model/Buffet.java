@@ -25,7 +25,7 @@ public class Buffet {
     private String descrizione;
 
     //foto del buffet
-    @Column(nullable = true, length = 64)
+    @Column(nullable = true)
     private String photo;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -34,12 +34,5 @@ public class Buffet {
     @OneToMany(mappedBy = "buffet", cascade = {CascadeType.ALL})
     private List<Piatto> piatti;
 
-    @Transient
-    public String getImagePath(){
-        if(this.getPhoto() == null || this.getId() == null){
-            return null;
-        }
-        return "/"+"buffet-photo"+"/"+this.id+"/"+this.photo;
-    }
 
 }

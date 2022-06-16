@@ -4,6 +4,7 @@ package it.uniroma3.siw.spring.controller;
 import it.uniroma3.siw.spring.controller.validator.BuffetValidator;
 import it.uniroma3.siw.spring.model.Buffet;
 import it.uniroma3.siw.spring.model.Chef;
+import it.uniroma3.siw.spring.service.AWSS3Service;
 import it.uniroma3.siw.spring.service.BuffetService;
 import it.uniroma3.siw.spring.service.ChefService;
 import it.uniroma3.siw.spring.service.CredentialsService;
@@ -36,6 +37,9 @@ public class BuffetController {
     @Autowired
     protected BuffetValidator buffetValidator;
 
+    @Autowired
+    protected AWSS3Service awss3Service;
+
     @GetMapping("/buffets")
     public String getBuffets(HttpSession session, Model model) {
         session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
@@ -57,6 +61,7 @@ public class BuffetController {
                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
 
         this.buffetValidator.validate(buffet, bindingResultBuffet);
+        /*
         if(!bindingResultBuffet.hasErrors()){
             String nomeFile = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
@@ -67,6 +72,11 @@ public class BuffetController {
             String uploadDir = "buffet-photo/" + savedBuffet.getId();
 
             FileUploadUtil.saveFile(uploadDir, nomeFile, multipartFile);
+            return "redirect:/admin/controlpanel";
+        }*/
+        if(!bindingResultBuffet.hasErrors()){
+            buffet.setPhoto(awss3Service.uploadFile(multipartFile));
+            this.buffetService.save(buffet);
             return "redirect:/admin/controlpanel";
         }
         model.addAttribute("listChef", this.chefService.getAllChef());

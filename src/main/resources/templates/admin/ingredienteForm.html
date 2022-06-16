@@ -44,9 +44,9 @@
                         </div>
                         <div class="form-input">
                             <span>Piatto:</span>
-                            <select th:field="${ingrediente.piatti}" style="height: 5vh; width: 100%">
-                                <option th:each="piatto : ${piatti}"
-                                        th:value="${piatto}"
+                            <select name="piatto" style="height: 5vh; width: 100%">
+                                <option th:each="piatto : ${listPiatti}"
+                                        th:value="${piatto.id}"
                                         th:text="${piatto.nome}">
                                 </option>
                             </select>

@@ -101,18 +101,18 @@ home admin
                     <th>Nome</th>
                     <th>Descrizione</th>
                     <th>Chef</th>
-                    <th>Piatti</th>
+                    <th>ID Piatti</th>
                     <th></th>
                 </tr>
                 <tr th:each="buffet : ${listBuffet}">
                     <td th:text="${buffet.id}">Id</td>
-                    <td><a th:href="@{${buffet.getImagePath}}" th:text="${buffet.photo}"></a></td>
+                    <td><a th:href="${buffet.photo}">Immagine</a></td>
                     <td th:text="${buffet.nome}">Nome</td>
                     <td th:text="${buffet.descrizione}">Descrizione</td>
                     <td th:text="|${buffet.chef.nome} ${buffet.chef.cognome}|">Chef</td>
                     <td>
                         <ul th:each="piatto : ${buffet.piatti}">
-                            <li th:text="${piatto.nome}"></li>
+                            <li th:text="${piatto.id}"></li>
                         </ul></td>
                     <td class="del">
                         <a th:href="@{'/admin/delete/buffet'+'/'+${buffet.id}}">
@@ -135,7 +135,7 @@ home admin
                     <th>Nome</th>
                     <th>Descrizione</th>
                     <th>Buffet</th>
-                    <th>Ingredienti</th>
+                    <th>ID Ingredienti</th>
                     <th></th>
                 </tr>
                 <tr th:each="piatto : ${listPiatti}">
@@ -144,7 +144,7 @@ home admin
                     <td th:text="${piatto.descrizione}">Descrizione</td>
                     <td th:text="${piatto.buffet.nome}">Buffet</td>
                     <td><ul th:each="ingrediente : ${piatto.ingredienti}">
-                        <li th:text="${ingrediente.nome}"></li>
+                        <li th:text="${ingrediente.id}"></li>
                     </ul></td>
                     <td class="del">
                         <a th:href="@{'/admin/delete/piatto'+'/'+${piatto.id}}">
@@ -168,7 +168,7 @@ home admin
                     <th>Nome</th>
                     <th>Origine</th>
                     <th>Descrizione</th>
-                    <th>Piatti</th>
+                    <th>ID Piatti</th>
                     <th></th>
                 </tr>
                 <tr th:each="ingrediente : ${listIngredienti}">
@@ -177,7 +177,7 @@ home admin
                     <td th:text="${ingrediente.descrizione}">Origine</td>
                     <td th:text="${ingrediente.descrizione}">Descrizione</td>
                     <td><ul th:each="piatto : ${ingredienti.piatti}">
-                        <li th:text="${piatto.nome}"></li>
+                        <li th:text="${piatto.id}"></li>
                     </ul></td>
                     <td class="del">
                         <a th:href="@{'/admin/delete/ingrediente'+'/'+${ingrediente.id}}">

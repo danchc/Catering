@@ -22,7 +22,6 @@ public class BuffetValidator implements Validator {
         //variabili del buffet inserito
         String nome = buffet.getNome().trim();
         String desc = buffet.getDescrizione().trim();
-        String photo = buffet.getPhoto().trim();
 
         //non inserisco il nome
         if (nome.isEmpty()){
@@ -33,10 +32,6 @@ public class BuffetValidator implements Validator {
             errors.reject("buffet.descrizione.required");
         } else if (desc.length() > MAX_LENGTH_DESCRIPTION){
             errors.reject("buffet.descrizione.size");
-        }
-        //non inserisco la foto del buffet
-        if (photo.isEmpty()){
-            errors.reject("buffet.photo.required");
         }
 
     }

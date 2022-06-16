@@ -91,7 +91,7 @@ public class AuthController {
 
     @GetMapping("/logout")
     public String getLoggedOut() {
-        return "index";
+        return "redirect:/index";
     }
 
 }
