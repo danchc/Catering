@@ -14,8 +14,9 @@ Progetto Sistemi Informativi Sul Web A.A. 2021/2022.
 - Spring Boot
 - Spring Security
 - PostgreSQL
-- Oauth
-- AWS
+- OAuth 2 (80% works)
+- AWS S3
+- AWS RDS
 - JPA
 
 *ancora da implementare
