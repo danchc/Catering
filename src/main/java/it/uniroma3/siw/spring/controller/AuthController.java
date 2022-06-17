@@ -80,7 +80,7 @@ public class AuthController {
         if (credentials.getRuolo().equals(Credentials.RUOLO_ADMIN)) {
             model.addAttribute("user", user);
             model.addAttribute("credentials", credentials);
-            return "/admin/home";
+            return "/admin/home.html";
         } else {
             model.addAttribute("user", user);
             model.addAttribute("credentials", credentials);
@@ -91,7 +91,7 @@ public class AuthController {
 
     @GetMapping("/logout")
     public String getLoggedOut() {
-        return "redirect:/index";
+        return "index";
     }
 
 }
