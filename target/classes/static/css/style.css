@@ -255,8 +255,8 @@ body,html {
     height: 12vh;
 }
 
-review-main-title img {
-    width: 400px;
+.review-main-title img {
+    width: 350px;
 }
 
 

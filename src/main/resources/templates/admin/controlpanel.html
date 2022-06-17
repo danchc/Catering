@@ -176,7 +176,7 @@ home admin
                     <td th:text="${ingrediente.nome}">Nome</td>
                     <td th:text="${ingrediente.descrizione}">Origine</td>
                     <td th:text="${ingrediente.descrizione}">Descrizione</td>
-                    <td><ul th:each="piatto : ${ingredienti.piatti}">
+                    <td><ul th:each="piatto : ${ingrediente.piatti}">
                         <li th:text="${piatto.id}"></li>
                     </ul></td>
                     <td class="del">

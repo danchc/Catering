@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -32,6 +33,13 @@ public class Ingrediente {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Piatto> piatti;
+
+    public void addPiatto(Piatto piatto) {
+        if(this.getPiatti() == null){
+            this.piatti = new LinkedList<Piatto>();
+        }
+        this.piatti.add(piatto);
+    }
 
 
 }

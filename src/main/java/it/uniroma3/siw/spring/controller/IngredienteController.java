@@ -47,11 +47,9 @@ public class IngredienteController {
                                BindingResult bindingResultIngrediente,
                                 @RequestParam(name = "piatto") Long id){
         this.ingredienteValidator.validate(ingrediente, bindingResultIngrediente);
-        List<Piatto> listPiatto = new LinkedList<Piatto>();
         //se tutto va bene puoi aggiungere gli ingredienti
         if(!bindingResultIngrediente.hasErrors()){
-            listPiatto.add(this.piattoService.getPiattoById(id).get());
-            ingrediente.setPiatti(listPiatto);
+            ingrediente.addPiatto(this.piattoService.getPiattoById(id).get());
             this.ingredienteService.save(ingrediente);
             return "redirect:/admin/controlpanel";
         }
