@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerfiles(title)"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" media="screen and (min-device-width: 320px) and (max-device-width: 500px)" th:href="@{/css/mobile.css}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/r3-ico.ico" th:href="@{/images/r3-ico.ico}">
     <link th:href="@{/css/style.css}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3bcc05e06e.js" crossorigin="anonymous"></script>
