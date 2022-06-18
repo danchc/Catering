@@ -670,7 +670,7 @@ footer */
 
 .col-2 form input{
     width: 22vw;
-    height: 7vh;
+    height: 40px;
     font-size: 15px;
     border-radius: 5px;
     border: none;
@@ -725,7 +725,7 @@ footer */
 }
 
 .add-flex-container .container{
-    max-width: 70vw;
+    min-width: 70vw;
 }
 
 .add-form-container textarea {
@@ -1374,8 +1374,9 @@ table {
 }
 
 .bf-container-flex .bf-info {
-    width: 50vw;
-    height: 100vh;
+    padding: 20px;
+    width: 800px;
+    height: 750px;
 }
 
 .bf-info .bf-info-title {
@@ -1439,127 +1440,6 @@ table {
 
 .other-info a:hover {
     color: var(--main-color);
-}
-
-/* MOBILE ########################################################################### */
-
-@media only screen and (max-width: 600px) {
-
-    /*
-    * INDEX.HTML #####################################################################
-    */
-    .navbar {
-        height: 155px;
-    }
-
-    .navbar .flex {
-        flex-direction: column;
-    }
-
-    .navbar ul {
-        padding: 10px;
-        background-color: rgba(0,0,0,0.1);
-    }
-
-    .navbar .btn-login {
-        padding: 10px 10px 10px 0px;
-    }
-
-    .banner-container {
-        background-position: center;
-        background-size: cover;
-    }
-
-    .banner-content h1{
-        font-size: 2.4em;
-    }
-
-    .banner-content p {
-        margin-top: 20px;
-        font-size: 1.1em;
-    }
-
-    .banner-content button{
-        font-size: 1em;
-        width: 40vw;
-    }
-
-    .main-info-container {
-        height: auto;
-        flex-direction: column;
-    }
-
-    .main-info-container .desc-container {
-        margin: 20px;
-    }
-
-    .desc-container .img-container {
-        width: 400px;
-    }
-
-    /*
-    * REGISTER-FORM.HTML #####################################################################à
-    */
-
-    .register-flex-container {
-        width: 100vw;
-        flex-direction: column;
-    }
-
-    .logo-container{
-        width: 50vw;
-    }
-
-    .container {
-        border-radius: 50px;
-    }
-
-    .form-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .form-container .form-input {
-        width: 100%;
-    }
-
-    .form-input-label {
-        padding-top: 10px;
-    }
-
-    .form-btn {
-        padding: 15px;
-    }
-
-    .btn-container .form-btn {
-        width: 50vw;
-    }
-
-    .btn-container .form-btn button {
-        width: 100%;
-    }
-
-    /*
-    * LOGIN.HTML ####################################################################
-    */
-
-    .login-flex-container {
-        flex-direction: column;
-    }
-
-    .login-container .form-btn {
-        border-radius: 0;
-        width: 95vw;
-    }
-
-    /*
-    * FOOTER
-    */
-
-    footer {
-        font-size: 0.8em;
-    }
-
 }
 
 /*

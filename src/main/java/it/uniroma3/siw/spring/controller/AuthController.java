@@ -80,7 +80,7 @@ public class AuthController {
         if (credentials.getRuolo().equals(Credentials.RUOLO_ADMIN)) {
             model.addAttribute("user", user);
             model.addAttribute("credentials", credentials);
-            return "admin/home.html";
+            return "admin/home";
         } else {
             model.addAttribute("user", user);
             model.addAttribute("credentials", credentials);
