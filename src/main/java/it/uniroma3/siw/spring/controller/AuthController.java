@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
@@ -73,9 +74,10 @@ public class AuthController {
 
     @GetMapping("/default")
     public String getDefault(Model model,
-                              @ModelAttribute("user") User user) {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
+                             @ModelAttribute("user") User user,
+                             HttpSession session) {
+       Credentials credentials = this.credentialsService.getCredentialsAuthenticated();
+       session.setAttribute("provider", credentials.getProvider());
 
         if (credentials.getRuolo().equals(Credentials.RUOLO_ADMIN)) {
             model.addAttribute("user", user);

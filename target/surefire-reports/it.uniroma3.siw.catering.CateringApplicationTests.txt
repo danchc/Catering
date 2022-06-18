@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.uniroma3.siw.catering.CateringApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.636 s - in it.uniroma3.siw.catering.CateringApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.429 s - in it.uniroma3.siw.catering.CateringApplicationTests

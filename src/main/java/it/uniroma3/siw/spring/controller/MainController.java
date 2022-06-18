@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
@@ -23,7 +24,12 @@ public class MainController {
     protected CredentialsService credentialsService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpServletRequest httpServletRequest) {
+        HttpSession session = httpServletRequest.getSession(false);
+        SecurityContextHolder.clearContext();
+        if(session != null) {
+            session.invalidate();
+        }
         return "index";
     }
 

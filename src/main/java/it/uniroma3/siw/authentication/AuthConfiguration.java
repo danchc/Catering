@@ -3,6 +3,8 @@ package it.uniroma3.siw.authentication;
 import it.uniroma3.siw.spring.model.CustomOAuth2User;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.CustomOAuth2UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.ui.Model;
 
 import javax.servlet.ServletException;
@@ -27,6 +30,7 @@ import javax.sql.DataSource;
 /* VARIABILE ADMIN */
 
 import java.io.IOException;
+import java.util.Map;
 
 import static it.uniroma3.siw.spring.model.Credentials.RUOLO_ADMIN;
 import static it.uniroma3.siw.spring.model.Credentials.RUOLO_DEFAULT;
@@ -36,6 +40,8 @@ import static it.uniroma3.siw.spring.model.Credentials.RUOLO_DEFAULT;
 //@EnableWebSecurity
 @EnableOAuth2Client
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     protected CredentialsService credentialsService;
@@ -64,6 +70,10 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(RUOLO_ADMIN)
                 // tutti gli utenti autenticati possono accere alle pagine rimanenti
                 .anyRequest().authenticated()
+
+                /*
+                    da qui viene gestita l'autenticazione con OAuth o normalmente
+                 */
                 .and().oauth2Login().loginPage("/login")
                 .userInfoEndpoint()
                 .userService(oauthUserService)
@@ -74,27 +84,30 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                                                         Authentication authentication) throws IOException, ServletException {
 
                         CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
+                        Map<String, Object> map = oauthUser.getAttributes();
                         credentialsService.processOAuthPostLogin(oauthUser.getAttribute("name"), oauthUser);
                         response.sendRedirect("/default");
+
                     }
                 })
-                // login paragraph: qui definiamo come è gestita l'autenticazione
-                // usiamo il protocollo formlogin
                 .and()
                 .formLogin()
-                // la pagina di login si trova a /login
-                // NOTA: Spring gestisce il post di login automaticamente
+                //indichiamo la pagina del login
                 .loginPage("/login")
                 // se il login ha successo, si viene rediretti al path /default
                 .defaultSuccessUrl("/default")
                 .failureUrl("/login?error")
 
-                // logout paragraph: qui definiamo il logout
+                /*
+                    si inizia a gestire il logout
+                 */
                 .and().logout()
-                // il logout è attivato con una richiesta GET a "/logout"
-                .logoutUrl("/logout")
-                // in caso di successo, si viene reindirizzati alla /index page
+                // il logout avviene attraverso questa riga, .logoutUrl non invalidava
+                // la sessione correttamente
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                // in caso di successo, si viene reindirizzati alla page iniziale
                 .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true).permitAll();
 

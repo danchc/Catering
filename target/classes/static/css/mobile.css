@@ -45,19 +45,19 @@ body {
     width: 100%;
 }
 
-.banner-content h1{
+.banner-container .banner-content #main-banner-title{
     font-size: 2.3em;
 }
 
-.banner-content p {
+.banner-container .banner-content p {
     margin-top: 20px;
     font-size: 1em;
 }
 
-.banner-content button{
+.banner-container .banner-content button{
     font-size: 1em;
-    height: 40px;
-    width: 120px;
+    height: 5vh;
+    width: 40vw;
 }
 
 /* info */
@@ -67,7 +67,7 @@ body {
 }
 
 .main-info-container .desc-container {
-    height: 650px;
+    height: 70vh;
 }
 
 .desc-container .img-container {
@@ -101,7 +101,7 @@ body {
 }
 
 .review-slideshow-container .reviews img {
-    height: 170px;
+    height: 220px;
 }
 
 
@@ -158,6 +158,12 @@ body {
     width: 95vw;
 }
 
+.login-container .form-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*
 * FOOTER
 */
@@ -212,7 +218,6 @@ footer input {
 }
 
 .bf-container-flex .btn-container {
-    background-color: blue;
     justify-content: space-between;
 }
 
@@ -374,21 +379,20 @@ iframe {
 /*
 * USERPROFILE.HTML ###########################################################################à
 */
-
-.account-flex-container{
-    height: 80vh;
+.account-flex-container {
+    margin-top: 100px;
 }
 
 .account-flex-container .info-container {
-    width: 100%;
-    height: 100%;
+    flex-direction: column;
+    height: 700px;
 }
 
 .account-flex-container .photo-side {
-    width: 300px;
+    width: 500px;
 }
 
-.accountflex-container .info-side {
-    width: 200px;
+.account-flex-container .info-side {
+    width: 500px;
 }
 

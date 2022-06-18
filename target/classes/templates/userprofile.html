@@ -32,6 +32,7 @@
                     </div>
                     <div class="info-field">
                         <span class="info-label">Telefono:</span>
+                        <div th:if="${credentials?.user.telefono == null}" class="info-box"><p>Non è presente nel sistema</p></div>
                         <div class="info-box"><p th:text="${credentials.user.telefono}"></div>
                     </div>
                     <div class="info-field">
