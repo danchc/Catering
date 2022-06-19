@@ -33,15 +33,17 @@
                     <div class="info-field">
                         <span class="info-label">Telefono:</span>
                         <div th:if="${credentials?.user.telefono == null}" class="info-box"><p>Non è presente nel sistema</p></div>
-                        <div class="info-box"><p th:text="${credentials.user.telefono}"></div>
+                        <div th:unless="${credentials?.user.telefono == null}"class="info-box"><p th:text="${credentials.user.telefono}"></div>
                     </div>
                     <div class="info-field">
                         <span class="info-label">Indirizzo:</span>
-                        <div class="info-box"><p th:text="${credentials.user.indirizzo}"></div>
+                        <div th:if="${credentials?.user.indirizzo == null}" class="info-box"><p>Non è presente nel sistema</p></div>
+                        <div th:unless="${credentials?.user.indirizzo == null}" class="info-box"><p th:text="${credentials.user.indirizzo}"></div>
                     </div>
                     <div class="info-field">
                         <span class="info-label">Città:</span>
-                        <div class="info-box"><p th:text="${credentials.user.citta}"></div>
+                        <div th:if="${credentials?.user.citta == null}" class="info-box"><p>Non è presente nel sistema</p></div>
+                        <div th:unless="${credentials?.user.citta == null}" class="info-box"><p th:text="${credentials.user.citta}"></div>
                     </div>
                 </div>
             </div>

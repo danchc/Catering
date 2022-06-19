@@ -83,6 +83,9 @@ home admin
                         <a th:href="@{'/admin/delete/chef'+'/'+${chef.id}}">
                             <button class="delete">&times;</button>
                         </a>
+                        <a th:href="@{'/admin/update/buffet'+'/'+${chef.id}}">
+                            <button class="modify">&ast;</button>
+                        </a>
                     </td>
                 </tr>
             </table>
@@ -118,7 +121,7 @@ home admin
                         <a th:href="@{'/admin/delete/buffet'+'/'+${buffet.id}}">
                             <button class="delete">&times;</button>
                         </a>
-                        <a th:href="@{'/admin/delete/buffet'+'/'+${buffet.id}}">
+                        <a th:href="@{'/admin/update/buffet'+'/'+${buffet.id}}">
                             <button class="modify">&ast;</button>
                         </a>
                     </td>
@@ -153,6 +156,9 @@ home admin
                         <a th:href="@{'/admin/delete/piatto'+'/'+${piatto.id}}">
                             <button class="delete">&times;</button>
                         </a>
+                        <a th:href="@{'/admin/update/buffet'+'/'+${piatto.id}}">
+                            <button class="modify">&ast;</button>
+                        </a>
                     </td>
                 </tr>
             </table>
@@ -185,6 +191,9 @@ home admin
                     <td class="del">
                         <a th:href="@{'/admin/delete/ingrediente'+'/'+${ingrediente.id}}">
                             <button class="delete">&times;</button>
+                        </a>
+                        <a th:href="@{'/admin/update/buffet'+'/'+${ingrediente.id}}">
+                            <button class="modify">&ast;</button>
                         </a>
                     </td>
                 </tr>

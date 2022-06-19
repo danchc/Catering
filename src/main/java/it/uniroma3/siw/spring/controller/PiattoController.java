@@ -2,6 +2,7 @@ package it.uniroma3.siw.spring.controller;
 
 import it.uniroma3.siw.spring.controller.validator.PiattoValidator;
 import it.uniroma3.siw.spring.model.Chef;
+import it.uniroma3.siw.spring.model.Ingrediente;
 import it.uniroma3.siw.spring.model.Piatto;
 import it.uniroma3.siw.spring.service.BuffetService;
 import it.uniroma3.siw.spring.service.PiattoService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 public class PiattoController {
@@ -58,4 +60,32 @@ public class PiattoController {
         }
         return "error";
     }
+
+    @GetMapping("/admin/update/piatto/{id}")
+    public String updatePiatto(Model model,
+                                    @PathVariable("id") Long id){
+        Piatto piatto = this.piattoService.getPiattoById(id).get();
+        model.addAttribute("piatto", piatto);
+        model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
+
+        return "admin/piattoFormUpdate";
+    }
+
+    @PostMapping("/update/piatto")
+    private String updatePiatto(Model model,
+                                     @Valid @ModelAttribute("piatto") Piatto piatto,
+                                     BindingResult bindingResult) throws IOException {
+
+        this.piattoValidator.validate(piatto, bindingResult);
+        /*
+            Normal use
+         */
+        if(!bindingResult.hasErrors()){
+            this.piattoService.save(piatto);
+            return "redirect:/admin/controlpanel";
+        }
+
+        return "admin/piattoFormUpdate";
+    }
+
 }

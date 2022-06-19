@@ -111,4 +111,43 @@ public class BuffetController {
         }
         return "error";
     }
+
+    @GetMapping("/admin/update/buffet/{id}")
+    public String updateBuffet(Model model,
+                               @PathVariable("id") Long id){
+        Buffet buffet = this.buffetService.getBuffetById(id).get();
+        model.addAttribute("buffet", buffet);
+        model.addAttribute("listChef", this.chefService.getAllChef());
+
+        return "admin/buffetFormUpdate";
+    }
+
+    @PostMapping("/update/buffet")
+    private String updatBuffet(Model model,
+                                @Valid @ModelAttribute("buffet") Buffet buffet,
+                                BindingResult bindingResultBuffet,
+                                @RequestParam("image") MultipartFile multipartFile) throws IOException {
+
+        this.buffetValidator.validate(buffet, bindingResultBuffet);
+        /*
+            Normal use
+         */
+        if(!bindingResultBuffet.hasErrors()){
+            String nomeFile = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+            buffet.setPhoto(nomeFile);
+
+            Buffet savedBuffet = this.buffetService.save(buffet);
+
+            String uploadDir = "buffet-photo/" + savedBuffet.getId();
+
+            FileUploadUtil.saveFile(uploadDir, nomeFile, multipartFile);
+            return "redirect:/admin/controlpanel";
+        }
+
+        model.addAttribute("listChef", this.chefService.getAllChef());
+        return "admin/buffetFormUpdate";
+    }
+
+
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Aggiungi uno chef')">
+</head>
+<body>
+    <div class="add-form-bg-container">
+        <!-- navbar -->
+        <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+        <!-- -->
+
+        <!-- form new chef -->
+        <div class="add-flex-container">
+            <div class="container">
+                <form method="POST" th:action="@{/new/chef}" th:object="${chef}" enctype="multipart/form-data">
+                    <!-- riquadro errori -->
+                    <div class="error-container" th:if="${#fields.hasAnyErrors()}">
+                        <div class="error-danger">
+                            <ul>
+                                <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div class="add-form-container">
+                        <div class="form-title">
+                            Aggiungi un nuovo chef
+                        </div>
+                        <div class="form-input">
+                            <span>Nome:</span>
+                            <input type="text" placeholder="Inserisci il nome" th:field="${chef.nome}">
+                        </div>
+                        <div class="form-input">
+                            <span>Cognome:</span>
+                            <input type="text" placeholder="Inserisci il cognome" th:field="${chef.cognome}">
+                        </div>
+                        <div class="form-input">
+                            <span>Nazione:</span>
+                            <select th:field="${chef.nazione}" style="height: 5vh; width: 100%">
+                                <option th:each="nazione : ${nazioni}"
+                                        th:value="${nazione.id}"
+                                        th:text="${nazione.nome}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- end chef form container-->
+
+                    <div class="btn-container">
+                        <div class="form-btn">
+                            <button name="create" id="create">Conferma</button>
+                        </div>
+                        <div class="form-btn">
+                            <button type="reset">Cancella</button>
+                        </div>
+                        <div class="form-btn">
+                            <a th:href="@{/admin/controlpanel}"> <button>Indietro</button></a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- end form new chef -->
+    </div>
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
+    <!-- -->
+</body>
+</html>

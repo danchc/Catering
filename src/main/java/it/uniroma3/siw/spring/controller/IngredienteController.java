@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -69,4 +70,31 @@ public class IngredienteController {
         return "error";
     }
 
+    @GetMapping("/admin/update/ingrediente/{id}")
+    public String updateIngrediente(Model model,
+                               @PathVariable("id") Long id){
+        Ingrediente ingrediente = this.ingredienteService.getIngredientePerId(id).get();
+        model.addAttribute("ingrediente", ingrediente);
+        model.addAttribute("listPiatti", this.piattoService.getAllPiatti());
+        model.addAttribute("nazioni", this.nazioneService.getAllNations());
+
+        return "admin/ingredienteFormUpdate";
+    }
+
+    @PostMapping("/update/ingrediente")
+    private String updateIngrediente(Model model,
+                               @Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,
+                               BindingResult bindingResult) throws IOException {
+
+        this.ingredienteValidator.validate(ingrediente, bindingResult);
+        /*
+            Normal use
+         */
+        if(!bindingResult.hasErrors()){
+            this.ingredienteService.save(ingrediente);
+            return "redirect:/admin/controlpanel";
+        }
+
+        return "admin/ingredienteFormUpdate";
+    }
 }

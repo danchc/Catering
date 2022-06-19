@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
+</head>
+<body>
+<div class="add-form-bg-container">
+    <!-- navbar -->
+    <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+    <!-- -->
+
+    <!-- form new buffet -->
+    <div class="add-flex-container">
+        <div class="container">
+            <form method="POST" th:action="@{/new/piatto}" th:object="${piatto}">
+                <!-- riquadro errori -->
+                <div class="error-container" th:if="${#fields.hasAnyErrors()}">
+                    <div class="error-danger">
+                        <ul>
+                            <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                        </ul>
+                    </div>
+                </div>
+                <!-- -->
+                <div class="add-form-container">
+                    <div class="form-title">
+                        Aggiungi un nuovo piatto
+                    </div>
+                    <div class="form-input">
+                        <span>Nome:</span>
+                        <input type="text" th:field="*{nome}" placeholder="Inserisci il nome">
+                    </div>
+                    <div class="form-input">
+                        <span>Descrizione:</span>
+                        <textarea class="desc" th:field="*{descrizione}" placeholder="Inserisci una descrizione"></textarea>
+                    </div>
+                    <div class="form-input">
+                        <span>Buffet:</span>
+                        <select th:field="${piatto.buffet}" style="height: 5vh; width: 100%">
+                            <option th:each="buffet : ${listBuffet}"
+                                    th:value="${buffet.id}"
+                                    th:text="${buffet.id + ' || ' + buffet.nome + ' || ' + buffet.chef.nome + ' ' + buffet.chef.cognome}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- end buffet form container-->
+                <div class="btn-container">
+                    <div class="form-btn">
+                        <button name="create" id="create">Avanti</button>
+                    </div>
+                    <div class="form-btn">
+                        <button type="reset">Cancella</button>
+                    </div>
+                    <div class="form-btn">
+                        <a th:href="@{/admin/controlpanel}"> <button>Indietro</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end form new buffet -->
+
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
+    <!-- -->
+</body>
+</html>

@@ -1143,7 +1143,6 @@ table {
     width: 100%;
     min-height: 50vh;
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../images/contact-bg.jpg);
-    background-position-y: -24vh;
     background-size: cover;
     background-repeat: no-repeat;
 }

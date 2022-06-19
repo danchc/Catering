@@ -296,9 +296,13 @@ footer input {
     background-color: white;
 }
 
+.header-buffets-container .buffets-banner-content {
+    margin-top: 80px;
+}
+
 /* buffet card img */
 .buffet-collection-container .buffet-info-container .circle-img-container {
-    height: 180px;
+    height: 155px;
 }
 
 .buffet-info-container .buffet-info-content {
@@ -314,8 +318,11 @@ footer input {
 */
 
 .header-contacts-container {
-    width: 100%;
-    background-position-y: 0;
+    height: 60px;
+}
+
+.header-contacts-container .contact-banner-content {
+    margin-top: 80px;
 }
 
 #contact-banner-title {
@@ -347,7 +354,7 @@ footer input {
 
 .contact-section .contact-map-container {
     width: 450px;
-    height: 200px;
+    min-height: 200px;
     margin-top: 200px;
 }
 
