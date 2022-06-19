@@ -127,19 +127,21 @@ body {
 }
 
 .form-container .form-input {
-    width: 400px;
+    min-width: 400px;
+}
+
+.btn-container .form-btn button {
+    min-width: 30vw;
 }
 
 .form-input-label {
     padding-top: 10px;
 }
 
-.form-btn {
-    padding: 15px;
-}
 
 .btn-container .form-btn {
-    width: 50vw;
+    width: 300px;
+    padding: 15px;
 }
 
 .btn-container .form-btn button {
@@ -230,6 +232,15 @@ footer input {
 * CONTROLPANEL.HTML #######################################################################
 */
 
+.delete {
+    min-width: 4vw;
+}
+
+#cp-banner-title {
+    font-size: 2em;
+    min-height: 40vh;
+}
+
 .cp-flex-container {
     width: 100%;
 }
@@ -246,7 +257,7 @@ footer input {
 }
 
 .cp-flex-container .col-btn-container .cp-btn button {
-    width: 300px;
+    min-width: 300px;
     margin: 10px;
 }
 
@@ -266,13 +277,16 @@ footer input {
     background-color: transparent;
     text-align: center;
     width: 100%;
-    font-size: 15px;
+    font-size: 1em;
 }
 
 /*
 * BUFFETS.HTML ###########################################################################à
 */
 
+#buffets-banner-title {
+    max-height: 50vh;
+}
 
 /*buffet card */
 .buffet-collection-container .buffet-info-container {
@@ -304,21 +318,25 @@ footer input {
     background-position-y: 0;
 }
 
+#contact-banner-title {
+    max-height: 50vh;
+}
+
 .contact-section {
-    height: 950px;
+    min-height: 900px;
     flex-direction: column;
 }
 
 .contact-section .contact-form-container {
-    width: 400px;
+    min-width: 400px;
 }
 
 .contact-section .contact-form-container input {
-    width: 100%;
+    min-width: 100%;
 }
 
 .contact-section .contact-form-container textarea {
-    width: 100%;
+    min-width: 100%;
 }
 
 .contact-section .contact-form-container .form-input {
@@ -330,7 +348,7 @@ footer input {
 .contact-section .contact-map-container {
     width: 450px;
     height: 200px;
-    margin-top: 20px;
+    margin-top: 200px;
 }
 
 iframe {
@@ -365,7 +383,7 @@ iframe {
 }
 
 .add-flex-container .container .btn-container .form-btn button {
-    width: 120px;
+    min-width: 120px;
 }
 
 .add-flex-container .container .add-form-container .form-input {
@@ -375,6 +393,7 @@ iframe {
 .add-flex-container .container .add-form-container .form-input input, select {
     width: 100%;
 }
+
 
 /*
 * USERPROFILE.HTML ###########################################################################à

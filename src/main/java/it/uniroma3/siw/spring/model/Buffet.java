@@ -35,4 +35,12 @@ public class Buffet {
     private List<Piatto> piatti;
 
 
+    @Transient
+    public String getPhotoPath(){
+        if(this.getPhoto() == null || this.getId() == null){
+            return null;
+        }
+        return "/"+"buffet-photo"+"/"+this.id+"/"+this.photo;
+    }
+
 }

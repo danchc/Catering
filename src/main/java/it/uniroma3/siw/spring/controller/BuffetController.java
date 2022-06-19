@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.Objects;
 
 
 @Controller
@@ -62,8 +63,10 @@ public class BuffetController {
 
         this.buffetValidator.validate(buffet, bindingResultBuffet);
         /*
+            Normal use
+         */
         if(!bindingResultBuffet.hasErrors()){
-            String nomeFile = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            String nomeFile = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 
             buffet.setPhoto(nomeFile);
 
@@ -73,12 +76,16 @@ public class BuffetController {
 
             FileUploadUtil.saveFile(uploadDir, nomeFile, multipartFile);
             return "redirect:/admin/controlpanel";
-        }*/
+        }
+
+        /*
+        * FOR S3
+
         if(!bindingResultBuffet.hasErrors()){
             buffet.setPhoto(awss3Service.uploadFile(multipartFile));
             this.buffetService.save(buffet);
             return "redirect:/admin/controlpanel";
-        }
+        }*/
         model.addAttribute("listChef", this.chefService.getAllChef());
         return "admin/buffetForm";
     }
