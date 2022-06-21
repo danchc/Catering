@@ -5,6 +5,8 @@ C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\config
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\service\FileService.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\MainController.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\validator\BuffetValidator.java
+C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\service\TipologiaService.java
+C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\UserController.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\repository\UserRepository.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\repository\BuffetRepository.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\validator\IngredienteValidator.java
@@ -12,6 +14,7 @@ C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\model\Provider.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\CateringApplication.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\AdminController.java
+C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\model\Tipologia.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\upload\FileUploadUtil.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\ChefController.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\authentication\AuthConfiguration.java
@@ -34,6 +37,7 @@ C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\model\Credentials.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\repository\CredentialsRepository.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\validator\PiattoValidator.java
+C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\repository\TipologiaRepository.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\service\AWSS3Service.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\controller\validator\UserValidator.java
 C:\Users\erdat\OneDrive\Desktop\VS\Catering\src\main\java\it\uniroma3\siw\spring\model\Buffet.java

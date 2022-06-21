@@ -1,10 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
 import it.uniroma3.siw.spring.model.Buffet;
-import it.uniroma3.siw.spring.service.BuffetService;
-import it.uniroma3.siw.spring.service.ChefService;
-import it.uniroma3.siw.spring.service.IngredienteService;
-import it.uniroma3.siw.spring.service.PiattoService;
+import it.uniroma3.siw.spring.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,12 +23,16 @@ public class AdminController {
     @Autowired
     protected IngredienteService ingredienteService;
 
+    @Autowired
+    protected CredentialsService credentialsService;
+
     @GetMapping("/admin/controlpanel")
     public String getControlPanel(Model model) {
         model.addAttribute("listChef", this.chefService.getAllChef());
         model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
         model.addAttribute("listPiatti", this.piattoService.getAllPiatti());
         model.addAttribute("listIngredienti", this.ingredienteService.getAllIngredients());
+        model.addAttribute("listUser", this.credentialsService.findAll());
         return "admin/controlpanel";
     }
 

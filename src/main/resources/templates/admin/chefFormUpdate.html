@@ -25,6 +25,7 @@
                         <div class="form-title">
                             Aggiungi un nuovo chef
                         </div>
+                        <input type="hidden" th:field="*{id}" />
                         <div class="form-input">
                             <span>Nome:</span>
                             <input type="text" placeholder="Inserisci il nome" th:field="${chef.nome}">

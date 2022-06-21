@@ -83,7 +83,7 @@ home admin
                         <a th:href="@{'/admin/delete/chef'+'/'+${chef.id}}">
                             <button class="delete">&times;</button>
                         </a>
-                        <a th:href="@{'/admin/update/buffet'+'/'+${chef.id}}">
+                        <a th:href="@{'/admin/update/chef'+'/'+${chef.id}}">
                             <button class="modify">&ast;</button>
                         </a>
                     </td>
@@ -104,15 +104,17 @@ home admin
                     <th>Nome</th>
                     <th>Descrizione</th>
                     <th>Chef</th>
+                    <th>Tipologia</th>
                     <th>ID Piatti</th>
                     <th></th>
                 </tr>
                 <tr th:each="buffet : ${listBuffet}">
                     <td th:text="${buffet.id}">Id</td>
-                    <td><a th:href="${buffet.photo}">Immagine</a></td>
+                    <td><a th:href="${buffet.getPhotoPath()}">Immagine</a></td>
                     <td th:text="${buffet.nome}">Nome</td>
                     <td th:text="${buffet.descrizione}">Descrizione</td>
                     <td th:text="|${buffet.chef.nome} ${buffet.chef.cognome}|">Chef</td>
+                    <td th:text="${buffet.tipologia.nome}"></td>
                     <td>
                         <ul th:each="piatto : ${buffet.piatti}">
                             <li th:text="${piatto.id}"></li>
@@ -148,15 +150,17 @@ home admin
                     <td th:text="${piatto.id}">Id</td>
                     <td th:text="${piatto.nome}">Nome</td>
                     <td th:text="${piatto.descrizione}">Descrizione</td>
-                    <td th:text="${piatto.buffet.nome}">Buffet</td>
-                    <td><ul th:each="ingrediente : ${piatto.ingredienti}">
-                        <li th:text="${ingrediente.id}"></li>
-                    </ul></td>
+                    <td th:text="${piatto.buffet.id}">Buffet</td>
+                    <td>
+                        <ul th:each="ingrediente : ${piatto.ingredienti}">
+                            <li th:text="${ingrediente.id}"></li>
+                        </ul>
+                    </td>
                     <td class="del">
                         <a th:href="@{'/admin/delete/piatto'+'/'+${piatto.id}}">
                             <button class="delete">&times;</button>
                         </a>
-                        <a th:href="@{'/admin/update/buffet'+'/'+${piatto.id}}">
+                        <a th:href="@{'/admin/update/piatto'+'/'+${piatto.id}}">
                             <button class="modify">&ast;</button>
                         </a>
                     </td>
@@ -183,7 +187,7 @@ home admin
                 <tr th:each="ingrediente : ${listIngredienti}">
                     <td th:text="${ingrediente.id}">Id</td>
                     <td th:text="${ingrediente.nome}">Nome</td>
-                    <td th:text="${ingrediente.descrizione}">Origine</td>
+                    <td th:text="${ingrediente.origine.nome}">Origine</td>
                     <td th:text="${ingrediente.descrizione}">Descrizione</td>
                     <td><ul th:each="piatto : ${ingrediente.piatti}">
                         <li th:text="${piatto.id}"></li>
@@ -192,7 +196,7 @@ home admin
                         <a th:href="@{'/admin/delete/ingrediente'+'/'+${ingrediente.id}}">
                             <button class="delete">&times;</button>
                         </a>
-                        <a th:href="@{'/admin/update/buffet'+'/'+${ingrediente.id}}">
+                        <a th:href="@{'/admin/update/ingrediente'+'/'+${ingrediente.id}}">
                             <button class="modify">&ast;</button>
                         </a>
                     </td>
@@ -202,11 +206,42 @@ home admin
                 Non ci sono ancora ingredienti inseriti nel database.
             </div>
 
+            <!-- utenti -->
+            <div class="table-title">
+                Utenti:
+            </div>
+            <!-- utenti inseriti -->
+            <table class="table-objects">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>E-mail</th>
+                    <th>Username</th>
+                    <th>Preferiti</th>
+                    <th></th>
+                </tr>
+                <tr th:each="utente : ${listUser}">
+                    <td th:text="${utente.id}">Id</td>
+                    <td th:text="${utente.user.nome}">Nome</td>
+                    <td th:text="${utente.user.cognome}">Cognome</td>
+                    <td th:text="${utente.user.email}">E-mail</td>
+                    <td th:text="${utente.username}">Username</td>
+                    <td>
+                        <ul th:each="preferito : ${utente.user.preferiti}">
+                            <li th:text="${preferito.nome}"></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <div class="empty" th:if="${listUser?.isEmpty()}">
+                Non ci sono ancora utenti inseriti nel database.
+            </div>
+            <!-- utenti -->
+
         </div>
     </div>
     <!-- end control panel section-->
-
-
 
     <!-- footer -->
     <footer th:replace="fragments/base.html :: footer-base"></footer>

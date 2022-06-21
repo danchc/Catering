@@ -1026,7 +1026,7 @@ header#navbar-cp {
     cursor: pointer;
 }
 
-.cp-btn button.disabled{
+button.disabled{
     background-color: #888888;
     color: white;
     font-size: 0.9em;
@@ -1036,6 +1036,8 @@ header#navbar-cp {
     outline: none;
     border: none;
 }
+
+
 
 .col-btn-container .cp-btn button.active:hover {
     background-color: var(--hover-color);

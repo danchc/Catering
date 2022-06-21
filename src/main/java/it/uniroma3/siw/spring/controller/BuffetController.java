@@ -4,10 +4,7 @@ package it.uniroma3.siw.spring.controller;
 import it.uniroma3.siw.spring.controller.validator.BuffetValidator;
 import it.uniroma3.siw.spring.model.Buffet;
 import it.uniroma3.siw.spring.model.Chef;
-import it.uniroma3.siw.spring.service.AWSS3Service;
-import it.uniroma3.siw.spring.service.BuffetService;
-import it.uniroma3.siw.spring.service.ChefService;
-import it.uniroma3.siw.spring.service.CredentialsService;
+import it.uniroma3.siw.spring.service.*;
 import it.uniroma3.siw.upload.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +36,9 @@ public class BuffetController {
     protected BuffetValidator buffetValidator;
 
     @Autowired
+    protected TipologiaService tipologiaService;
+
+    @Autowired
     protected AWSS3Service awss3Service;
 
     @GetMapping("/buffets")
@@ -52,6 +52,7 @@ public class BuffetController {
     public String getBuffetForm(Model model) {
         model.addAttribute("buffet", new Buffet());
         model.addAttribute("listChef", this.chefService.getAllChef());
+        model.addAttribute("listTipologia", this.tipologiaService.getAllTipologie());
         return "admin/buffetForm";
     }
 
@@ -118,12 +119,12 @@ public class BuffetController {
         Buffet buffet = this.buffetService.getBuffetById(id).get();
         model.addAttribute("buffet", buffet);
         model.addAttribute("listChef", this.chefService.getAllChef());
-
+        model.addAttribute("listTipologia", this.tipologiaService.getAllTipologie());
         return "admin/buffetFormUpdate";
     }
 
     @PostMapping("/update/buffet")
-    private String updatBuffet(Model model,
+    private String updateBuffet(Model model,
                                 @Valid @ModelAttribute("buffet") Buffet buffet,
                                 BindingResult bindingResultBuffet,
                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Buffets')"></head>
+<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Buffet')"></head>
 <body>
     <div class="header-buffets-container">
         <!-- navbar -->
@@ -13,6 +13,7 @@
         <!-- -->
         <div class="buffets-banner-content">
             <h1 th:text="${buffet.nome}"id="buffets-banner-title"></h1>
+            <input type="hidden" th:field="${buffet.id}">
         </div>
     </div>
 
@@ -37,13 +38,23 @@
             <div class="bf-info-description">
                 <span th:text="${buffet.descrizione}">Descrizione del buffet</span>
             </div>
+
             <div class="bf-other-info">
+                <div class="bf-chef">
+                    <div class="other-info chef">
+                        <span class="title">Tipologia:</span>
+                        <a href="">
+                            <span class="desc" th:text="${buffet.tipologia.nome}">Tipologia</span>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- riquadro chef -->
                 <div class="bf-chef">
                     <div class="other-info chef">
                         <span class="title">Chef: </span>
                         <a href="">
-                            <span class="desc" th:text="${buffet.chef.nome}">
+                            <span class="desc" th:text="${buffet.chef.nome + ' ' + buffet.chef.cognome}">
                                 Chef del buffet
                             </span>
                         </a>
@@ -62,16 +73,22 @@
                 </div>
                 <!-- end riquadro piatti -->
             </div>
+
+
             <div th:if="${session.role == 'ADMIN'}" class="btn-container">
-                <a href=""><button type="button" class="disabled">Metti nei preferiti</button></a>
+                <button class="disabled" style="background-color: #888888;">Metti nei preferiti</button>
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
-            <div th:unless="${session.role == 'ADMIN'}" class="btn-container">
-                <a href=""><button type="button">Metti nei preferiti</button></a>
+            <div th:if="${session.role == 'DEFAULT'}" class="btn-container">
+                <form method="POST" th:action="@{/newPreferito}" th:object="${buffet}">
+                    <input type="hidden" th:field="*{id}">
+                    <button type="submit" class="active">Metti nei preferiti</button>
+                </form>
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
         </div>
         <!-- end info container-->
+
     </div>
     <!-- end buffet container-->
 

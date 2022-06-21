@@ -46,6 +46,15 @@
                                 </option>
                             </select>
                         </div>
+                        <div class="form-input">
+                            <span>Tipologia:</span>
+                            <select th:field="${buffet.tipologia}" style="height: 5vh; width: 100%">
+                                <option th:each="tipologia : ${listTipologia}"
+                                        th:value="${tipologia.id}"
+                                        th:text="${tipologia.nome}">
+                                </option>
+                            </select>
+                        </div>
                     </div>
                     <!-- end buffet form container-->
 

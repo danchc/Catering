@@ -55,13 +55,13 @@
                 <!-- chef buffet -->
                 <div class="buffet-chef-container">
                     <span class="label">Chef:</span>
-                    <span class="chef-name" th:text="${buffet.chef.nome}">Ciro Esposito</span>
+                    <span class="chef-name" th:text="${buffet.chef.nome + ' ' + buffet.chef.cognome}">Nome chef</span>
                 </div>
 
                 <!-- tipo buffet -->
                 <div class="buffet-type-container">
                     <span class="label">Tipologia:</span>
-                    <span class="type-name">Camorra</span>
+                    <span class="type-name" th:text="${buffet.tipologia.nome}">Tipologia</span>
                 </div>
 
                 <!-- bottone -->

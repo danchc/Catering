@@ -25,6 +25,7 @@
                         <div class="form-title">
                             Aggiungi un nuovo buffet
                         </div>
+                        <input type="hidden" th:field="*{id}" />
                         <div class="form-input">
                             <span>Nome:</span>
                             <input type="text" placeholder="Inserisci il nome" th:field="${buffet.nome}">
@@ -43,6 +44,15 @@
                                 <option th:each="chef : ${listChef}"
                                         th:value="${chef.id}"
                                         th:text="${chef.id + ' || ' + chef.nome + ' ' + chef.cognome}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-input">
+                            <span>Tipologia:</span>
+                            <select th:field="${buffet.tipologia}" style="height: 5vh; width: 100%">
+                                <option th:each="tipo : ${listTipologia}"
+                                        th:value="${tipo.id}"
+                                        th:text="${tipo.nome}">
                                 </option>
                             </select>
                         </div>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -20,5 +21,9 @@ public class UserService {
 
     public boolean existsUserByEmail(String email){
         return this.userRepository.existsByEmail(email);
+    }
+
+    public List<User> findAllUsers() {
+        return (List<User>) this.userRepository.findAll();
     }
 }

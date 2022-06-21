@@ -7,6 +7,8 @@ import it.uniroma3.siw.spring.service.BuffetService;
 import it.uniroma3.siw.spring.service.ChefService;
 import it.uniroma3.siw.spring.service.NazioneService;
 import it.uniroma3.siw.upload.FileUploadUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,7 @@ public class ChefController {
     @Autowired
     protected ChefValidator chefValidator;
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/admin/new/chef")
     public String getChefForm(Model model){
@@ -68,16 +71,16 @@ public class ChefController {
     @GetMapping("/admin/update/chef/{id}")
     public String updateChef(Model model,
                                @PathVariable("id") Long id){
+        logger.debug("### updating chef... ###");
         Chef chef = this.chefService.getChefById(id).get();
         model.addAttribute("chef", chef);
         model.addAttribute("nazioni", this.nazioneService.getAllNations());
-
         return "admin/chefFormUpdate";
     }
 
     @PostMapping("/update/chef")
     private String updateChef(Model model,
-                               @Valid @ModelAttribute("chef") Chef chef,
+                               @ModelAttribute("chef") Chef chef,
                                BindingResult bindingResultChef) throws IOException {
 
         this.chefValidator.validate(chef, bindingResultChef);

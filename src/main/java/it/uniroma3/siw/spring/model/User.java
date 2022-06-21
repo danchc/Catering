@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -54,4 +55,11 @@ public class User {
     @OneToMany
     private List<Buffet> preferiti;
 
+
+    public void addPreferito(Buffet buffet) {
+        if(this.getPreferiti() == null){
+            this.preferiti = new LinkedList<Buffet>();
+        }
+        this.preferiti.add(buffet);
+    }
 }

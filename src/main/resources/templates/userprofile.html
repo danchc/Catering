@@ -45,6 +45,15 @@
                         <div th:if="${credentials?.user.citta == null}" class="info-box"><p>Non è presente nel sistema</p></div>
                         <div th:unless="${credentials?.user.citta == null}" class="info-box"><p th:text="${credentials.user.citta}"></div>
                     </div>
+                    <div class="info-field">
+                        <span class="info-label">Preferiti:</span>
+                        <div th:if="${preferiti?.isEmpty()}" class="info-box"><p>Non ci sono preferiti</p></div>
+                        <div th:unless="${preferiti?.isEmpty()}" class="info-box">
+                            <div th:each="preferito : ${preferiti}">
+                                <span th:text="${preferito.nome}"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
