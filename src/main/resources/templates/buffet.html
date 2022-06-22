@@ -80,10 +80,9 @@
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
             <div th:if="${session.role == 'DEFAULT'}" class="btn-container">
-                <form method="POST" th:action="@{/newPreferito}" th:object="${buffet}">
-                    <input type="hidden" th:field="*{id}">
-                    <button type="submit" class="active">Metti nei preferiti</button>
-                </form>
+                 <a th:href="@{'/newPreferito'+'/'+${buffet.id}}">
+                     <button type="submit" class="active">Metti nei preferiti</button>
+                 </a>
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
         </div>

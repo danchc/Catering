@@ -1268,6 +1268,15 @@ table {
 
 /* buffets.html */
 
+.empty-list-buffet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--main-title-font);
+    min-height: 500px;
+    font-size: 1.6em;
+}
+
 .header-buffets-container {
     width: 100%;
     min-height: 50vh;

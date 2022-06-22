@@ -36,7 +36,7 @@ public class Ingrediente {
 
     public void addPiatto(Piatto piatto) {
         if(this.getPiatti() == null){
-            this.piatti = new LinkedList<Piatto>();
+            this.piatti = new LinkedList<>();
         }
         this.piatti.add(piatto);
     }

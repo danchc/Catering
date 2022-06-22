@@ -16,31 +16,15 @@
         </div>
     </div>
 
-    <div class="buffet-collection-container">
-        <!-- test container -->
-        <div class="buffet-info-container">
-            <div class="circle-img-container">
-
-            </div>
-            <div class="buffet-main-title">
-                $Titolo
-            </div>
-            <div class="buffet-info-content">
-                <div class="buffet-chef-container">
-                    <span class="label">Chef:</span>
-                    <span class="chef-name">Ciro Esposito</span>
-                </div>
-                <div class="buffet-type-container">
-                    <span class="label">Tipologia:</span>
-                    <span class="type-name">Camorra</span>
-                </div>
-                <div class="btn-container">
-                    <a th:href="@{'/buffet' + '/' + ${buffet?.id}}"><button type="button">Scopri di più</button></a>
-                </div>
-            </div>
+    <!-- if empty -->
+    <div class="buffet-collection-container" th:if="${listBuffet.isEmpty()}">
+        <div class="empty-list-buffet">
+            <h1>Nessun buffet disponibile.</h1>
         </div>
-        <!-- end test container -->
+    </div>
+    <!-- if empty -->
 
+    <div class="buffet-collection-container" th:unless="${listBuffet.isEmpty()}">
         <div th:each="buffet : ${listBuffet}" class="buffet-info-container">
             <!-- immagine buffet -->
             <div class="circle-img-container"></div>
@@ -70,9 +54,7 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
-
     <footer th:replace="fragments/base.html :: footer-base"></footer>
     <!-- -->
 </body>

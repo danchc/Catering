@@ -26,6 +26,12 @@ public class AdminController {
     @Autowired
     protected CredentialsService credentialsService;
 
+    /**
+     * Questo metodo gestisce il reindirizzamento alla pagina del pannello di controllo dell'amministratore
+     * della pagina.
+     * @param model il modello della pagina, può contenere attributi
+     * @return admin/controlpanel, il pannello di controllo
+     */
     @GetMapping("/admin/controlpanel")
     public String getControlPanel(Model model) {
         model.addAttribute("listChef", this.chefService.getAllChef());

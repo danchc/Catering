@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CredentialsService {
@@ -67,6 +64,7 @@ public class CredentialsService {
             newUser.setEmail(oAuth2User.getAttribute("email"));
             newCredentials.setUser(newUser);
             newCredentials.setUsername(oAuth2User.getUsername());
+            newCredentials.setPassword(UUID.randomUUID().toString());
             newCredentials.setProvider(Provider.GOOGLE);
             newCredentials.setRuolo(Credentials.RUOLO_DEFAULT);
 

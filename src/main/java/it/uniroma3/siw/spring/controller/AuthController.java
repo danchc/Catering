@@ -24,8 +24,6 @@ import javax.validation.Valid;
 public class AuthController {
 
     //injection
-
-
     @Autowired
     protected CredentialsService credentialsService;
 
@@ -47,9 +45,16 @@ public class AuthController {
         return "register";
     }
 
+    /**
+     * Metodo per salvare il nuovo utente ed inviare dati al server.
+     *
+     * @param user oggetto utente
+     * @param credentials oggetto credenziali
+     * @param bindingResult necessario per inglobare errori
+     * @return
+     */
     @PostMapping("/register")
-    public String register(Model model,
-                           @Valid @ModelAttribute("user") User user,
+    public String register(@Valid @ModelAttribute("user") User user,
                            @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult bindingResult){
 
 
@@ -67,11 +72,23 @@ public class AuthController {
     }
 
 
+    /**
+     * Metodo per ottenere la pagina del login.
+     * @return la pagina del login -> login.html
+     */
     @GetMapping("/login")
     public String getLoginForm() {
         return "login";
     }
 
+    /**
+     * Questo metodo è necessario per reindirizzare l'utente appena loggato alla pagina di default.
+     *
+     * @param model il modello della pagina corrente, può contenere attributi
+     * @param user l'utente appena loggato
+     * @param session la sessione corrente
+     * @return
+     */
     @GetMapping("/default")
     public String getDefault(Model model,
                              @ModelAttribute("user") User user,
@@ -91,6 +108,10 @@ public class AuthController {
 
     }
 
+    /**
+     * Questo metodo gestisce il logout dell'utente loggato.
+     * @return index.html
+     */
     @GetMapping("/logout")
     public String getLoggedOut() {
         return "index";

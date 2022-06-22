@@ -35,6 +35,12 @@ public class ChefController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * Questo metodo gestisce il rendirizzamento alla pagina dove è possibile inserire un nuovo
+     * chef.
+     * @param model il modello della pagina, può contenere attributi
+     * @return il form per inserire un nuovo chef
+     */
     @GetMapping("/admin/new/chef")
     public String getChefForm(Model model){
         model.addAttribute("chef", new Chef());
@@ -42,6 +48,15 @@ public class ChefController {
         return "admin/chefForm";
     }
 
+    /**
+     * Questo metodo gestisce la vera creazione dell'oggetto chef inviando i dati al server.
+     * @param model il modello della pagina, può contenere attributi
+     * @param chef, l'oggetto chef appena creato
+     * @param bindingResultChef, necessario per salvare eventuali errori
+     * @return se non ci sono errori, ci reindirizza al pannello di controllo. se ci sono errori invece
+     * ci reindirizza allo stesso form avvisandoci degli errori presenti.
+     * @throws IOException
+     */
     @PostMapping("/new/chef")
     public String addNewChef(Model model,
                              @Valid @ModelAttribute("chef")Chef chef,
@@ -57,6 +72,12 @@ public class ChefController {
         return "admin/chefForm";
     }
 
+    /**
+     * Questo metodo gestisce l'eliminazione di un determinato chef.
+     * @param model il modello della pagina, può contenere attributi
+     * @param id, l'identificatore (id) dello chef selezionato
+     * @return se non ci sono errori, la pagina del pannello di controllo
+     */
     @GetMapping("/admin/delete/chef/{id}")
     public String deleteChef(Model model,
                                @PathVariable("id")Long id){
@@ -68,6 +89,12 @@ public class ChefController {
         return "error";
     }
 
+    /**
+     * Questo metodo gestisce l'aggiornamento dello chef.
+     * @param model il modello della pagina, può contenere attributi
+     * @param id, l'identificatore (id) dello chef selezionato
+     * @return il form per aggiornare lo chef selezionato
+     */
     @GetMapping("/admin/update/chef/{id}")
     public String updateChef(Model model,
                                @PathVariable("id") Long id){
@@ -78,6 +105,16 @@ public class ChefController {
         return "admin/chefFormUpdate";
     }
 
+    /**
+     * Questo metodo gestisce l'invio dei dati al server una volta aggiornato lo chef selezionato.
+     *
+     * @param model il modello della pagina, può contenere attributi
+     * @param chef, l'oggetto chef selezionato
+     * @param bindingResultChef, necessario per eventuali errori
+     * @return se non ci sono errori il pannello di controllo sennò il form per l'aggiornamento
+     * dello chef con gli errori
+     * @throws IOException
+     */
     @PostMapping("/update/chef")
     private String updateChef(Model model,
                                @ModelAttribute("chef") Chef chef,

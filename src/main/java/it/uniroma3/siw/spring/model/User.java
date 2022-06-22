@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -52,13 +53,14 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascita;
 
-    @OneToMany
+    @OneToMany(mappedBy = "utente", cascade = {CascadeType.ALL})
     private List<Buffet> preferiti;
 
 
     public void addPreferito(Buffet buffet) {
-        if(this.getPreferiti() == null){
-            this.preferiti = new LinkedList<Buffet>();
+        if(this.getPreferiti().size() == 0){
+            this.preferiti = new ArrayList<>();
+            preferiti.add(buffet);
         }
         this.preferiti.add(buffet);
     }
