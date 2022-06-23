@@ -40,8 +40,8 @@ public class AuthController {
      */
     @GetMapping("/register")
     public String getRegistrationPage(Model model) {
-        model.addAttribute("user", new User());
         model.addAttribute("credentials", new Credentials());
+        model.addAttribute("user", new User());
         return "register";
     }
 
