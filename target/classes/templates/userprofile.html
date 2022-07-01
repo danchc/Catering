@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Il tuo profilo')"></head>
+<link href="../static/css/style.css" rel="stylesheet" type="text/css">
 <body>
     <div class="user-profile-container">
         <!-- navbar -->
@@ -13,11 +14,17 @@
                 <div class="photo-side">
                     <div class="user-image">
                         <img th:if="${credentials?.photo == null}" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
-                        <input type = "file">
+                        <div class="pic-container">
+                            <input type = "file">
+                        </div>
+                        <div class="customize-container">
+                            <p><a th:href="@{'update/info/user/'+${credentials.id}}">Modifica le tue informazioni</a></p>
+                        </div>
                         <h1>Ciao <span th:text="${credentials.user.nome}"></span> !</h1>
                     </div>
                 </div>
                 <div class="info-side">
+                    <input type="hidden" th:value="${credentials.id}">
                     <div class="info-field">
                         <span class="info-label">Nome:</span>
                         <div class="info-box"><p th:text="${credentials.user.nome}"></div>

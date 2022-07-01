@@ -94,7 +94,8 @@ public class AuthController {
                              @ModelAttribute("user") User user,
                              HttpSession session) {
        Credentials credentials = this.credentialsService.getCredentialsAuthenticated();
-       session.setAttribute("provider", credentials.getProvider());
+       session.setAttribute("provider", credentials.getProvider().toString());
+       System.out.println(credentials.getProvider());
 
         if (credentials.getRuolo().equals(Credentials.RUOLO_ADMIN)) {
             model.addAttribute("user", user);

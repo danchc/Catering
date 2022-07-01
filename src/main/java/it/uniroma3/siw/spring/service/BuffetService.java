@@ -38,4 +38,8 @@ public class BuffetService {
             return false;
         }
     }
+
+    public boolean alreadyExistsBuffet(String nome){
+        return this.buffetRepository.existsBuffetByNome(nome);
+    }
 }

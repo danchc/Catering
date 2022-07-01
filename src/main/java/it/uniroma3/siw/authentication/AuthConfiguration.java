@@ -84,7 +84,6 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                                                         Authentication authentication) throws IOException, ServletException {
 
                         CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
-                        Map<String, Object> map = oauthUser.getAttributes();
                         credentialsService.processOAuthPostLogin(oauthUser.getUsername(), oauthUser);
                         response.sendRedirect("/default");
 

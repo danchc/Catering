@@ -38,8 +38,9 @@ public class Buffet {
     @OneToMany(mappedBy = "buffet", cascade = {CascadeType.ALL})
     private List<Piatto> piatti;
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
-    private User utente;
+    @ManyToMany
+    @JoinColumn(name="buffet_id")
+    private List<User> utenti;
 
     @Transient
     public String getPhotoPath(){

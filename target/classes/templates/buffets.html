@@ -27,7 +27,9 @@
     <div class="buffet-collection-container" th:unless="${listBuffet.isEmpty()}">
         <div th:each="buffet : ${listBuffet}" class="buffet-info-container">
             <!-- immagine buffet -->
-            <div class="circle-img-container"></div>
+            <div class="circle-img-container">
+                <img th:src="@{${buffet.getPhotoPath()}}" width="100%" height="100%" style="border-radius: 50%;">
+            </div>
 
             <!-- nome buffet -->
             <div class="buffet-main-title">

@@ -25,13 +25,13 @@ public class IngredienteValidator implements Validator {
 
         //non inserisco il nome
         if (nome.isEmpty()){
-            errors.reject("piatto.nome.required");
+            errors.reject("ingrediente.nome.required");
         }
         //non inserisco la descrizione
         if (desc.isEmpty()){
-            errors.reject("piatto.descrizione.required");
+            errors.reject("ingrediente.descrizione.required");
         } else if (desc.length() > MAX_LENGTH_DESCRIPTION){
-            errors.reject("piatto.descrizione.size");
+            errors.reject("ingrediente.descrizione.size");
         }
     }
 }

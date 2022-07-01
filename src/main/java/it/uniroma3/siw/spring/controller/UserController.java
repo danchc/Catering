@@ -7,6 +7,7 @@ import it.uniroma3.siw.spring.model.Ingrediente;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.service.BuffetService;
 import it.uniroma3.siw.spring.service.CredentialsService;
+import it.uniroma3.siw.spring.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,21 +25,22 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     protected CredentialsService credentialsService;
 
     @Autowired
+    protected UserService userService;
+
+    @Autowired
     protected BuffetService buffetService;
 
-    @GetMapping("/newPreferito/{id}")
-    public String addPreferito(@PathVariable(value="id") Long id,
+    @PostMapping("/newPreferito")
+    public String addPreferito(@RequestParam(required=false, name="nome") String nome,
                                Model model) {
 
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
-        credentials.getUser().addPreferito(this.buffetService.getBuffetById(id).get());
-        return "redirect:/buffet/"+id;
+
+        return "redirect:/buffets";
     }
 
     @GetMapping("/user")

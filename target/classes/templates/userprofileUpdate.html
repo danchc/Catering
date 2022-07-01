@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Il tuo profilo')"></head>
+<link href="../static/css/style.css" rel="stylesheet" type="text/css">
+<body>
+    <div class="user-profile-container">
+        <!-- navbar -->
+        <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+        <!-- -->
+
+        <!-- container account info -->
+        <div class="account-flex-container flex">
+            <div class="info-container">
+                <div class="photo-side">
+                    <div class="user-image">
+                        <img th:if="${credentials?.photo == null}" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
+                        <div class="pic-container">
+                            <input type = "file">
+                        </div>
+                        <h1>Ciao <span th:text="${credentials.user.nome}"></span> !</h1>
+                    </div>
+                </div>
+                <div class="info-side">
+                    <form method="POST" th:action="@{update/info/user}">
+
+                        <input type="hidden" th:value="${credentials.id}">
+
+                        <div class="info-field">
+                            <span class="info-label">Nome:</span>
+                            <div class="info-box">
+                                <p th:text="${credentials.user.nome}">
+                            </div>
+                        </div>
+
+                        <div class="info-field">
+                            <span class="info-label">Cognome:</span>
+                            <div class="info-box">
+                                <p th:text="${credentials.user.cognome}">
+                            </div>
+                        </div>
+
+                        <div class="info-field">
+                            <span class="info-label">E-mail:</span>
+                            <div class="info-box">
+                                <input type="email" name="email" id="email"
+                                        th:value="${credentials.user.email}" th:field="${credentials.user.email}">
+                            </div>
+                        </div>
+
+                        <div class="info-field">
+                            <span class="info-label">Telefono:</span>
+                            <div th:if="${credentials?.user.telefono == null}" class="info-box">
+                                <input type="text" name="telefono"
+                                       th:field="${credentials.user.telefono}">
+                            </div>
+                            <div th:unless="${credentials?.user.telefono == null}" class="info-box">
+                                <input type="text" name="telefono"
+                                       th:value="${credentials.user.telefono}" th:field="${credentials.user.telefono}">
+                            </div>
+                        </div>
+
+                        <div class="info-field">
+                            <span class="info-label">Indirizzo:</span>
+
+                            <div th:if="${credentials?.user.indirizzo == null}" class="info-box">
+                                <p>Non è presente nel sistema</p>
+                            </div>
+
+                            <div th:unless="${credentials?.user.indirizzo == null}" class="info-box">
+                                <p th:text="${credentials.user.indirizzo}">
+                            </div>
+                        </div>
+
+                        <div class="info-field">
+                            <span class="info-label">Città:</span>
+                            <div th:if="${credentials?.user.citta == null}" class="info-box">
+                                <p>Non è presente nel sistema</p>
+                            </div>
+
+                            <div th:unless="${credentials?.user.citta == null}" class="info-box">
+                                <p th:text="${credentials.user.citta}">
+                            </div>
+                        </div>
+
+                        <div class="info-field">
+                            <span class="info-label">Preferiti:</span>
+                            <div th:if="${preferiti?.isEmpty()}" class="info-box"><p>Non ci sono preferiti</p></div>
+                            <div th:unless="${preferiti?.isEmpty()}" class="info-box">
+                                <div th:each="preferito : ${preferiti}">
+                                    <span th:text="${preferito.nome}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    <!-- fine form -->
+                </div>
+            </div>
+        </div>
+        <!-- -->
+    </div>
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
+    <!-- -->
+</body>
+</html>

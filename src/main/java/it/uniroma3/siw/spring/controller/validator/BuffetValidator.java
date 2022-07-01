@@ -1,6 +1,8 @@
 package it.uniroma3.siw.spring.controller.validator;
 
 import it.uniroma3.siw.spring.model.Buffet;
+import it.uniroma3.siw.spring.service.BuffetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -9,6 +11,9 @@ import org.springframework.validation.Validator;
 public class BuffetValidator implements Validator {
 
     private final Integer MAX_LENGTH_DESCRIPTION = 255;
+
+    @Autowired
+    protected BuffetService buffetService;
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -32,6 +37,11 @@ public class BuffetValidator implements Validator {
             errors.reject("buffet.descrizione.required");
         } else if (desc.length() > MAX_LENGTH_DESCRIPTION){
             errors.reject("buffet.descrizione.size");
+        }
+
+        //controllo se esiste nel database
+        if(this.buffetService.alreadyExistsBuffet(nome)){
+            errors.reject("buffet.duplicato");
         }
 
     }

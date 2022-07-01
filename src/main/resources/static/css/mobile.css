@@ -422,3 +422,13 @@ iframe {
     width: 500px;
 }
 
+.info-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.info-side .info-box {
+    min-width: 200px;
+}
+

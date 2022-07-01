@@ -34,17 +34,10 @@ public class Credentials {
 
     @Enumerated(EnumType.STRING)
     private Provider provider;
-    /*
-    @NotNull
-    @Column(name = "confirmed_password")
-    private String confermaPassword;*/
 
     @NotNull
     private String ruolo;
-/*
-    @NotNull
-    private boolean isEnabled;
-*/
+
     @OneToOne(cascade = {CascadeType.ALL})
     private User user;
 

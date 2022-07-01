@@ -53,15 +53,7 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascita;
 
-    @OneToMany(mappedBy = "utente", cascade = {CascadeType.ALL})
+    @ManyToMany
     private List<Buffet> preferiti;
 
-
-    public void addPreferito(Buffet buffet) {
-        if(this.getPreferiti().size() == 0){
-            this.preferiti = new ArrayList<>();
-            preferiti.add(buffet);
-        }
-        this.preferiti.add(buffet);
-    }
 }

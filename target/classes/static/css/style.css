@@ -856,6 +856,7 @@ footer */
     height: 100%;
     width: 500px;
 }
+
 .photo-side .user-image {
     display: flex;
     align-items: center;
@@ -868,6 +869,10 @@ footer */
     width: 200px;
 }
 
+.photo-side {
+    font-family: var(--main-font);
+}
+
 .photo-side .user-image h1{
     font-size: 1.5em;
     font-family: var(--main-font);
@@ -877,12 +882,43 @@ footer */
     color: var(--main-color);
 }
 
+.photo-side .pic-container {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0px 10px 0px;
+    border-bottom: 1px solid var(--main-color);
+}
+
+.photo-side .customize-container {
+    font-size: 15px;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 5px 0px 10px 0px;
+    border-bottom: 1px solid var(--main-color);
+}
+
+.customize-container a {
+    text-decoration: none;
+    color:black;
+    transition: all 0.3s ease;
+}
+
+.customize-container a:hover {
+    color: var(--main-color);
+}
+
 /* sezione info */
 
 .info-container .info-side {
     font-family: var(--main-font);
     background-color: white;
-    width: 300px;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -899,7 +935,7 @@ footer */
     margin: 15px;
     font-size: 0.8em;
     border-bottom: 1px solid var(--main-color);
-    width: 15vw;
+    width: 300px;
 }
 
 /* CONTROLPANEL.HTML ############################################################### */
@@ -1318,7 +1354,6 @@ table {
     border: 2px solid var(--main-color);
     height: 35vh;
     width: 50%;
-    background-image: url(../images/buffet/0/buffet-id0.jpg);
     background-size: cover;
     border-radius: 50%;
     position: relative;

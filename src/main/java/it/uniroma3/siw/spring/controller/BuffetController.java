@@ -132,6 +132,7 @@ public class BuffetController {
 
         model.addAttribute("credentials", this.credentialsService.getCredentialsAuthenticated());
         model.addAttribute("buffet", buffet);
+        model.addAttribute("preferiti", this.credentialsService.getCredentialsAuthenticated().getUser().getPreferiti());
         return "buffet";
     }
 

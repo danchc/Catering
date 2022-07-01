@@ -33,7 +33,7 @@
         <!-- info container -->
         <div class="bf-info">
             <div class="bf-info-title">
-                <span th:text="${buffet.nome}">Nome buffet</span>
+                <span name="nome" th:text="${buffet.nome}">Nome buffet</span>
             </div>
             <div class="bf-info-description">
                 <span th:text="${buffet.descrizione}">Descrizione del buffet</span>
@@ -80,9 +80,9 @@
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
             <div th:if="${session.role == 'DEFAULT'}" class="btn-container">
-                 <a th:href="@{'/newPreferito'+'/'+${buffet.id}}">
+                 <form method="POST" th:action="@{/newPreferito}">
                      <button type="submit" class="active">Metti nei preferiti</button>
-                 </a>
+                 </form>
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
         </div>

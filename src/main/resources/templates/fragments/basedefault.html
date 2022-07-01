@@ -27,14 +27,14 @@
 
             </nav>
 
-            <div th:if="${session.provider == 'GOOGLE' }" class="dropdown-personal">
+            <div th:if="${session.provider?.equals('GOOGLE')}" class="dropdown-personal">
                 <button class="dropdown-btn"><i class="fa-regular fa-user"></i></button>
                 <div class="dropdown-content">
                     <a href="" th:href="@{/user}" >Il tuo profilo</a>
                     <a href="" th:href="@{/logout}">Logout</a>
                 </div>
             </div>
-            <div th:unless="${session.provider == 'GOOGLE'}" sec:authorize="isAuthenticated()" class="dropdown-personal">
+            <div th:unless="${session.provider?.equals('GOOGLE')}" sec:authorize="isAuthenticated()" class="dropdown-personal">
                 <button class="dropdown-btn"><i class="fa-regular fa-user"></i> <span sec:authentication="name"></span></button>
                 <div class="dropdown-content">
                     <a href="" th:href="@{/user}" >Il tuo profilo</a>
