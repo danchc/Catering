@@ -30,4 +30,7 @@ public class Nazione {
 
     @OneToMany(mappedBy = "nazione")
     private List<Chef> chef;
+
+    @OneToMany(mappedBy = "nazione")
+    private List<Ingrediente> ingredienti;
 }

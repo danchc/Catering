@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-input">
                             <span>Origine:</span>
-                            <select th:field="${ingrediente.origine}" style="height: 5vh; width: 100%">
+                            <select th:field="*{nazione}" style="height: 5vh; width: 100%">
                                 <option th:each="nazione : ${nazioni}"
                                         th:value="${nazione.id}"
                                         th:text="${nazione.nome}">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-input">
                             <span>Piatto:</span>
-                            <select name="piatto" style="height: 5vh; width: 100%">
+                            <select  name="piatto" style="height: 5vh; width: 100%">
                                 <option th:each="piatto : ${listPiatti}"
                                         th:value="${piatto.id}"
                                         th:text="${piatto.nome}">

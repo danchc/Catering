@@ -16,6 +16,7 @@ public class UserService {
     @Autowired
     protected UserRepository userRepository;
 
+
     @Transactional
     public User save(User user){
         return this.userRepository.save(user);
@@ -35,5 +36,9 @@ public class UserService {
         preferiti.add(buffet);
         user.setPreferiti(preferiti);
         this.userRepository.save(user);
+    }
+
+    public User findById(Long id) {
+        return this.userRepository.findById(id).get();
     }
 }

@@ -41,4 +41,11 @@ public class Credentials {
     @OneToOne(cascade = {CascadeType.ALL})
     private User user;
 
+    @Transient
+    public String getPhotoPath(){
+        if(this.getPhoto() == null || this.getId() == null){
+            return null;
+        }
+        return "/"+"user-photo"+"/"+this.id+"/"+this.photo;
+    }
 }

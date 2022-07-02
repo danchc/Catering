@@ -111,6 +111,7 @@ public class BuffetController {
             this.buffetService.save(buffet);
             return "redirect:/admin/controlpanel";
         }*/
+        model.addAttribute("listTipologia", this.tipologiaService.getAllTipologie());
         model.addAttribute("listChef", this.chefService.getAllChef());
         return "admin/buffetForm";
     }

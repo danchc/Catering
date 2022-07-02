@@ -72,4 +72,8 @@ public class CredentialsService {
         }
 
     }
+
+    public Credentials findById(Long id) {
+        return this.credentialsRepo.findById(id).get();
+    }
 }

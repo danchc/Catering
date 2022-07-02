@@ -116,9 +116,9 @@ home admin
                     <td th:text="|${buffet.chef.nome} ${buffet.chef.cognome}|">Chef</td>
                     <td th:text="${buffet.tipologia.nome}"></td>
                     <td>
-                        <ul th:each="piatto : ${buffet.piatti}">
-                            <li th:text="${piatto.id}"></li>
-                        </ul></td>
+                        <div th:each="piatto : ${buffet.piatti}">
+                            <p th:text="${piatto.id}"> </p>
+                        </div></td>
                     <td class="del">
                         <a th:href="@{'/admin/delete/buffet'+'/'+${buffet.id}}">
                             <button class="delete">&times;</button>
@@ -187,7 +187,7 @@ home admin
                 <tr th:each="ingrediente : ${listIngredienti}">
                     <td th:text="${ingrediente.id}">Id</td>
                     <td th:text="${ingrediente.nome}">Nome</td>
-                    <td th:text="${ingrediente.origine.nome}">Origine</td>
+                    <td th:text="${ingrediente.nazione.nome}">Origine</td>
                     <td th:text="${ingrediente.descrizione}">Descrizione</td>
                     <td><ul th:each="piatto : ${ingrediente.piatti}">
                         <li th:text="${piatto.id}"></li>

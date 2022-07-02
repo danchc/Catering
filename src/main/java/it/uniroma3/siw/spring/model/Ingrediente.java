@@ -25,10 +25,9 @@ public class Ingrediente {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
-    private String origine;
+    @ManyToOne
+    private Nazione nazione;
 
-    @Column(nullable = false)
     private String descrizione;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

@@ -14,86 +14,137 @@
                 <div class="photo-side">
                     <div class="user-image">
                         <img th:if="${credentials?.photo == null}" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
-                        <div class="pic-container">
-                            <input type = "file">
-                        </div>
-                        <h1>Ciao <span th:text="${credentials.user.nome}"></span> !</h1>
+                        <h1>Ciao <span th:text="${credentials?.user.nome}"></span> !</h1>
                     </div>
                 </div>
                 <div class="info-side">
-                    <form method="POST" th:action="@{update/info/user}">
 
-                        <input type="hidden" th:value="${credentials.id}">
+                    <!-- inizio form -->
+                    <form method="POST" th:action="@{/update/info/user}" th:object="${credentials}" enctype="multipart/form-data">
+
+                        <!-- riquadro errori -->
+                        <div class="error-container" th:if="${#fields.hasAnyErrors()}">
+                            <div class="error-danger">
+                                <ul>
+                                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- -->
+
+                        <!-- id user hidden -->
+                        <input type="hidden" th:value="*{id}">
 
                         <div class="info-field">
-                            <span class="info-label">Nome:</span>
-                            <div class="info-box">
-                                <p th:text="${credentials.user.nome}">
+                            <span class="info-label">Foto profilo: </span>
+                            <div class="form-input">
+                                <input type="file" th:name="image" name="image" accept="image/png, image/jpeg, image/jpg"/>
                             </div>
                         </div>
 
                         <div class="info-field">
+                            <span class="info-label">Nome:</span>
+
+                            <div class="form-input">
+                                <input type="text" readonly th:field="${user.nome}" th:value="${user.nome}">
+                            </div>
+
+                        </div>
+
+                        <div class="info-field">
                             <span class="info-label">Cognome:</span>
-                            <div class="info-box">
-                                <p th:text="${credentials.user.cognome}">
+                            <div class="form-input">
+                                <input type="text" readonly th:field="${user.cognome}" th:value="${user.cognome}">
                             </div>
                         </div>
 
                         <div class="info-field">
                             <span class="info-label">E-mail:</span>
-                            <div class="info-box">
+                            <div class="form-input">
                                 <input type="email" name="email" id="email"
-                                        th:value="${credentials.user.email}" th:field="${credentials.user.email}">
+                                    th:value="${user.email}" th:field="${user.email}">
                             </div>
                         </div>
 
                         <div class="info-field">
                             <span class="info-label">Telefono:</span>
-                            <div th:if="${credentials?.user.telefono == null}" class="info-box">
-                                <input type="text" name="telefono"
-                                       th:field="${credentials.user.telefono}">
+                            <div th:if="${credentials?.user.telefono == null}">
+                                <div class="form-input">
+                                    <input type="text" name="telefono"
+                                           th:field="${user.telefono}">
+                                </div>
                             </div>
-                            <div th:unless="${credentials?.user.telefono == null}" class="info-box">
-                                <input type="text" name="telefono"
-                                       th:value="${credentials.user.telefono}" th:field="${credentials.user.telefono}">
+                            <div th:unless="${credentials?.user.telefono == null}">
+                                <div class="form-input">
+                                    <input type="text" name="telefono"
+                                        th:value="${user.telefono}" th:field="${user.telefono}">
+                                </div>
                             </div>
                         </div>
 
                         <div class="info-field">
                             <span class="info-label">Indirizzo:</span>
 
-                            <div th:if="${credentials?.user.indirizzo == null}" class="info-box">
-                                <p>Non è presente nel sistema</p>
+                            <div th:if="${credentials?.user.indirizzo == null}">
+                                <div class="form-input">
+                                    <input type="text" name="indirizzo"
+                                           th:field="${user.indirizzo}">
+                                </div>
                             </div>
 
-                            <div th:unless="${credentials?.user.indirizzo == null}" class="info-box">
-                                <p th:text="${credentials.user.indirizzo}">
+                            <div th:unless="${credentials?.user.indirizzo == null}">
+                                <div class="form-input">
+                                    <input type="text" name="indirizzo"
+                                           th:value="${user.indirizzo}" th:field="${user.indirizzo}">
+                                </div>
                             </div>
                         </div>
 
                         <div class="info-field">
                             <span class="info-label">Città:</span>
-                            <div th:if="${credentials?.user.citta == null}" class="info-box">
-                                <p>Non è presente nel sistema</p>
+                            <div th:if="${credentials?.user.citta == null}">
+                                <div class="form-input">
+                                    <input type="text" name="citta"
+                                           th:field="${user.citta}">
+                                </div>
                             </div>
 
-                            <div th:unless="${credentials?.user.citta == null}" class="info-box">
-                                <p th:text="${credentials.user.citta}">
+                            <div th:unless="${credentials?.user.citta == null}">
+                                <div class="form-input">
+                                    <input type="text" name="citta"
+                                           th:value="${user.citta}" th:field="${user.citta}">
+                                </div>
                             </div>
                         </div>
 
                         <div class="info-field">
-                            <span class="info-label">Preferiti:</span>
-                            <div th:if="${preferiti?.isEmpty()}" class="info-box"><p>Non ci sono preferiti</p></div>
-                            <div th:unless="${preferiti?.isEmpty()}" class="info-box">
-                                <div th:each="preferito : ${preferiti}">
-                                    <span th:text="${preferito.nome}"></span>
-                                </div>
+                            <span class="info-label">Username:</span>
+                            <div class="form-input">
+                                <input type="hidden" name="username" th:value="${credentials.username}"
+                                       th:field="${credentials.username}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="info-field">
+                            <span class="info-label">Password:</span>
+                            <div class="form-input">
+                                <input type="hidden" name="password" th:field="${credentials.password}">
+                            </div>
+                        </div>
+
+
+                        <div class="btn-container">
+                            <div class="form-btn">
+                                <button type="submit">Conferma</button>
+                            </div>
+                            <div class="form-btn">
+                                <a th:href="@{/user}"><button>Indietro</button></a>
                             </div>
                         </div>
 
                     </form>
                     <!-- fine form -->
+
                 </div>
             </div>
         </div>
