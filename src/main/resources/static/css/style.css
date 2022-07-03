@@ -903,6 +903,16 @@ footer */
     border-bottom: 1px solid var(--main-color);
 }
 
+.photo-side .info-field {
+    margin-top: 20px;
+    height: 50px;
+    width: 250px;
+}
+
+.photo-side .info-box {
+    border-bottom: 1px solid var(--main-color);
+}
+
 .customize-container a {
     text-decoration: none;
     color:black;

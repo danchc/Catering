@@ -28,7 +28,9 @@ public class CredentialsService {
     @Transactional
     public Credentials save(Credentials credentials) {
         credentials.setRuolo(Credentials.RUOLO_DEFAULT);
-        credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
+        if(credentials.getPassword() == null){
+            credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
+        }
         return this.credentialsRepo.save(credentials);
     }
 
