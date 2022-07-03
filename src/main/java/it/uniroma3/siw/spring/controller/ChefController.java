@@ -132,4 +132,11 @@ public class ChefController {
         return "admin/chefFormUpdate";
     }
 
+    @GetMapping("/chef/{id}")
+    public String getChefInfo(@PathVariable("id") Long id, Model model) {
+        Chef chef = this.chefService.getChefById(id).get();
+        model.addAttribute("chef", chef);
+        return "chef";
+    }
+
 }

@@ -24,7 +24,7 @@ public class UserValidator implements Validator {
         String nome = user.getNome().trim();
         String cognome = user.getCognome().trim();
         String email = user.getEmail().trim();
-        String telefono = user.getTelefono().trim();
+        Long id = user.getId();
 
 
         //se non inserisco il nome
@@ -43,7 +43,7 @@ public class UserValidator implements Validator {
 
         }
         //se la inserisco controllo se è già presente nel sistema
-        else if (this.userService.existsUserByEmail(email)){
+        else if (this.userService.existsUserByEmail(email) && user.getId() == null){
             errors.reject("user.email.duplicato");
         }
     }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/base.html :: headerfiles(title='500 ERROR')"></head>
+<body>
+<div class="error-main-container">
+    <div class="error error-main-title">
+        500
+    </div>
+    <div class="error error-desc">
+        INTERNAL SERVER ERROR
+    </div>
+    <div class="error-icon">
+        <img th:src="@{/images/error-img/error.png}">
+    </div>
+    <div class="back-btn">
+        <a th:href="@{/default}"><button type="button">Torna alla home</button></a>
+    </div>
+</div>
+</body>
+</html>

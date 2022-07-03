@@ -54,9 +54,11 @@
                     <div class="other-info chef">
                         <span class="title">Chef: </span>
                         <a href="">
-                            <span class="desc" th:text="${buffet.chef.nome + ' ' + buffet.chef.cognome}">
-                                Chef del buffet
-                            </span>
+                            <a th:href="@{'/chef/'+${buffet.chef.id}}">
+                                <span class="desc" th:text="${buffet.chef.nome + ' ' + buffet.chef.cognome}">
+                                    Chef del buffet
+                                </span>
+                            </a>
                         </a>
                     </div>
                 </div>

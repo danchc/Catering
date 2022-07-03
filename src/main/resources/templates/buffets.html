@@ -41,7 +41,9 @@
                 <!-- chef buffet -->
                 <div class="buffet-chef-container">
                     <span class="label">Chef:</span>
-                    <span class="chef-name" th:text="${buffet.chef.nome + ' ' + buffet.chef.cognome}">Nome chef</span>
+                    <a th:href="@{'/chef/'+${buffet.chef.id}}">
+                        <span class="chef-name" th:text="${buffet.chef.nome + ' ' + buffet.chef.cognome}">Nome chef</span>
+                    </a>
                 </div>
 
                 <!-- tipo buffet -->

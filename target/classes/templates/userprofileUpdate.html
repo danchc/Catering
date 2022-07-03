@@ -14,7 +14,7 @@
                 <div class="photo-side">
                     <div class="user-image">
                         <img th:if="${credentials?.photo == null}" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
-                        <h1>Ciao <span th:text="${credentials?.user.nome}"></span> !</h1>
+                        <h1>Modifica il tuo profilo</h1>
                     </div>
                 </div>
                 <div class="info-side">
@@ -34,6 +34,7 @@
 
                         <!-- id user hidden -->
                         <input type="hidden" th:value="*{id}">
+                        <input type="hidden" th:value="${user.id}" th:field="${user.id}">
 
                         <div class="info-field">
                             <span class="info-label">Foto profilo: </span>
@@ -68,13 +69,13 @@
 
                         <div class="info-field">
                             <span class="info-label">Telefono:</span>
-                            <div th:if="${credentials?.user.telefono == null}">
+                            <div th:if="${user?.telefono == null}">
                                 <div class="form-input">
                                     <input type="text" name="telefono"
                                            th:field="${user.telefono}">
                                 </div>
                             </div>
-                            <div th:unless="${credentials?.user.telefono == null}">
+                            <div th:unless="${user?.telefono == null}">
                                 <div class="form-input">
                                     <input type="text" name="telefono"
                                         th:value="${user.telefono}" th:field="${user.telefono}">
@@ -85,14 +86,14 @@
                         <div class="info-field">
                             <span class="info-label">Indirizzo:</span>
 
-                            <div th:if="${credentials?.user.indirizzo == null}">
+                            <div th:if="${user?.indirizzo == null}">
                                 <div class="form-input">
                                     <input type="text" name="indirizzo"
                                            th:field="${user.indirizzo}">
                                 </div>
                             </div>
 
-                            <div th:unless="${credentials?.user.indirizzo == null}">
+                            <div th:unless="${user?.indirizzo == null}">
                                 <div class="form-input">
                                     <input type="text" name="indirizzo"
                                            th:value="${user.indirizzo}" th:field="${user.indirizzo}">
@@ -102,14 +103,14 @@
 
                         <div class="info-field">
                             <span class="info-label">Città:</span>
-                            <div th:if="${credentials?.user.citta == null}">
+                            <div th:if="${user?.citta == null}">
                                 <div class="form-input">
                                     <input type="text" name="citta"
                                            th:field="${user.citta}">
                                 </div>
                             </div>
 
-                            <div th:unless="${credentials?.user.citta == null}">
+                            <div th:unless="${user?.citta == null}">
                                 <div class="form-input">
                                     <input type="text" name="citta"
                                            th:value="${user.citta}" th:field="${user.citta}">
@@ -118,7 +119,6 @@
                         </div>
 
                         <div class="info-field">
-                            <span class="info-label">Username:</span>
                             <div class="form-input">
                                 <input type="hidden" name="username" th:value="${credentials.username}"
                                        th:field="${credentials.username}" readonly>
@@ -126,9 +126,17 @@
                         </div>
 
                         <div class="info-field">
-                            <span class="info-label">Password:</span>
                             <div class="form-input">
-                                <input type="hidden" name="password" th:field="${credentials.password}">
+                                <input type="hidden" name="password" th:value="${credentials.password}"
+                                       th:field="${credentials.password}">
+                            </div>
+                        </div>
+
+
+                        <div class="info-field">
+                            <div class="form-input">
+                                <input type="hidden" name="dataNascita" th:value="${user.dataNascita}"
+                                       th:field="${user.dataNascita}">
                             </div>
                         </div>
 

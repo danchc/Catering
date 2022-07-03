@@ -69,6 +69,7 @@ public class UserController {
     public String getUpdateForm(@PathVariable("id") Long id, Model model){
         Credentials credentials = this.credentialsService.findById(id);
         model.addAttribute("credentials", credentials);
+        User u = credentials.getUser();
         model.addAttribute("user", credentials.getUser());
         return "userprofileUpdate";
     }
@@ -80,7 +81,6 @@ public class UserController {
                                  @RequestParam("image") MultipartFile multipartFile) throws IOException{
 
         this.userValidator.validate(user, bindingResult);
-        this.credentialsValidator.validate(credentials, bindingResult);
         if(bindingResult.hasErrors()){
             return "userprofileUpdate";
         }

@@ -17,7 +17,7 @@
                         <div class="customize-container">
                             <p><a th:href="@{'update/info/user/'+${credentials.id}}">Modifica le tue informazioni</a></p>
                         </div>
-                        <h1>Ciao <span th:text="${user.nome}"></span> !</h1>
+                        <h1>Ciao <span th:text="${credentials.user.nome}"></span> !</h1>
                     </div>
                 </div>
                 <div class="info-side">

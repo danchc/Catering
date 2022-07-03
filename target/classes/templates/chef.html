@@ -1,10 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Buffet')"></head>
+<link href="../static/css/style.css" rel="stylesheet" type="text/css">
 <body>
+<div class="header-buffets-container">
+    <!-- navbar -->
+    <div th:if="${session.role == 'ADMIN'}">
+        <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+    </div>
+    <div th:if="${session.role == 'DEFAULT'}">
+        <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+    </div>
+    <!-- -->
+    <div class="buffets-banner-content">
+        <h1 id="buffets-banner-title">Chef</h1>
+        <input type="hidden" th:field="${chef.id}">
+    </div>
+</div>
 
+<!-- buffet container -->
+<div class="bf-container-flex">
+    <!-- img container-->
+    <div class="bf-img-container">
+        <div class="bf-img">
+            <!-- S3
+            <img th:src="@{${buffet.photo}}" width="100%" height="100%">-->
+            <!-- no S3 -->
+            <img th:src="@{/images/chef/chef.png}" width="100%" height="100%">
+        </div>
+    </div>
+    <!-- end img container-->
+
+    <!-- info container -->
+    <div class="bf-info">
+        <div class="bf-info-title">
+            <span name="nome" th:text="${chef.nome}">Nome chef</span>
+        </div>
+
+        <div class="bf-other-info">
+            <div class="bf-chef">
+                <div class="other-info chef">
+                    <span class="title">Nazionalità:</span>
+                    <a href="">
+                        <span class="desc" th:text="${chef.nazione.nome}">nazionalità</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- riquadro piatti -->
+            <div class="bf-piatti">
+                <div class="other-info title">
+                    <span class="title">Buffet gestiti: </span>
+                    <div class="piatti-list" th:each="buffet : ${chef.buffetProposti}">
+                        <a th:href="@{'/buffet/'+${buffet.id}}"><span class="desc" th:text="${buffet.nome}">Buffet</span></a>
+                    </div>
+                </div>
+            </div>
+            <!-- end riquadro piatti -->
+        </div>
+
+
+    <!-- end info container-->
+
+</div>
+<!-- end buffet container-->
+
+<!-- footer -->
+<footer th:replace="fragments/base.html :: footer-base"></footer>
+<!-- -->
 </body>
 </html>

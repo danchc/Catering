@@ -1110,6 +1110,10 @@ button.disabled{
     border: none;
 }
 
+.bf-info .btn-container button.disabled {
+    width: 180px;
+}
+
 
 
 .col-btn-container .cp-btn button.active:hover {
@@ -1378,6 +1382,13 @@ table {
     width: 100%;
 }
 
+.buffet-chef-container a{
+    color: black;
+}
+
+.buffet-chef-container a:hover {
+    color: var(--main-color);
+}
 
 .buffet-collection-container .buffet-info-container {
     box-shadow: 5px 10px 18px #888888;
