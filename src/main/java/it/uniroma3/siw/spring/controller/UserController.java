@@ -69,7 +69,6 @@ public class UserController {
     public String getUpdateForm(@PathVariable("id") Long id, Model model){
         Credentials credentials = this.credentialsService.findById(id);
         model.addAttribute("credentials", credentials);
-        User u = credentials.getUser();
         model.addAttribute("user", credentials.getUser());
         return "userprofileUpdate";
     }
@@ -77,26 +76,18 @@ public class UserController {
     @PostMapping("/update/info/user")
     public String updateUserInfo(@Valid @ModelAttribute("credentials") Credentials credentials,
                                  @Valid @ModelAttribute("user") User user,
-                                 BindingResult bindingResult,
-                                 @RequestParam("image") MultipartFile multipartFile) throws IOException{
+                                 BindingResult bindingResult) {
 
         this.userValidator.validate(user, bindingResult);
         if(bindingResult.hasErrors()){
             return "userprofileUpdate";
         }
+
         credentials.setUser(user);
         credentials.setProvider(Provider.LOCAL);
+        credentials.setRuolo(Credentials.RUOLO_DEFAULT);
 
-        /* salvataggio foto */
-        String nomeFile = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-
-        credentials.setPhoto(nomeFile);
-
-        Credentials savedCredentials = this.credentialsService.save(credentials);
-
-        String uploadDir = "user-photo/" + savedCredentials.getId();
-
-        FileUploadUtil.saveFile(uploadDir, nomeFile, multipartFile);
+        this.credentialsService.update(credentials);
 
         return "redirect:/user";
     }

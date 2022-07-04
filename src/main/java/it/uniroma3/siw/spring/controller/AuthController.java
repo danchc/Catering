@@ -66,7 +66,6 @@ public class AuthController {
         }
         credentials.setUser(user);
         credentials.setProvider(Provider.LOCAL);
-        credentials.setPhoto(null);
         this.credentialsService.save(credentials);
         return "register-success";
     }

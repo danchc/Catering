@@ -7,7 +7,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.util.Collection;
 import java.util.Map;
 
-public class CustomOAuth2User extends Credentials implements OAuth2User, UserDetails {
+public class CustomOAuth2User implements OAuth2User, UserDetails {
 
     private OAuth2User oauth2User;
 

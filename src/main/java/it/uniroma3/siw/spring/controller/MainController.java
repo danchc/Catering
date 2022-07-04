@@ -40,6 +40,12 @@ public class MainController {
         return "contacts";
     }
 
+    @GetMapping("/chisiamo")
+    public String getChiSiamo(HttpSession session) {
+        //session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
+        return "chisiamo";
+    }
+
 
 
 }

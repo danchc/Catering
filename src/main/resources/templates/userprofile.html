@@ -13,8 +13,7 @@
             <div class="info-container">
                 <div class="photo-side">
                     <div class="user-image">
-                        <img th:if="${credentials?.photo == null}" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
-                        <img th:unless="${credentials?.photo == null}" th:src="@{${credentials.getPhotoPath()}}">
+                        <img th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
                         <div class="customize-container">
                             <p><a th:href="@{'update/info/user/'+${credentials.id}}">Modifica le tue informazioni</a></p>
                         </div>
@@ -26,7 +25,8 @@
                         </div>
                         <div class="info-field">
                             <span class="info-label">Password:</span>
-                            <div th:unless="${credentials?.password == null}" class="info-box"><p th:text="${credentials.password}"></div>
+                            <div th:unless="${credentials?.password == null}" class="info-box">
+                                <p>**********</p></div>
                         </div>
                     </div>
                     

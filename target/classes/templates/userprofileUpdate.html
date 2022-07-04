@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Il tuo profilo')"></head>
-<link href="../static/css/style.css" rel="stylesheet" type="text/css">
 <body>
     <div class="user-profile-container">
         <!-- navbar -->
@@ -13,7 +12,7 @@
             <div class="info-container">
                 <div class="photo-side">
                     <div class="user-image">
-                        <img th:if="${credentials?.photo == null}" th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
+                        <img th:src="@{/images/blank-user.png}" alt="blank-user" id="blank-user">
                         <h1>Modifica il tuo profilo</h1>
                     </div>
                 </div>
@@ -35,13 +34,6 @@
                         <!-- id user hidden -->
                         <input type="hidden" th:value="*{id}">
                         <input type="hidden" th:value="${user.id}" th:field="${user.id}">
-
-                        <div class="info-field">
-                            <span class="info-label">Foto profilo: </span>
-                            <div class="form-input">
-                                <input type="file" th:name="image" name="image" accept="image/png, image/jpeg, image/jpg"/>
-                            </div>
-                        </div>
 
                         <div class="info-field">
                             <span class="info-label">Nome:</span>

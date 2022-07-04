@@ -14,7 +14,7 @@ body {
 
 .navbar {
     height: 155px;
-    width: 100%;
+    width: 500px;
 }
 
 .navbar .flex {
@@ -103,6 +103,12 @@ body {
 .review-slideshow-container .reviews img {
     height: 220px;
 }
+
+
+/*
+* CHISIAMO.HTML #########################################################################
+ */
+
 
 
 /*

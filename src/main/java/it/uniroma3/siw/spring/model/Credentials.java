@@ -30,7 +30,6 @@ public class Credentials {
     @NotNull
     private String password;
 
-    private String photo;
 
     @Enumerated(EnumType.STRING)
     private Provider provider;
@@ -41,11 +40,4 @@ public class Credentials {
     @OneToOne(cascade = {CascadeType.ALL})
     private User user;
 
-    @Transient
-    public String getPhotoPath(){
-        if(this.getPhoto() == null || this.getId() == null){
-            return null;
-        }
-        return "/"+"user-photo"+"/"+this.id+"/"+this.photo;
-    }
 }

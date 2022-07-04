@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=it xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Contatti')"></head>
+<link href="../static/css/style.css" rel="stylesheet" type="text/css">
+<body>
+    <div class="header-chisiamo-container">
+
+        <div sec:authorize="isAnonymous()">
+            <header th:replace="fragments/base.html :: navbar"></header>
+        </div>
+
+        <!-- navbar -->
+        <div sec:authorize="isAuthenticated()">
+            <div sec:authorize="hasAnyAuthority('ADMIN')">
+                <header th:replace="fragments/baseadmin.html :: navbar-admin"></header>
+            </div>
+            <div sec:authorize="hasAnyAuthority('DEFAULT')">
+                <header th:replace="fragments/basedefault.html :: navbar-user"></header>
+            </div>
+        </div>
+
+        <div class="chisiamo-title-container">
+            <div class="chisiamo-banner-content">
+                <h1 id="chisiamo-banner-title">Chi siamo</h1>
+            </div>
+        </div>
+        <!-- -->
+    </div>
+
+    <div class="chisiamo-container">
+        <!-- logo -->
+        <div class="img-logo-container">
+            <img th:src="@{/images/r3-logo-dark.png}" src="../static/images/r3-logo-dark.png">
+        </div>
+
+        <!-- descrizione -->
+        <div class="chisiamo-desc-container">
+            Uga uga uga
+        </div>
+    </div>
+
+    
+   
+
+    <!-- footer -->
+    <footer th:replace="fragments/base.html :: footer-base"></footer>
+    <!-- -->
+</body>
+</html>
