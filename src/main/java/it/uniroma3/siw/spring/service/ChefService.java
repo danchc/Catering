@@ -15,19 +15,39 @@ public class ChefService {
     @Autowired
     private ChefRepository chefRepository;
 
+    /**
+     * Con questo metodo salviamo uno chef nel database.
+     * @param chef entità da salvare
+     * @return se ha successo, lo chef salvato
+     */
     @Transactional
     public Chef save(Chef chef){
         return this.chefRepository.save(chef);
     }
 
+    /**
+     * Con questo metodo otteniamo la lista di tutti gli chef salvati nel database.
+     * @return la lista
+     */
     public List<Chef> getAllChef(){
         return (List<Chef>) this.chefRepository.findAll();
     }
 
+    /**
+     * Con questo metodo si cerca lo chef in base ad un determinato id.
+     * @param id
+     * @return lo chef trovato per id
+     */
     public Optional<Chef> getChefById(Long id) {
         return this.chefRepository.findById(id);
     }
 
+
+    /**
+     * Questo metodo gestisce l'eliminazione di un certo chef in base all'id passato come parametro.
+     * @param chef
+     * @return true o false
+     */
     @Transactional
     public boolean eliminaChefPerId(Chef chef) {
         try{
@@ -37,4 +57,6 @@ public class ChefService {
             return false;
         }
     }
+
+
 }

@@ -23,6 +23,12 @@ public class MainController {
     @Autowired
     protected CredentialsService credentialsService;
 
+    /**
+     * Questo metodo gestisce il reindirizzamento alla pagina principale del sito.
+     * @param model
+     * @param httpServletRequest
+     * @return index.html
+     */
     @GetMapping("/")
     public String index(Model model, HttpServletRequest httpServletRequest) {
         HttpSession session = httpServletRequest.getSession(false);
@@ -34,15 +40,24 @@ public class MainController {
     }
 
 
+    /**
+     * Questo metodo gestisce il reindirizzamento alla pagina dei contatti.
+     * @param session
+     * @return contacts.html
+     */
     @GetMapping("/contacts")
     public String getContacts(HttpSession session) {
         session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
         return "contacts";
     }
 
+    /**
+     * Questo metodo gestisce il reindirizzamento alla pagina 'Chi Siamo'
+     * @param session
+     * @return chisiamo.html
+     */
     @GetMapping("/chisiamo")
-    public String getChiSiamo(HttpSession session) {
-        //session.setAttribute("role", this.credentialsService.getCredentialsAuthenticated().getRuolo());
+    public String getChiSiamo() {
         return "chisiamo";
     }
 

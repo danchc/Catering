@@ -47,17 +47,27 @@ public class UserController {
     @Autowired
     protected CredentialsValidator credentialsValidator;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
+    /**
+     * Questo metodo gestisce l'invio al server per quanto riguarda l'aggiunta di un buffet ai
+     * preferiti dell'utente autenticato.
+     * @param id
+     * @param model
+     * @return buffets.html
+     */
     @PostMapping("/newPreferito")
-    public String addPreferito(@RequestParam(required=false, name="nome") String nome,
+    public String addPreferito(@RequestParam(required=false, name="id") Long id,
                                Model model) {
-
-
+        Buffet buffet = this.buffetService.getBuffetById(id).get();
+        this.credentialsService.getCredentialsAuthenticated().getUser().getPreferiti().add(buffet);
         return "redirect:/buffets";
     }
 
+    /**
+     * Questo metodo gestisce il reindirizzamento alla pagina del profilo dell'utente.
+     * @param model
+     * @return userprofile.html
+     */
     @GetMapping("/user")
     public String getUserProfile(Model model){
         model.addAttribute("credentials", this.credentialsService.getCredentialsAuthenticated());
@@ -65,6 +75,13 @@ public class UserController {
         return "userprofile";
     }
 
+    /**
+     * Questo metodo gestisce il reindirizzamento alla pagina per modificare i dati di un determinato
+     * utente autenticato.
+     * @param id
+     * @param model
+     * @return userprofileupdate.html
+     */
     @GetMapping("/update/info/user/{id}")
     public String getUpdateForm(@PathVariable("id") Long id, Model model){
         Credentials credentials = this.credentialsService.findById(id);
@@ -73,6 +90,15 @@ public class UserController {
         return "userprofileUpdate";
     }
 
+    /**
+     * Questo metodo gestisce l'invio dei dati al server per aggiornare le informazioni
+     * dell'utente che ha richiesto di aggiornare i suoi dati personali.
+     *
+     * @param credentials
+     * @param user
+     * @param bindingResult
+     * @return user.html se non ci sono errori, userprofileupdate.html altrimenti
+     */
     @PostMapping("/update/info/user")
     public String updateUserInfo(@Valid @ModelAttribute("credentials") Credentials credentials,
                                  @Valid @ModelAttribute("user") User user,

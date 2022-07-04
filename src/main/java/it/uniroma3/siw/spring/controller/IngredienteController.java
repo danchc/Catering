@@ -33,6 +33,11 @@ public class IngredienteController {
     @Autowired
     protected IngredienteValidator ingredienteValidator;
 
+    /**
+     * Questo metodo ci reindirizza alla pagina per la creazione di un nuovo ingrediente.
+     * @param model
+     * @return admin/ingredienteForm.html
+     */
     @GetMapping("/admin/new/ingrediente")
     public String getIngredienteForm(Model model){
         model.addAttribute("ingrediente", new Ingrediente());
@@ -42,6 +47,18 @@ public class IngredienteController {
     }
 
 
+    /**
+     * Questo metodo gestisce l'invio dei dati al server per quanto riguarda la creazione di
+     * un nuovo ingrediente. Controlla i vari input e se non ci sono errori salva tutti
+     * i dati all'interno del database.
+     *
+     * @param model
+     * @param ingrediente
+     * @param bindingResultIngrediente
+     * @param id
+     * @return se non ci sono errori admin/controlpanel.html, se ci sono errori
+     *          admin/ingredienteForm.html
+     */
     @PostMapping("/new/ingrediente")
     public String addNewIngrediente(Model model,
                                @Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,
@@ -59,6 +76,13 @@ public class IngredienteController {
         return "admin/ingredienteForm";
     }
 
+    /**
+     * Questo metodo gestisce l'eliminazione di un determinato ingrediente dal database in base
+     * all'id.
+     * @param model
+     * @param id
+     * @return se non ci sono errori allora admin/controlpanel.html
+     */
     @GetMapping("/admin/delete/ingrediente/{id}")
     public String deleteIngrediente(Model model,
                                @PathVariable("id")Long id){
@@ -70,8 +94,15 @@ public class IngredienteController {
         return "error";
     }
 
+    /**
+     * Questo metodo gestisce il reindirizzamento alla pagina della modifica dei dati
+     * di un determinato ingrediente.
+     * @param model
+     * @param id
+     * @return admin/ingredienteFormUpdate.html
+     */
     @GetMapping("/admin/update/ingrediente/{id}")
-    public String updateIngrediente(Model model,
+    public String getUpdateIngrediente(Model model,
                                @PathVariable("id") Long id){
         Ingrediente ingrediente = this.ingredienteService.getIngredientePerId(id).get();
         model.addAttribute("ingrediente", ingrediente);
@@ -81,15 +112,22 @@ public class IngredienteController {
         return "admin/ingredienteFormUpdate";
     }
 
+    /**
+     * Questo metodo gestisce l'invio dei dati al server per quanto riguarda la modifica di
+     * un ingrediente. Controlla i vari input e se non ci sono errori salva tutti
+     * i dati all'interno del database sovrascrivendo la vecchia entità ingrendiente.
+     * @param model
+     * @param ingrediente
+     * @param bindingResult
+     * @return se non ci sono errori admin/controlpanel.html
+     */
     @PostMapping("/update/ingrediente")
     private String updateIngrediente(Model model,
                                @Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,
-                               BindingResult bindingResult) throws IOException {
+                               BindingResult bindingResult){
 
         this.ingredienteValidator.validate(ingrediente, bindingResult);
-        /*
-            Normal use
-         */
+
         if(!bindingResult.hasErrors()){
             this.ingredienteService.save(ingrediente);
             return "redirect:/admin/controlpanel";

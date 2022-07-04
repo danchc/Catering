@@ -59,16 +59,17 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http// authorization paragraph: qui definiamo chi può accedere a cosa
+        http
                 .authorizeRequests()
-                // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
+                //definiamo le pagine accessibili da chiunque
                 .antMatchers(HttpMethod.GET, "/", "/index", "/chisiamo" ,"/login", "/register", "/css/**" ,"/images/**", "/oauth/**").permitAll()
-                // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register
                 .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
-                // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
+
+                //definiamo le pagine accessibili solo dall'amministratore
                 .antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(RUOLO_ADMIN)
                 .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(RUOLO_ADMIN)
-                // tutti gli utenti autenticati possono accere alle pagine rimanenti
+
+                //per visitare il resto delle pagine bisogna autenticarsi
                 .anyRequest().authenticated()
 
                 /*
@@ -84,6 +85,8 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                                                         Authentication authentication) throws IOException, ServletException {
 
                         CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
+
+                        //viene creato un nuovo utente anche nel database
                         credentialsService.processOAuthPostLogin(oauthUser.getUsername(), oauthUser);
                         response.sendRedirect("/default");
 
@@ -91,8 +94,8 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 })
                 .and()
                 .formLogin()
-                //indichiamo la pagina del login
                 .loginPage("/login")
+
                 // se il login ha successo, si viene rediretti al path /default
                 .defaultSuccessUrl("/default")
                 .failureUrl("/login?error")
@@ -113,16 +116,17 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * This method provides the SQL queries to get username and password.
+     * Questo metodo è necessario per ottenere dal database i dati degli utenti.
+     * @param auth
+     * @throws Exception
      */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(this.dataSource)
-                //use the autowired datasource to access the saved credentials
-                //retrieve username and role
+                //recuperiamo il ruolo
                 .authoritiesByUsernameQuery("SELECT username, ruolo FROM credentials WHERE username=?")
-                //retrieve username, password and a boolean flag specifying whether the user is enabled or not (always enabled in our case)
+                //recuperiamo le credenziali dell'utente
                 .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM credentials WHERE username=?");
     }
 

@@ -50,6 +50,7 @@ public class ChefController {
 
     /**
      * Questo metodo gestisce la vera creazione dell'oggetto chef inviando i dati al server.
+     *
      * @param model il modello della pagina, può contenere attributi
      * @param chef, l'oggetto chef appena creato
      * @param bindingResultChef, necessario per salvare eventuali errori
@@ -91,6 +92,7 @@ public class ChefController {
 
     /**
      * Questo metodo gestisce l'aggiornamento dello chef.
+     *
      * @param model il modello della pagina, può contenere attributi
      * @param id, l'identificatore (id) dello chef selezionato
      * @return il form per aggiornare lo chef selezionato
@@ -132,6 +134,12 @@ public class ChefController {
         return "admin/chefFormUpdate";
     }
 
+    /**
+     * Questo metodo reindirizza alla pagina di un determinato chef con tutte le informazioni.
+     * @param id
+     * @param model
+     * @return chef/{id}.html
+     */
     @GetMapping("/chef/{id}")
     public String getChefInfo(@PathVariable("id") Long id, Model model) {
         Chef chef = this.chefService.getChefById(id).get();
