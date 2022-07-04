@@ -25,7 +25,8 @@
                         </div>
                         <div class="info-field">
                             <span class="info-label">Password:</span>
-                            <div th:unless="${credentials?.password == null}" class="info-box"><p th:text="${credentials.password}"></div>
+                            <div th:unless="${credentials?.password == null}" class="info-box">
+                                <p>**********</p></div>
                         </div>
                     </div>
                     

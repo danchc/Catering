@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface ChefRepository extends CrudRepository<Chef, Long> {
 
-    public Chef existsByNomeAndCognomeAndNazio(String nome);
 }
