@@ -12,8 +12,6 @@ public class BuffetValidator implements Validator {
 
     private final Integer MAX_LENGTH_DESCRIPTION = 255;
 
-    @Autowired
-    protected BuffetService buffetService;
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -39,10 +37,6 @@ public class BuffetValidator implements Validator {
             errors.reject("buffet.descrizione.size");
         }
 
-        //controllo se esiste nel database
-        if(this.buffetService.alreadyExistsBuffet(nome)){
-            errors.reject("buffet.duplicato");
-        }
 
     }
 }

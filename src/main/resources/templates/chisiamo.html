@@ -2,7 +2,6 @@
 <html lang=it xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/base.html :: headerfiles(title='R3 Catering | Chi siamo')"></head>
-<link href="../static/css/style.css" rel="stylesheet" type="text/css">
 <body>
     <div class="header-chisiamo-container">
 
@@ -31,7 +30,7 @@
     <div class="chisiamo-container">
         <!-- logo -->
         <div class="img-logo-container">
-            <img th:src="@{/images/r3-logo-dark.png}" src="../static/images/r3-logo-dark.png">
+            <img th:src="@{/images/logos/r3-logo-dark.png}" src="../static/images/logos/r3-logo-dark.png">
         </div>
 
         <!-- descrizione -->
@@ -42,21 +41,27 @@
             <div class="desc-title">
                 <h2><strong>Personale altamente qualificato</strong></h2>
             </div>
-            Il nostro team altamente qualificato si occuperà della progettazione ed esecuzione del lavoro.<br>
-            <br>
+            <div class="desc-content">
+                Il nostro team altamente qualificato si occuperà della progettazione ed esecuzione del lavoro.<br>
+                <br>
+            </div>
             <div class="desc-title">
                 <h2><strong>Genuinità e qualità</strong></h2>
             </div>
-            La genuinità dei nostri prodotti, la cura per ogni dettaglio, il servizio altamente professionale
-            e tutto ciò che ci caratterizza e ci contraddistingue. Vogliamo deliziare i nostri clienti, ascoltare
-            ogni desiderio e farli diventare realtà.<br>
-            <br>
+            <div class="desc-content">
+                La genuinità dei nostri prodotti, la cura per ogni dettaglio, il servizio altamente professionale
+                e tutto ciò che ci caratterizza e ci contraddistingue. Vogliamo deliziare i nostri clienti, ascoltare
+                ogni desiderio e farli diventare realtà.<br>
+                <br>
+            </div>
             <div class="desc-title">
                 <h2><strong>Con voi in ogni occasione speciale</strong></h2>
             </div>
-            R3 Catering vi accompagnerà nelle vostre occasioni speciali: i nostri esperti sono pronti ad ascoltare i
-            vostri desideri, a guidarvi nella scelta dei nostri piatti prelibati.<br>
-            Sarà un momento indimenticabile.
+            <div class="desc-content">
+                R3 Catering vi accompagnerà nelle vostre occasioni speciali: i nostri esperti sono pronti ad ascoltare i
+                vostri desideri, a guidarvi nella scelta dei nostri piatti prelibati.<br>
+                Sarà un momento indimenticabile.
+            </div>
         </div>
 
         <!-- img -->

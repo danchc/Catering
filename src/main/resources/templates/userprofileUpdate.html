@@ -126,9 +126,15 @@
 
 
                         <div class="info-field">
-                            <div class="form-input">
-                                <input type="hidden" name="dataNascita" th:value="${user.dataNascita}"
+                            <span class="info-label">Data di nascita:</span>
+                            <div th:if="${user.dataNascita == null}" class="form-input">
+                                <input type="date" name="dataNascita"
                                        th:field="${user.dataNascita}">
+                            </div>
+
+                            <div th:unless="${user.dataNascita == null}" class="form-input">
+                                <input type="hidden" name="dataNascita" th:value="${user.dataNascita}" readonly>
+                                <span th:text="${user.dataNascita}"></span>
                             </div>
                         </div>
 

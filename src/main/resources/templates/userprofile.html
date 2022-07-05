@@ -65,7 +65,7 @@
                         <div th:if="${preferiti?.isEmpty()}" class="info-box"><p>Non ci sono preferiti</p></div>
                         <div th:unless="${preferiti?.isEmpty()}" class="info-box">
                             <div th:each="preferito : ${preferiti}">
-                                <span th:text="${preferito.nome}"></span>
+                                <span th:text="${preferito.nome}"></span><a th:href="@{'/deletePreferito/'+${preferito.id}}"><span>&times;</span></a>
                             </div>
                         </div>
                     </div>

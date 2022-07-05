@@ -133,6 +133,8 @@ public class IngredienteController {
             return "redirect:/admin/controlpanel";
         }
 
+        model.addAttribute("listPiatti", this.piattoService.getAllPiatti());
+        model.addAttribute("nazioni", this.nazioneService.getAllNations());
         return "admin/ingredienteFormUpdate";
     }
 }

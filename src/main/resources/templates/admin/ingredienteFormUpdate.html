@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang=it xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Admin | Pannello di Controllo')">
+<head th:replace="fragments/base.html :: headerfiles(title='Modifica ingrediente')">
 </head>
 <body>
     <div class="add-form-bg-container">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-input">
                             <span>Origine:</span>
-                            <select th:field="${ingrediente.origine}" style="height: 5vh; width: 100%">
+                            <select th:field="${ingrediente.nazione}" style="height: 5vh; width: 100%">
                                 <option th:each="nazione : ${nazioni}"
                                         th:value="${nazione.id}"
                                         th:text="${nazione.nome}">

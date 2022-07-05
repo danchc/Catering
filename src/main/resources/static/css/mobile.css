@@ -109,7 +109,10 @@ body {
 * CHISIAMO.HTML #########################################################################
  */
 
-
+.team-container {
+    width: 100%;
+    margin: 20px;
+}
 
 /*
 * REGISTER-FORM.HTML #####################################################################à
@@ -213,6 +216,10 @@ footer input {
     margin: 0;
 }
 
+.bf-container-flex .btn-container {
+    width: 400px;
+}
+
 .bf-info .bf-info-description {
     margin: 20px 0 0 0;
 }
@@ -222,7 +229,7 @@ footer input {
 }
 
 .bf-other-info .bf-piatti {
-    margin: 20px 0 0 0;
+    margin: 48px;
 }
 
 .bf-container-flex .btn-container {
@@ -233,6 +240,8 @@ footer input {
     margin: 20px 0 20px 0;
     width: 150px;
 }
+
+
 
 /*
 * CONTROLPANEL.HTML #######################################################################

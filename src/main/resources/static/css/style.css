@@ -142,7 +142,7 @@ a {
 .banner-container {
     width: 100%;
     min-height: 90vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/index-banner-1.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/homepage/index-banner-1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -242,15 +242,15 @@ a {
 /* images */
 
 .left {
-    background-image: url(../images/tradizione-img.jpg);
+    background-image: url(../images/homepage/tradizione-img.jpg);
 }
 
 .center {
-    background-image: url(../images/passione-img.jpg);
+    background-image: url(../images/homepage/passione-img.jpg);
 }
 
 .right {
-    background-image: url(../images/qualita-img.jpg);
+    background-image: url(../images/homepage/qualita-img.jpg);
 }
 
 
@@ -368,9 +368,7 @@ a {
 }
 
 .chisiamo-desc-container .desc-title {
-    height: 80px;
-    width: 250px;
-    display: inline;
+    display: inline-block;
     font-family: 'Gwendolyn', cursive;
     font-size: 1.8em;
     border-bottom: 2px solid var(--main-color);
@@ -1566,7 +1564,7 @@ table {
  */
 
 .bf-container-flex {
-    height: 90vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1582,7 +1580,6 @@ table {
 
 .bf-img-container .bf-img {
     background-color: white;
-    width: 30vw;
     height: 450px;
     border: 3px solid var(--main-color);
 }
@@ -1590,7 +1587,7 @@ table {
 .bf-container-flex .bf-info {
     padding: 20px;
     width: 800px;
-    height: 750px;
+    height: auto;
 }
 
 .bf-info .bf-info-title {

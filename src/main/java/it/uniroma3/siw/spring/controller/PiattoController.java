@@ -121,6 +121,7 @@ public class PiattoController {
             return "redirect:/admin/controlpanel";
         }
 
+        model.addAttribute("listBuffet", this.buffetService.getAllBuffet());
         return "admin/piattoFormUpdate";
     }
 

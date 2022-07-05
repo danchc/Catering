@@ -13,7 +13,8 @@
         <!-- -->
         <div class="buffets-banner-content">
             <h1 th:text="${buffet.nome}"id="buffets-banner-title"></h1>
-            <input type="hidden" th:field="${buffet.id}">
+            <input type="hidden" name="id" th:value="${buffet.id}"
+                   th:field="${buffet.id}">
         </div>
     </div>
 
@@ -82,9 +83,9 @@
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
             <div th:if="${session.role == 'DEFAULT'}" class="btn-container">
-                 <form method="POST" th:action="@{/newPreferito}">
+                 <a th:href="@{'/newPreferito/'+${buffet.id}}">
                      <button type="submit" class="active">Metti nei preferiti</button>
-                 </form>
+                 </a>
                 <a th:href="@{/contacts}"><button type="button">Contattaci subito!</button></a>
             </div>
         </div>

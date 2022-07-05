@@ -25,6 +25,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,12 +56,47 @@ public class UserController {
      * @param model
      * @return buffets.html
      */
-    @PostMapping("/newPreferito")
-    public String addPreferito(@RequestParam(required=false, name="id") Long id,
+    @GetMapping("/newPreferito/{id}")
+    public String addPreferito(@PathVariable("id")Long id,
                                Model model) {
         Buffet buffet = this.buffetService.getBuffetById(id).get();
-        this.credentialsService.getCredentialsAuthenticated().getUser().getPreferiti().add(buffet);
+        List<Buffet> preferiti = this.credentialsService.getCredentialsAuthenticated().getUser().getPreferiti();
+        if(preferiti.size() == 0) {
+            preferiti.add(buffet);
+        } else if(preferiti.contains(buffet)) {
+                    logger.info("#### preferito già esistente ####");
+                    return "redirect:/buffet/{id}";
+        } else {
+            preferiti.add(buffet);
+        }
+
+        this.credentialsService.update(this.credentialsService.getCredentialsAuthenticated());
         return "redirect:/buffets";
+    }
+
+    /**
+     * Questo metodo gestisce l'eliminazione di un preferito dalla lista dei preferiti di un utente loggato.
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/deletePreferito/{id}")
+    public String deletePreferito(@PathVariable("id")Long id,
+                               Model model) {
+        logger.info("#### deleting buffet from preferiti ... ####");
+        Buffet buffet = this.buffetService.getBuffetById(id).get();
+        List<Buffet> preferiti = this.credentialsService.getCredentialsAuthenticated().getUser().getPreferiti();
+        Iterator<Buffet> it = preferiti.iterator();
+        while(it.hasNext()){
+            Buffet b = it.next();
+            if(b.getId().equals(buffet.getId())){
+                it.remove();
+                System.out.println("size: " + preferiti.size());
+            }
+        }
+        this.credentialsService.update(this.credentialsService.getCredentialsAuthenticated());
+        logger.info("#### deleted buffet from preferiti .###");
+        return "redirect:/user";
     }
 
     /**

@@ -123,14 +123,13 @@ public class ChefController {
                                BindingResult bindingResultChef) throws IOException {
 
         this.chefValidator.validate(chef, bindingResultChef);
-        /*
-            Normal use
-         */
+
         if(!bindingResultChef.hasErrors()){
             this.chefService.save(chef);
             return "redirect:/admin/controlpanel";
         }
 
+        model.addAttribute("nazioni", this.nazioneService.getAllNations());
         return "admin/chefFormUpdate";
     }
 
