@@ -29,13 +29,13 @@ public class Buffet {
     @Column(nullable = true)
     private String photo;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     private Tipologia tipologia;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     private Chef chef;
 
-    @OneToMany(mappedBy = "buffet", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "buffet", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Piatto> piatti;
 
     @ManyToMany
