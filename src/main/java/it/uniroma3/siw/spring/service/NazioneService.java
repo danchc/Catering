@@ -13,6 +13,10 @@ public class NazioneService {
     @Autowired
     protected NazioneRepository nazioneRepository;
 
+    /**
+     * Questo metodo recupera tutte le nazioni all'interno del database.
+     * @return
+     */
     public List<Nazione> getAllNations(){
         return (List<Nazione>) this.nazioneRepository.findAll();
     }

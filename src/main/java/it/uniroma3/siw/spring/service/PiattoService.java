@@ -17,20 +17,40 @@ public class PiattoService {
     @Autowired
     protected PiattoRepository piattoRepository;
 
+    /**
+     * Questo metodo gestisce il salvataggio nel database di un oggetto di tipo piatto.
+     * @param piatto
+     * @return
+     */
     @Transactional
     public Piatto save(Piatto piatto) {
         return this.piattoRepository.save(piatto);
     }
 
+    /**
+     * Questo metodo gestisce il recupero di tutti i piatti salvati nel database.
+     * @return
+     */
     @Transactional
     public List<Piatto> getAllPiatti() {
         return (List<Piatto>) this.piattoRepository.findAll();
     }
 
+    /**
+     * Questo metodo gestisce il recupero del piatto in base all'id.
+     * @param id
+     * @return
+     */
     public Optional<Piatto> getPiattoById(Long id){
         return this.piattoRepository.findById(id);
     }
 
+    /**
+     * Questo metodo gestisce l'eliminazione del piatto in base all'id.
+     * @param piatto
+     * @return
+     */
+    @Transactional
     public boolean eliminaPiattoPerId(Piatto piatto) {
         try {
             this.piattoRepository.delete(piatto);

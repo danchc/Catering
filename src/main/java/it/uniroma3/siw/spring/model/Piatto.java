@@ -25,7 +25,7 @@ public class Piatto {
 
     private String descrizione;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Buffet buffet;
 
     @ManyToMany(mappedBy = "piatti", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)

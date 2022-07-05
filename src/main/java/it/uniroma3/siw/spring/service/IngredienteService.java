@@ -15,19 +15,39 @@ public class IngredienteService {
     @Autowired
     protected IngredienteRepository ingredienteRepository;
 
+    /**
+     * Questo metodo gestisce il salvataggio nel database di un oggetto di tipo ingrediente.
+     * @param ingrediente
+     * @return
+     */
     @Transactional
     public Ingrediente save(Ingrediente ingrediente){
         return this.ingredienteRepository.save(ingrediente);
     }
 
+    /**
+     * Questo metodo recupera tutti gli ingredienti salvati nel database.
+     * @return
+     */
     public List<Ingrediente> getAllIngredients() {
         return (List<Ingrediente>) this.ingredienteRepository.findAll();
     }
 
+    /**
+     * Questo metodo recupera un determinato ingrediente in base all'id.
+     * @param id
+     * @return
+     */
     public Optional<Ingrediente> getIngredientePerId(Long id) {
         return this.ingredienteRepository.findById(id);
     }
 
+    /**
+     * Questo metodo gestisce l'eliminazione di un ingrediente in base all'id.
+     * @param ingrediente
+     * @return
+     */
+    @Transactional
     public boolean eliminaIngredientePerId(Ingrediente ingrediente){
         try {
             this.ingredienteRepository.delete(ingrediente);

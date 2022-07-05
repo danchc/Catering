@@ -25,6 +25,12 @@ public class CredentialsService {
     @Autowired
     private CredentialsRepository credentialsRepo;
 
+    /**
+     * Questo metodo gestisce il salvataggio nel database di un oggetto di tipo credentials.
+     * Inoltre si imposta il ruolo e si codifica la password.
+     * @param credentials
+     * @return
+     */
     @Transactional
     public Credentials save(Credentials credentials) {
         credentials.setRuolo(Credentials.RUOLO_DEFAULT);
@@ -32,11 +38,20 @@ public class CredentialsService {
         return this.credentialsRepo.save(credentials);
     }
 
+    /**
+     * Il metodo gestisce l'update delle informazioni di un utente.
+     * @param credentials
+     * @return
+     */
     @Transactional
     public Credentials update(Credentials credentials) {
         return this.credentialsRepo.save(credentials);
     }
 
+    /**
+     * Con questo metodo andiamo a cercare tutte le credenziali salvate nel database.
+     * @return
+     */
     public List<Credentials> findAll() {
         List<Credentials> credenziali = new ArrayList<>();
         for(Credentials c : this.credentialsRepo.findAll()){
@@ -45,20 +60,41 @@ public class CredentialsService {
         return credenziali;
     }
 
+    /**
+     * Con questo metodo recuperiamo le credenziali in base all'username.
+     * @param username
+     * @return
+     */
     public Credentials getCredentials(String username) {
         return this.credentialsRepo.findByUsername(username).get();
     }
 
+    /**
+     * Questo metodo ci dice se esiste o meno un utente con quell'username all'interno
+     * del database.
+     * @param username
+     * @return
+     */
     public boolean alreadyExistsUsername(String username){
         return credentialsRepo.existsByUsername(username);
     }
 
+    /**
+     * Questo metodo gestisce il recupero delle informazioni dell'utente loggato.
+     * @return
+     */
     public Credentials getCredentialsAuthenticated(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Credentials credentials = this.getCredentials(userDetails.getUsername());
         return credentials;
     }
 
+    /**
+     * Questo metodo gestisce le operazioni dopo l'accesso di un utente attraverso
+     * l'utilizzo di OAuth2.
+     * @param username
+     * @param oAuth2User
+     */
     public void processOAuthPostLogin(String username, CustomOAuth2User oAuth2User) {
 
         if (!this.credentialsRepo.existsByUsername(username)) {
@@ -78,6 +114,11 @@ public class CredentialsService {
 
     }
 
+    /**
+     * Con questo metodo recuperiamo un utente in base all'id.
+     * @param id
+     * @return
+     */
     public Credentials findById(Long id) {
         return this.credentialsRepo.findById(id).get();
     }

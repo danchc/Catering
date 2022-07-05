@@ -26,9 +26,6 @@ public class UserService {
         return this.userRepository.existsByEmail(email);
     }
 
-    public List<User> findAllUsers() {
-        return (List<User>) this.userRepository.findAll();
-    }
 
     @Transactional
     public void add(User user, Buffet buffet){
@@ -38,7 +35,4 @@ public class UserService {
         this.userRepository.save(user);
     }
 
-    public User findById(Long id) {
-        return this.userRepository.findById(id).get();
-    }
 }
