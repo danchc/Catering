@@ -29,6 +29,13 @@ Progetto Sistemi Informativi Sul Web A.A. 2021/2022.
 
 ![cd](https://i.postimg.cc/RF9P9fGd/class-diagram.png)
 
+## Screenshots
+
+![s1](https://i.postimg.cc/J7cDLnmG/homepage.png)
+![s2](https://i.postimg.cc/9My4zX7g/chisiamo.png)
+![s3](https://i.postimg.cc/mkwtNdVQ/registrazione.png)
+![s4](https://i.postimg.cc/tJys60dq/dashboard.png)
+
 ## Heroku
 
 Il deploy è stato effettuato su heroku all'indirizzo:
